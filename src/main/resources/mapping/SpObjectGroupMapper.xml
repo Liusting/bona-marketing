@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SpObjectGroupMapper">
+    <!--表字段与po字段映射-->
+    <resultMap id="BaseResultMap" type="com.example.demo.po.SpObjectGroup">
+        <id column="ID" property="id" />
+        <id column="OBJECT_ID" property="objectId" />
+        <id column="GROUP_ID" property="groupId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID AS id, OBJECT_ID AS objectId, GROUP_ID AS groupId
+    </sql>
+
+    <select id="getSpObjectGroupIsFirst" resultType="java.util.Map">
+        select g2.id as "id", g2. name as "name", g2.upper_id as "upperId"
+          from sp_item_type_group g2
+         where 1 = 1
+           and EXISTS (select 1
+                  from sp_object_group o
+                  left join sp_item_type_group g
+                    on (g.id = o.group_id)
+                 where o.object_id = #{objectId}
+                   and g.upper_id = g2.id)
+    </select>
+
+    <select id="getSpObjectGroupIsNotFirst" resultType="java.util.Map">
+         select g.id as "id", g. name as "name", g.upper_id as "upperId"
+          from sp_object_group o
+          left join sp_item_type_group g
+            on (g.id = o.group_id)
+         where o.object_id = #{objectId}
+    </select>
+
+</mapper>

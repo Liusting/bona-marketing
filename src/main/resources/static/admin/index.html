@@ -1,0 +1,25 @@
+<#import  "../spring.ftl" as spring/>
+<#macro basePath>
+    <@spring.url "/"/>
+</#macro>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="<@basePath/>js/zui/dist/css/zui.css">
+</head>
+<body>
+登录成功
+<#--页面登录和页面退出都是用 form表单提交，用ajax不行，因为ajax是局部刷新，页面刷新用form提交-->
+<form method="post" action="/login/logout">
+    <button id="logout" class="btn btn-primary">退出</button>
+</form>
+
+<script src="<@basePath/>js/zui/dist/lib/jquery/jquery.js"></script>
+<script src="<@basePath/>js/zui/dist/js/zui.js"></script>
+<script>
+
+</script>
+</body>
+</html>

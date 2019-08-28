@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+mybatis:
+  typeAliasesPackage: com.example.demo.po
+  mapperLocations: classpath:mapping/*.xml
+
+spring:
+  freemarker:
+    allowRequestOverride: false
+    allowSessionOverride: false
+    cache: true
+    checkTemplateLocation: true
+    contentType: text/html
+    exposeRequestAttributes: false
+    exposeSessionAttributes: false
+    exposeSpringMacroHelpers: true
+    request-context-attribute: request
+    suffix: .ftl
+    templateEncoding: UTF-8
+    templateLoaderPath: classpath:/static/  #表示所有的模板文件都放在该目录下
+    spring.freemarker.settings:
+      locale: zh_CN
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      datetime_format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.20.77:3306/bona_marketing?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SpItemTypeMapper">
+    <!--表字段与po字段映射-->
+    <resultMap id="BaseResultMap" type="com.example.demo.po.SpItemType">
+        <id column="ID" property="id" />
+        <id column="NAME" property="name" />
+        <id column="UPPER_ID" property="upperId" />
+        <id column="TYPE" property="type" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID AS id, NAME AS name, UPPER_ID AS upperId, TYPE AS type
+    </sql>
+
+    <select id="getSpTypeToType" resultType="com.example.demo.po.SpItemType">
+        select
+        <include refid="Base_Column_List" />
+        from Sp_Item_Type
+        where
+        1=1
+        <if test="type != '' and type != null">
+            and type =#{type}
+        </if>
+    </select>
+
+
+</mapper>

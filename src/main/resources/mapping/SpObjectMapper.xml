@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SpObjectMapper">
+    <!--表字段与po字段映射-->
+    <resultMap id="BaseResultMap" type="com.example.demo.po.SpObject">
+        <id column="ID" property="id" />
+        <id column="NAME" property="name" />
+        <id column="UPPER_ID" property="upperId" />
+        <id column="type_Id" property="typeId" />
+        <id column="money" property="money" />
+        <id column="item_Id" property="itemId" />
+        <id column="TYPE" property="type" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID AS id, NAME AS name, UPPER_ID AS upperId,type_Id AS typeId,money AS money,item_Id AS itemId,TYPE AS type
+    </sql>
+
+    <select id="getSpObject" resultType="com.example.demo.po.SpObject">
+        select
+        <include refid="Base_Column_List" />
+        from Sp_Object
+        where
+        1=1
+        <if test="itemId != '' and itemId != null">
+            and item_Id = #{itemId}
+        </if>
+    </select>
+
+
+    <select id="getSpObjectToStart" resultType="com.example.demo.po.SpObject">
+        select
+        <include refid="Base_Column_List" />
+        from Sp_Object
+        where
+        1=1
+        <if test="itemId != '' and itemId != null">
+            and item_Id = #{itemId}
+        </if>
+        and UPPER_ID = "-1"
+    </select>
+
+    <select id="getSpObjectAndType" resultType="java.util.Map">
+        SELECT
+            o.id AS "objId",
+            o.NAME AS "objName",
+            o.upper_id AS "objUpperId",
+            t.id AS "typeId",
+            t.NAME AS "typeName"
+        FROM
+            sp_object o
+            LEFT JOIN sp_object_type t ON ( t.id = o.type_id )
+        WHERE
+            1 = 1
+            AND o.item_id = #{itemId}
+    </select>
+
+</mapper>

@@ -1,0 +1,78 @@
+<#import  "../spring.ftl" as spring/>
+<#macro basePath>
+    <@spring.url "/"/>
+</#macro>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/zui/dist/css/zui.css">
+<#--bootstrapvalidator 表单验证需要下面2个css-->
+    <link rel="stylesheet" href="../js/bootstrapvalidator/bootstrapvalidator/css/bootstrapValidator.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../js/bootstrapvalidator/bootstrapvalidator/css/bootstrapValidator.css" type="text/css"/>
+</head>
+<body>
+<#--页面登录和页面退出都是用 form表单提交，用ajax不行，因为ajax是局部刷新，页面刷新用form提交-->
+<form id="form-test" class="form-horizontal" method="post" action="/login/submit">
+    <div class="form-group">
+        <label for="exampleInputAccount1" class="col-sm-2">账号</label>
+        <div class="col-md-10 col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" placeholder="电子邮件/手机号/用户名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="col-sm-2">密码</label>
+        <div class="col-md-10  col-sm-10">
+            <input type="password" class="form-control" id="passWork" name="passWork" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5  col-sm-5"></div>
+        <div class="col-md-5  col-sm-5">
+            <button id="submitBut" type="submit" class="btn btn-primary">提交</button>
+        </div>
+    </div>
+
+</form>
+
+<script src="../js/zui/dist/lib/jquery/jquery.js"></script>
+<script src="../js/zui/dist/js/zui.js"></script>
+
+<#--bootstrapvalidator 表单验证需要下面2个js-->
+<script type="text/javascript" src="../js/bootstrapvalidator/bootstrapvalidator/js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="../js/bootstrapvalidator/bootstrapvalidator/js/language/zh_CN.js"></script>
+<script>
+    $('#form-test').bootstrapValidator({
+        message: 'This value is not valid',
+        submitButtons: '#submitBut',              //指定提交按钮
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                message: '用户名验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    }
+                }
+            },
+            passWork: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    }
+                }
+            }
+        }
+    }).on('success.form.bv',function (e) {
+        /** 如果是用ajax就不用注释下面这行，不然会重复提交 **/
+        // e.preventDefault();
+        /** 如果是用ajax就不用注释上面那行，在面写post方法 **/
+    });
+</script>
+</body>
+</html>

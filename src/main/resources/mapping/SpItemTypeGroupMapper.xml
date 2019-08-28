@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SpItemTypeGroupMapper">
+    <!--表字段与po字段映射-->
+    <resultMap id="BaseResultMap" type="com.example.demo.po.SpItemTypeGroup">
+        <id column="ID" property="id" />
+        <id column="NAME" property="name" />
+        <id column="UPPER_ID" property="upperId" />
+        <id column="TYPE_ID" property="typeId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID AS id, NAME AS name, UPPER_ID AS upperId, TYPE_ID AS typeId
+    </sql>
+
+    <select id="getSpItemTypeSpecsIsFirst" resultType="com.example.demo.po.SpItemTypeGroup">
+        select
+        <include refid="Base_Column_List" />
+        from
+        sp_item_type_group
+        where type_id = #{typeId}
+        and upper_Id = '-1'
+    </select>
+
+    <select id="getSpItemTypeSpecsIsNotFirst" resultType="com.example.demo.po.SpItemTypeGroup">
+        select
+        <include refid="Base_Column_List" />
+        from
+        sp_item_type_group
+        where type_id = #{typeId}
+        and upper_Id != '-1'
+    </select>
+
+
+</mapper>

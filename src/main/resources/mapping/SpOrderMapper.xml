@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SpOrderMapper">
+    <!--表字段与po字段映射-->
+    <resultMap id="BaseResultMap" type="com.example.demo.po.SpOrder">
+        <id column="ID" property="id" />
+        <id column="ITEMID" property="itemId" />
+        <id column="TYPEID" property="typeId" />
+        <id column="MONEY" property="money" />
+        <id column="NUMBER" property="number" />
+        <id column="NAME" property="name" />
+        <id column="PAYSTATUS" property="payStatus" />
+        <id column="SHOPNAME" property="shopName" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID AS id, NUMBER AS number, NAME AS name, PAYSTATUS AS payStatus,SHOPNAME AS shopName,
+        MONEY as money,TYPEID as typeId,ITEMID as itemId
+    </sql>
+    <!--获取未付款、待发货、已收货、待评价订单列表-->
+    <select id="getOrderList" resultType="java.util.Map">
+        SELECT so.id,so.trade_status,so.type_id,so.pay_status,so.item_id,si.name,ss.name AS 'shop_name',so.number,so.money FROM sp_order so
+        LEFT JOIN sp_item si ON so.item_id = si.id
+        LEFT JOIN sp_shop ss ON ss.id = si.shop_id
+        WHERE so.pay_status = #{pay_status} AND so.trade_status = #{trade_status} AND so.display = 1 ;
+    </select>
+    <!-- 取消订单-->
+    <update id="cancelPay">
+        UPDATE sp_order SET display = 0 WHERE id = #{id};
+    </update>
+     <!-- 确认收货-->
+    <update id="confirmReceive">
+        UPDATE sp_order SET trade_status = 4 WHERE id = #{id};
+    </update>
+</mapper>
