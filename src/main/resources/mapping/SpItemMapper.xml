@@ -10,28 +10,43 @@
         <id column="IMAGE" property="imege" />
         <id column="MONEY" property="money" />
         <id column="PLACE" property="place" />
-        <id column="DIANNAME" property="dianName" />
+        <id column="DIANNAME" property="shopName" />
     </resultMap>
 
     <sql id="Base_Column_List">
         ID AS id, NAME AS name, PLACE AS place, create_time AS createTime,type_id AS typeId,name AS shopName
     </sql>
 
-    <select id="getSpItem" resultType="com.example.demo.po.SpItem">
-SELECT
-	i.id AS "id",
-	i.NAME AS "name",
-	min( ot.money ) AS "money",
-	i.place AS "place",
-	s.NAME AS "shopName",
-	o.total AS "total"
-FROM
-	sp_item i
-	LEFT JOIN sp_shop s ON ( s.id = i.shop_id )
-	LEFT JOIN sp_object ot ON ( ot.item_id = i.id )
-	LEFT JOIN ( SELECT item_id AS "itemId", count( 1 ) AS "total" FROM sp_order GROUP BY item_id ) o ON ( o.itemId = i.id )
-GROUP BY
-	i.id
+    <select id="getSpItem" resultType="java.util.Map">
+        SELECT
+        i.id AS "id",
+        i.NAME AS "name",
+        min( ot.money ) AS "money",
+        i.place AS "place",
+        s.NAME AS "shopName",
+        o.total AS "total"
+        FROM
+        sp_item i
+        LEFT JOIN sp_shop s ON ( s.id = i.shop_id )
+        LEFT JOIN sp_object ot ON ( ot.item_id = i.id )
+        LEFT JOIN ( SELECT item_id AS "itemId", count( 1 ) AS "total" FROM sp_order GROUP BY item_id ) o ON ( o.itemId = i.id )
+        GROUP BY
+        i.id
+        <if test="type1 != null and type1 != ''">
+            ORDER BY
+            o.total
+            desc
+        </if>
+        <if test="type2 != null and type2 != ''">
+            ORDER BY
+            ot.money
+
+        </if>
+        <if test="type3 != null and type3 != ''">
+            ORDER BY
+            ot.money
+            desc
+        </if>
     </select>
 
     <select id="getGoodsDetail" resultType="java.util.Map">

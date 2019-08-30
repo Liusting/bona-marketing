@@ -55,4 +55,19 @@ public class SpOrderController {
         map.put("code",1);
         return map;
     }
+
+
+//    评价
+    @RequestMapping(value = {"/getAppraise"},method = {RequestMethod.POST})
+    @ResponseBody
+    public Object appraiseItem(HttpServletRequest request){
+        String desc_star = request.getParameter("desc_star");
+        String service_star = request.getParameter("service_star");
+        String manner_star = request.getParameter("manner_star");
+        String id = request.getParameter("id");
+        spOrderMapper.updateStar(id,desc_star,service_star,manner_star);
+        Map<String,Object> map  = new HashMap<>();
+        map.put("code",1);
+        return map;
+    }
 }

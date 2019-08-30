@@ -1,7 +1,6 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.example.demo.po.SpItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,9 +9,8 @@ import java.util.Map;
 
 @Mapper
 public interface SpItemMapper {
-    List<SpItem> getSpItem(@Param("name") String name);
 
-    List<SpItem> getSpItem(Page page, @Param("name") String name);
+    List<Map<String,Object>> getSpItem(Page page,@Param("type1") String type1,@Param("type2") String type2,@Param("type3") String type3);
 
     List<Map<String,Object>>  getGoodsDetail(@Param("itemId") String itemId);
 

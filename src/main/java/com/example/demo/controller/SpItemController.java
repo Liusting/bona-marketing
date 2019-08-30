@@ -22,37 +22,44 @@ public class SpItemController {
     @Autowired
     private SpItemMapper spItemMapper;
 
-    @RequestMapping(value = { "/getSpItem" }, method = { RequestMethod.POST })
-    @ResponseBody
-    public Object getSpItem(HttpServletRequest request){
-        String name = request.getParameter("name");
-        List<SpItem> list = spItemMapper.getSpItem(name);
-        return list;
-    }
+//    @RequestMapping(value = { "/getSpItem" }, method = { RequestMethod.POST })
+//    @ResponseBody
+//    public Object getSpItem(HttpServletRequest request){
+//        String name = request.getParameter("name");
+//        List<SpItem> list = spItemMapper.getSpItem(name);
+//        return list;
+//    }
 
     @RequestMapping(value = { "/getSpItem2" }, method = { RequestMethod.POST })
     @ResponseBody
     public Object listDel(HttpServletRequest request) {
         String currentInt=request.getParameter("currentInt");
-//        String name=request.getParameter("name");
+        String  tabcur = request.getParameter("tabcur");
+        System.out.println(currentInt);
+        String type1 = null;
+        String type2 = null;
+        String type3 = null;
+        if(tabcur.equals("0")){
+            type1 = "0";
+            type2 = null;
+            type3 = null;
+        }else if(tabcur.equals("1")){
+            type1 = null;
+            type2 = "1";
+            type3 = null;
+        }else if(tabcur.equals("2")){
+            type1 = null;
+            type2 = null;
+            type3 = "2";
+        }
         /*每次熟悉只拿十条数据*/
         Page page = new Page(Integer.parseInt(currentInt), 10);
-        List<SpItem> spItemList = spItemMapper.getSpItem(page,null);
+        List<Map<String, Object>> spItemList = spItemMapper.getSpItem(page,type1,type2,type3);
 
         List<Map<String,Object>> list = new ArrayList<>();
 
-        for(int i=0;i<spItemList.size();i++){
-            Map<String,Object> map = new HashMap<>();
-            map.put("name",spItemList.get(i).getName());
-            map.put("money",spItemList.get(i).getMoney());
-            map.put("goodsId",spItemList.get(i).getId());
-            map.put("place",spItemList.get(i).getPlace());
-            map.put("shopName",spItemList.get(i).getShopName());
-            map.put("total",spItemList.get(i).getTotal());
-            list.add(map);
-            System.out.println();
-        }
-        return list;
+
+        return spItemList;
     }
 
 }

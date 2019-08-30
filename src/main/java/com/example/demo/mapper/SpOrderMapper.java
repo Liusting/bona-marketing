@@ -11,5 +11,7 @@ public interface SpOrderMapper {
     void cancelPay(@Param("id") String id);
 
     void confirmReceive(@Param("id") String id,@Param("trade_status") String trade_status);
-//    List<Map<String,Object>> getSendList();
+
+    void updateStar(@Param("id") String id,@Param("desc_star") String desc_star,@Param("service_star") String service_star,@Param("manner_star") String manner_star);
+
 }

@@ -34,4 +34,11 @@
     <update id="confirmReceive">
         UPDATE sp_order SET trade_status = 4 WHERE id = #{id};
     </update>
+
+    <!--  评价  -->
+    <update id="updateStar">
+        UPDATE sp_order SET trade_status = 5,desc_star = #{desc_star},service_star = #{service_star},
+        manner_star = #{manner_star}
+        WHERE id = #{id};
+    </update>
 </mapper>
