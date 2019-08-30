@@ -1,0 +1,387 @@
+<scroll-view scroll-y="hidden" style='height:100vh'>
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key>
+      <image height="500px" src="{{item.url}}" mode="scaleToFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </swiper-item>
+  </swiper>
+
+  <form >
+    <view class="spItem-form-group">
+      <view class="title text-red">
+        <text class="text-bold text-price text-xxl">{{goodsDetailList[0].minPrice}}-{{goodsDetailList[0].maxPrice}}</text>
+        <view class="cu-tag round sm">热卖促销</view>
+      </view>
+    </view>
+    <view class="spItem-form-group">
+      <view class="title text-red">
+        <view class="cu-tag round sm">满200减10劵</view>
+      </view>
+      <view class='text-grey'>
+        领劵
+        <text class="cuIcon-right text-orange"></text>
+      </view>
+    </view>
+
+    <view >
+    <view class="spItem-form-group"  >
+      <text class='text-bold'>{{goodsDetailList[0].name}}</text>
+    </view>
+
+
+    <view class="cu-form-group margin-top">
+      <view class="title">
+        <text class='text-grey' decode="{{true}}">发货&nbsp;&nbsp;</text>
+        <text class="cuIcon-locationfill text-orange">{{goodsDetailList[0].place}}</text>
+        <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;快递:免运费</text>
+      </view>
+      <view class='text-grey'>月销:2222</view>
+    </view>
+    </view>
+    <!-- 分割 -->
+  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
+
+    <view class="spItem-form-group margin-top" bindtap="showModal" data-target="bottomModal">
+      <view class="title text-grey">规格</view>
+
+      <text class="cuIcon-right text-orange"></text>
+    </view>
+    <view class="spItem-form-group margin-top" bindtap="showGroupViewModal" data-target="GroupViewModal">
+      <view class="title text-grey">参数</view>
+      <text class="cuIcon-right text-orange"></text>
+    </view>
+        <!-- 分割 -->
+  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
+  
+    <view wx:if="{{groupViewOpen}}">
+      <view wx:for="{{groupValList}}" wx:key>
+        <view class="cu-form-group">
+          <view class="title">产品参数</view>
+          <text>{{item.list}}</text>
+        </view>
+      </view>
+    </view>
+  </form>
+
+  <scroll-view scroll-y="true">
+    <text>商品详情</text>
+    <view wx:for="{{swiperList}}">
+       <image style="width:100%" src="{{item.url}}" mode='aspectFill'/> 
+    </view>
+  </scroll-view>
+
+
+<!-- 选择规格弹框 -->
+  <!-- 底部固定的按钮区域 -->
+  <view style="height:{{bottom_view_height2}}rpx">
+  </view>
+
+  <!-- 选择底部滑窗 -->
+  <view class="cu-modal justify-start bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal" style='overflow: hidden;text-align: left;'>
+    <view class="cu-dialog background-white" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+      <!-- 顶部固定卡片区域 -->
+      <view class="cu-card article npl-intro {{isCard?'no-card':''}}">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class='height15'></view>
+          </view>
+          <view class="content">
+            <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+            <view class="desc text-left" >
+              <view class="text-xxl">
+                <text class="text-red text-price">{{money}}</text>
+              </view>
+              <view class="text-sm">
+                <text class="text-grey">库存19624件</text>
+              </view>
+              <view class="text-sm">
+                <text class="text-black">{{tipsTitle}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 中部滑窗内部可滚动区域 -->
+      <scroll-view scroll-y catchtap style="height:calc( 100vh - {{CustomBar}}px - {{card_view_height}}px - 75px);">   
+
+
+        <view wx:for="{{spTypeObjListLet}}" wx:key wx:for-item="typeValue" wx:for-index="typeIndex">
+          <view class="bg-white">
+            <view class="action">
+              <text class="cuIcon-title text-blue"></text>{{typeValue.typeName}}
+            </view>
+          </view>
+          <view class='padding-sm flex flex-wrap'>
+            <view class="padding-xs" wx:for="{{typeValue.list}}" wx:key wx:for-item="objectValue">
+              <view class="cu-tag line-{{clickMap[typeValue.typeId]==objectValue.name?'yellow':(objectValue.state?'black':'gray')}}" bindtap="objClick" data-objName="{{objectValue.name}}" data-typeId="{{typeValue.typeId}}" data-state="{{objectValue.state}}">
+                {{objectValue.name}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-form-group">
+          <view class="title">购买数量</view>
+
+          <view class="cu-capsule">
+            <view class="cu-tag bg-grey" bindtap="GMSLMoveOrAdd" data-target="move">
+              <text class="cuIcon-move"></text>
+            </view>
+            <view class="cu-tag line-grey">
+              {{GMSL}}
+            </view>
+            <view class="cu-tag bg-grey" bindtap="GMSLMoveOrAdd" data-target="add">
+              <text class="cuIcon-add"></text>
+            </view>
+          </view>
+          
+        </view>
+
+        <view style="height:{{bottom_view_height1}}rpx">
+        </view>
+      </scroll-view>
+
+      <!-- 底部固定的按钮区域 -->
+      <view class="cu-bar tabbar bg-white shadow foot grid col-2 padding-sm text-center bottom_view_height1">
+        <view class="padding-xs">
+          <!-- <button class="cu-btn bg-grey lg">加入购物车</button> -->
+          <button class="addcart" bindtap="jrgwcClick">加入购物车</button>
+        </view>
+        <view class="padding-xs">
+          <!-- <button class="cu-btn bg-grey lg">立即购买</button> -->
+          <button class="buy" bindtap="buy" >立即购买</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-bar tabbar bg-white shadow foot bottom_view_height2">
+    <button class="action" open-type="contact">
+      <view class="cuIcon-service">
+        <!-- <view class="cu-tag badge"></view> -->
+      </view>
+      客服
+    </button>
+    <view class="action" bindtap="collect">
+      <view class="{{change==1?'cuIcon-favorfill text-orange' : 'cuIcon-favor text-gray'}}"></view> 已收藏
+    </view>
+    <view class="action">
+      <view class="cuIcon-cart" bindtap="cart">
+        <view class="cu-tag badge">{{cartslength.length}}</view>
+      </view>
+      购物车
+    </view>
+    <view class="bg-red submit" bindtap="showModal1" data-target="bottomModal1">立即订购</view>
+  </view>
+</scroll-view>
+
+
+
+<!-- 参数弹框 -->
+<!-- 底部固定的按钮区域 -->
+  <view style="height:{{bottom_view_height2}}rpx">
+  </view>
+
+  <!-- 选择底部滑窗 -->
+  <view class="cu-modal justify-start bottom-modal {{modalName=='GroupViewModal'?'show':''}}" style='overflow: hidden;text-align: left;' bindtap="GroupViewhideModal">
+    <view class="cu-dialog background-white"  style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+      <!-- 顶部固定卡片区域 -->
+      <view class="cu-card article npl-intro {{isCard?'no-card':''}}">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class='height15'></view>
+          </view>
+          <view class="content">
+            <view class="desc text-center" style="font-size:13px">
+                <text>产品参数</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 中部滑窗内部可滚动区域 -->
+      <scroll-view scroll-y catchtap style="height:calc( 100vh - {{CustomBar}}px - {{card_view_height}}px - 75px);">   
+      <view>
+      <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+            <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+            <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+            <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+            <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text >品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+            <view class="parameter-list">
+      <text>网络类型</text>
+      <text class="parameter-msg">4G+全网通</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>品牌</text>
+      <text class="parameter-msg">Xiaomi/小米</text>
+      </view>
+
+      <view class="parameter-list">
+      <text>售后服务</text>
+      <text class="parameter-msg">全国联保</text>
+      </view>
+      </view>
+
+        <view style="height:{{bottom_view_height1}}rpx">
+        </view>
+      </scroll-view>
+            <!-- 底部固定的按钮区域 -->
+     
+      <view class="cu-bar tabbar bg-white shadow foot grid col-2 padding-sm text-center bottom_view_height1">
+        <view class="padding-xs">
+          <button class="confirm" >完成</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+<!-- 点击立即订购弹框 -->
+ <!-- 底部固定的按钮区域 -->
+  <view style="height:{{bottom_view_height2}}rpx">
+  </view>
+
+  <!-- 选择底部滑窗 -->
+  <view class="cu-modal justify-start bottom-modal {{modalName=='bottomModal1'?'show':''}}" bindtap="hideModal" style='overflow: hidden;text-align: left;'>
+    <view class="cu-dialog background-white" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+      <!-- 顶部固定卡片区域 -->
+      <view class="cu-card article npl-intro {{isCard?'no-card':''}}">
+        <view class="cu-item shadow">
+          <view class="title">
+            <view class='height15'></view>
+          </view>
+          <view class="content">
+            <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+            <view class="desc text-left">
+              <view class="text-xxl">
+                <text class="text-red text-price">{{money}}</text>
+              </view>
+              <view class="text-sm">
+                <text class="text-grey">库存19624件</text>
+              </view>
+              <view class="text-sm">
+                <text class="text-black">{{tipsTitle}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 中部滑窗内部可滚动区域 -->
+      <scroll-view scroll-y catchtap style="height:calc( 100vh - {{CustomBar}}px - {{card_view_height}}px - 75px);">   
+
+
+        <view wx:for="{{spTypeObjListLet}}" wx:key wx:for-item="typeValue" wx:for-index="typeIndex">
+          <view class="bg-white">
+            <view class="action">
+              <text class="cuIcon-title text-blue"></text>{{typeValue.typeName}}
+            </view>
+          </view>
+          <view class='padding-sm flex flex-wrap'>
+            <view class="padding-xs" wx:for="{{typeValue.list}}" wx:key wx:for-item="objectValue">
+              <view class="cu-tag line-{{clickMap[typeValue.typeId]==objectValue.name?'yellow':(objectValue.state?'black':'gray')}}" bindtap="objClick" data-objName="{{objectValue.name}}" data-typeId="{{typeValue.typeId}}" data-state="{{objectValue.state}}">
+                {{objectValue.name}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="cu-form-group">
+          <view class="title">购买数量</view>
+
+          <view class="cu-capsule">
+            <view class="cu-tag bg-grey" bindtap="GMSLMoveOrAdd" data-target="move">
+              <text class="cuIcon-move"></text>
+            </view>
+            <view class="cu-tag line-grey">
+              {{GMSL}}
+            </view>
+            <view class="cu-tag bg-grey" bindtap="GMSLMoveOrAdd" data-target="add">
+              <text class="cuIcon-add"></text>
+            </view>
+          </view>
+          
+        </view>
+
+        <view style="height:{{bottom_view_height1}}rpx">
+        </view>
+      </scroll-view>
+
+            <!-- 底部固定的按钮区域 -->
+      <view class="cu-bar tabbar bg-white shadow foot grid col-2 padding-sm text-center bottom_view_height1">
+        <view class="padding-xs">
+          <!-- <button class="cu-btn bg-grey lg">立即购买</button> -->
+          <button class="confirm" bindtap="buy">确定</button>
+        </view>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,31 @@
+@import "/colorui/main.wxss";
+@import "/colorui/icon.wxss";
+
+
+
+.shop_img{
+  width: 280rpx;  
+  height: 180rpx;  
+}
+.shop-btn{
+  font-size: 30rpx;
+  width: 150rpx;
+  height: 50rpx;
+  align-items: center;
+  justify-content: center;
+  display: flex
+}
+.footer{
+width: 100%;
+background-color: rgb(95, 183, 235);
+height: 100rpx;
+border-bottom: 1px solid #f1f1f1;
+display: flex;
+color: #fff;
+}
+.footer-name{
+  flex:1;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,36 @@
+<!-- 头部：显示全选以及管理 -->
+<!-- 头部高度90rpx -->
+<view>
+  <view >
+    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{imgUrls}}" wx:key>
+    <image src="{{item}}" mode='aspectFill'></image>
+  </swiper-item>
+</swiper>
+  </view>
+
+  <!-- 中部滑动：显示兑换商品列表 -->
+  <scroll-view  scroll-y  style="height:367px;background-color:#1cbbb4"> 
+    <view class="cu-list grid col-2">
+      <view  wx:for="{{shopData}}">
+        <view  class="cu-card article {{isCard?'no-card':''}}">
+          <view style="background-color:#f37b1d;" class="cu-item shadow">
+          <image class='shop_img' src="{{item.imageUrl}}"  mode='aspectFill' ></image>
+          <view>{{item.name}}一台</view>
+          <view>数量<text>{{item.number}}</text></view>
+          <view>所需积分<text>{{item.integral}}</text></view>
+          <button class="shop-btn">兑换</button>
+        </view>
+      </view>
+    </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部 -->
+  <view class='footer'>
+    <view class="footer-name" ><text>商城首页</text></view>   
+    <view class="footer-name" > <text>我的积分</text></view>     
+    <view class="footer-name" ><text>兑换记录</text></view>     
+  </view> 
+
+</view>

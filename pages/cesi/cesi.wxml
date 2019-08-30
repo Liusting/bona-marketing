@@ -1,0 +1,9 @@
+<view class="cu-bar fixed shadow bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+  </view>
+</view>
+dddddd
+
+<Cesi2></Cesi2>

@@ -1,0 +1,28 @@
+<view class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 100rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 100rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+  
+    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
+      <view wx:for="{{item.listType2}}" wx:for-item="listType2" wx:key>
+        <view class="cu-bar bg-white solid-bottom margin-top">
+          <view class="action">
+            <text class="cuIcon-title text-orange "></text> {{listType2.name}}
+          </view>
+        </view>
+        <view class="cu-list grid col-4 {{gridBorder?'':'no-border'}}">
+          <view class="cu-item" wx:for="{{listType2.listType3}}" wx:for-item="listType3" wx:key bindtap="typeClick" data-index="../sp_item_list/spItemList">
+            <view class="cuIcon-brandfill text-mauve">
+              
+            </view>
+            <text>{{listType3.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>

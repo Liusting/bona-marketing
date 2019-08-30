@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="navs">
+    <block wx:for-items="{{headItems}}" wx:key="name">
+      <view class="nav-item" catchtap="toMyAccount" data-name="{{item.name}}" data-id="{{item.id}}">
+        <text style="color:red;font-size:35rpx;font-weight:3600">{{item.number}}</text>
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="order" >
+    <text class="myorder-text">我的订单</text>
+    <text class="myorderlook-text" catchtap="toOrder" data-typeid="{{0}}">查看全部订单 </text>
+    <view style="margin-right:10px" class="{{'cuIcon-right text-gray'}}"></view>    
+  </view>
+  <view class="navs">
+    <block wx:for-items="{{orderItems}}" wx:key="name">
+      <view class="nav-item" catchtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+        <image src="{{item.imageurl}}" class="nav-image" />
+        <!-- <view class="nav-image cuIcon-{{item.icon}} "></view> -->
+        
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
+    <!-- 收货地址 -->
+    <view class="list-item" bindtap="address">
+      <view class="{{'cuIcon-location text-gray'}}" style="margin-left:5px"></view>
+      <text class="item-text">地址管理</text>
+       <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
+    </view>
+      <!-- 账户安全 -->
+    <view class="list-item" bindtap="accountSecurity">
+      <view class="{{'cuIcon-safe text-gray'}}" style="margin-left:5px"></view>
+      <text class="item-text">账户安全</text>
+      <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
+    </view>
+   <!-- 个人设置 -->
+    <view class="list-item" bindtap="userMessage">
+      <view class="{{'cuIcon-friend text-gray'}}" style="margin-left:5px"></view>
+      <text class="item-text">个人信息</text>
+      <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
+    </view>
+</view>

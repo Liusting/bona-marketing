@@ -1,0 +1,71 @@
+<!-- 头部：显示全选以及管理 -->
+<!-- 头部高度90rpx -->
+<view style="height:calc(100vh - 100rpx)">
+  <view class='header' >
+    <text class='header_text' catchtap='adminTap'>{{adminShow?'完成':'编辑'}}</text>
+  </view>
+
+  <!-- 中部滑动：显示购物车列表 -->
+  <scroll-view scroll-y  style="height:460px;"> 
+      <view class="container carts-list" wx:if="{{shopcarData==''}}">
+          <view class="pp">
+              <image class="kong" src="" mode="aspectFill"/>
+              <view class="cla">购物车空空如也</view>
+          </view>
+      </view>
+      <view class='shop' 
+            wx:for='{{shopcarData}}' 
+            wx:key 
+            bindlongtap="delete" 
+            data-id="{{item.id}}" 
+            data-index="{{index}}">    
+          <view class='shop_check_box' data-index='{{index}}' catchtap='checkTap'  data-id="{{item.id}}">  
+              <text class="cuIcon-round"  hidden='{{!item.check}}'></text>   
+              <text class="cuIcon-roundcheckfill"  hidden='{{item.check}}'></text>  
+          </view>    
+          <image 
+              class='shop_img'           src='https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg'  mode='aspectFill' >
+          </image>    
+          <view class='shop_detail' >        
+              <text class='shop_name'>{{item.name}}</text>        
+              <text class='shop_type'>{{item.types}}</text>        
+              <view class='shop_detail_bottom'>            
+                  <text class='shop_price'>￥{{item.money}}</text> 
+
+                    <view class='num_change'>    
+                      <view class="cu-tag {{item.number == '1' ? 'bg-gray':'bg-grey'}}"                      
+                        data-index='{{index}}' 
+                        data-types='minus'  
+                        data-id="{{item.id}}"
+                        catchtap='numchangeTap'>
+                        <text class="cuIcon-move"></text>
+                      </view>         
+
+                      <view class="cu-tag line-grey">{{item.number}} </view>    
+                  
+                      <view class="cu-tag bg-grey" 
+                        data-index='{{index}}' 
+                        data-types='add'  
+                        catchtap='numchangeTap' 
+                        data-id="{{item.id}}">
+                        <text class="cuIcon-add"></text>
+                      </view>     
+
+                  </view>        
+              </view>    
+          </view>  
+          </view>
+  </scroll-view>
+
+  <!-- 底部 -->
+  <view class='footer'>   
+      <text style="margin-left: 20rpx;" class="cuIcon-round" hidden='{{allsel}}' catchtap='allcheckTap'></text>   
+      <text style="margin-left: 20rpx;" class="cuIcon-roundcheckfill"  hidden='{{!allsel}}' catchtap='allcheckTap'></text>    
+      <text class='check_text'>全选</text>   
+          <text class='footer_total_text' hidden='{{adminShow}}'>合计：<text class='footer_total_price'>￥{{total}}    </text> </text>  
+    <text class='footer_total' hidden='{{adminShow}}' catchtap="goclearingTap">结算<text>({{selarr.length}})</text></text>
+    
+    <text hidden='{{!adminShow}}' style="background-color:{{pageBackgroundColor}}" class='deleteshop'  catchtap='deleteshopTap'>删除</text>
+    </view> 
+
+</view>

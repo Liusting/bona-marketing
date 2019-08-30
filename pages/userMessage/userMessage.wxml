@@ -1,0 +1,106 @@
+<view class="container">
+  <view class="basic-info">
+   <text class="text-gray" style="margin-left:30rpx">基本信息</text>
+  </view>
+
+<view style="background-color:white;flex-direction:row;">
+<!-- 姓名 -->
+  <view class="list-item">
+    <text class="item-text">姓名</text>
+    <text class="myorderlook-text" 
+    bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">请填写</text>
+    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
+  </view>
+  
+<!-- 手机号 -->
+  <view class="list-item" bindtap="preferential">
+    <text class="item-text">手机号</text>
+    <text class="myorderlook-text" catchtap="toOrder" data-typeid="{{0}}">18648840747</text>
+    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
+  </view>
+
+<!-- 性别 -->
+  <view class="list-item" bindtap="preferential">
+    <text class="item-text">性别</text>
+    <picker mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
+    <view class="picker-sexy">
+      {{array[index]}}<text class="{{'cuIcon-right text-gray'}}" style="margin-left:1px"></text>
+    </view>
+    </picker>
+  </view>
+
+<!-- 生日 -->
+<view class="list-item">
+ <text class="item-text">生日</text>
+ <picker mode="date" value="{{date}}" bindchange="changeDate">
+ <view class="picker-date">
+  {{date}}<text class="{{'cuIcon-right text-gray'}}" style="margin-left:1px"></text>
+ </view>
+ </picker>
+</view>
+
+<!-- 地区 -->
+  <view class="list-item" bindtap="preferential">
+    <text class="item-text">地区</text>
+    <text class="myorderlook-text" catchtap="toOrder" data-typeid="{{0}}">请填写</text>
+    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
+  </view>
+
+<!-- 收货地址 -->
+      <view class="list-item1" bindtap="address">
+      <text class="item-text">收货地址</text>
+      <view class="{{'cuIcon-right text-gray'}}" style="margin-left:575rpx"></view>
+      </view>
+</view>
+</view>
+
+  <view class="basic-info">
+   <text class="text-gray" style="margin-left:30rpx">等级特权</text>
+  </view>
+
+  <view style="background-color:white;flex-direction:row;">
+<!-- 姓名 -->
+  <view class="list-item1" bindtap="preferential">
+    <text class="item-text1">黄金会员特权</text>
+  </view>
+     <view class="navs">
+    <block >
+      <view class="nav-item" >
+        <text class="{{'cuIcon-emoji text-green'}}" ></text>
+        <text>购物8.8折</text>
+      </view>
+      <view class="nav-item" >
+        <text class="{{'cuIcon-emoji text-gray'}}" ></text>
+        <text>积分1.2倍</text>
+      </view>
+      <view class="nav-item" >
+        <text class="{{'cuIcon-emoji text-gray'}}" ></text>
+        <text>生日优惠</text>
+      </view>
+      <view class="nav-item" >
+        <text class="{{'cuIcon-redpacket text-red'}}" ></text>
+        <text>返现</text>
+      </view>
+    </block>
+
+    </view>
+</view>
+
+<!-- 点击姓名时出现弹框 -->
+		<view class="cu-modal {{modalName=='nameModal'?'show':''}}">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">修改姓名</view>
+				</view>
+				<view style="background-color:white">
+					 <input class="name-input" maxlength="10"  type="text" bindinput="name" placeholder="请输入真实姓名" />
+				</view>
+				<view class="cu-bar bg-white justify-end">
+					<view class="action">
+						<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+						<button class="cu-btn bg-green margin-left" bindtap="hideModal">确定</button>
+					</view>
+				</view>
+			</view>
+		</view>
+   

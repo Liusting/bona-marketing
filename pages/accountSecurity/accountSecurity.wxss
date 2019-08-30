@@ -1,0 +1,62 @@
+
+.container{
+  background-color: #FFFFFF
+}
+.basic-info{
+  font-size: 12px;
+  height: 60rpx;
+  background-color:#f1f1f1;
+  line-height: 30rpx;
+  margin-top: 30rpx;
+}
+.myorder-text {
+  font-size: 30rpx;
+  color: gray;
+  margin: 20rpx;
+  width: 40%;
+}
+.myorderlook-text {
+  font-size: 30rpx;
+  color: gray;
+  width: 60%;
+  text-align: right;
+  margin-left: 55px
+}
+
+.list-item {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+  border-bottom:1px solid lightgray;
+}
+.list-item1 {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+}
+.item-text {
+  color: gray;
+  font-size: 25rpx;
+  margin-left: 10rpx;
+  width: 200rpx
+}
+.item-text1 {
+  color: gray;
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  width: 200rpx;
+  font-weight: 400px;
+
+}
+.password-input{
+  border: 1px solid #f1f1f1;
+  margin: 0px 50px 0px 50px
+}
+.newpassword-input{
+  border: 1px solid #f1f1f1;
+  margin: 5px 50px 0px 50px
+}

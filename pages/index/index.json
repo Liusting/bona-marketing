@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "HomePage": "/pages/home/home",
+    "ClassificationOfCommodities": "/pages/item_type/itemType",
+    "MyCart": "/pages/cart/cart",
+    "MyMessage": "/pages/me/me"
+  }
+}

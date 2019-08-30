@@ -1,0 +1,35 @@
+{
+  "pages": [
+ 
+    "pages/index/index",
+    "pages/cesi/cesi",
+    "pages/cesi2/cesi2",
+    "pages/logs/logs",
+    "pages/item_type/itemType",
+    "pages/home/home",
+    "pages/sp_item_list/spItemList",
+    "pages/sp_item/spItem",
+    "pages/me/me",
+    "pages/address/address",
+    "pages/template/template",
+    "pages/accountSecurity/accountSecurity",
+    "pages/sp_order_list/spOrderList",
+    "pages/order/order",
+    "pages/addressList/addressList",
+    "pages/integral/integral",
+    "pages/userMessage/userMessage",
+    "pages/preferential/preferential",
+    "pages/integralDetail/integralDetail",
+    "pages/invest/invest",
+    "pages/cart/cart",
+      "pages/integral/integralShop",
+    "pages/appraise/appraise"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

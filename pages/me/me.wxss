@@ -1,0 +1,97 @@
+
+.order-head{
+  display: flex;
+  height:60px; 
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+/* 订单 */
+.order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 90rpx;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+   margin: 5px 10px 0px 10px;
+   border-bottom: 1px solid #f1f1f1
+}
+.ddddd{
+  height: 10rpx;
+  background-color:#f1f1f1;
+}
+.myorder-text {
+  font-size: 28rpx;
+  color: gray;
+  margin: 20rpx;
+  width: 45%;
+}
+.myorderlook-text {
+  font-size: 28rpx;
+  color: gray;
+  position: relative;
+  right: 10rpx;
+  width: 75%;
+  margin-left: 155px;
+}
+.next-image {
+  width: 20rpx;
+  height: 25rpx;
+  position: relative;
+  right: 10rpx;
+}
+/* 状态 */
+.navs {
+  display: flex;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #fff;
+   margin: 0px 10px 0px 10px
+}
+.nav-item {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20rpx;
+}
+.nav-item .nav-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 5rpx;
+}
+.nav-item text {
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+/* 列表 */
+.person-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.list-item {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  border-radius: 10px;
+  margin: 5px 10px 0px 10px
+}
+.item-text {
+  color: gray;
+  font-size: 25rpx;
+  margin-left: 15rpx;
+
+}
+.person-line {
+  width: 100%;
+  height: 2rpx;
+  background: lightgray;
+  margin-left: 30rpx;
+}

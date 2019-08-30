@@ -1,0 +1,94 @@
+/* pages/commodity_item/commodityItem.wxss */
+.tower-swiper .tower-item {
+	transform: scale(calc(0.5 + var(--index) / 10));
+	margin-left: calc(var(--left) * 100rpx - 150rpx);
+	z-index: var(--index);
+}
+
+.spItem-form-group {
+	background-color: var(--white);
+	padding: 1rpx 30rpx;
+	display: flex;
+	align-items: center;
+	min-height: 80rpx;
+	justify-content: space-between;
+}
+.spItem-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
+
+.background-white{
+  background-color: var(--white);
+}
+
+.height15{
+  height: 15rpx;
+}
+
+.item-view-left{
+  display: flex;
+	align-items: center;
+}
+
+.padding-left15{
+  padding: 7rpx;
+}
+/* 规格弹框样式 */
+.addcart{
+  background-color: orange;
+  color: white;
+  border-radius: 70rpx; 
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 30px;
+  width: 155px
+}
+.buy{
+  background-color: orange;
+  color: white;
+  border-radius: 70rpx; 
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 30px;
+  width: 155px
+}
+/*参数弹框样式 */
+.parameter-list{
+  border-bottom: 2rpx solid  #bbb9b9b7;
+  margin:0px 10px 0px 5px;
+  padding:10px 10px 10px 10px;
+  font-size:10px;
+}
+.parameter-msg{
+  margin-left:20px;
+  color: gray;
+  width: 50px;
+
+}
+.parameter-done{
+  background-color: orange;
+  color: white;
+  border-radius: 70rpx; 
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 30px;
+  width: 310px
+
+}
+/* ************************ */
+/* 立即订购弹框样式 */
+.confirm{
+    background-color: orange;
+  color: white;
+  border-radius: 70rpx; 
+  height: 30px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 30px;
+  width: 310px
+}
+

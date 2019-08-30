@@ -1,0 +1,227 @@
+<view class="swiper-tab">
+  <block wx:for="{{swipertab}}" wx:key="sptab">
+    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
+  </block>
+</view>
+  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
+
+<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+  <!-- 全部 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="search_no" wx:if="{{!orderList.length}}">
+        <view class="noOrder">
+        <image class="scimg" src="/images/person/search_no.png"></image>
+        </view>
+        <view class="noOrder">
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+        </view>
+      </view>
+      <view  class="orderDetails" wx:for="{{allOrder}}" wx:key=" ">
+        <view class="orderListTitle">
+          <text class="userName">{{item.name}}</text>
+          <text class="orderStatus">{{item.state}}</text>
+        </view>
+        <view class="orderListDetails">
+          <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view>
+          <view class="productInfo">
+            <view class="productTitle">{{item.item_name}}</view>
+            <text class="productPrice">{{item.type}}</text>
+            <view style="height:10rpx">
+            <text style="float:left;color:red">￥{{item.money}}</text>
+            <text style="float:right;">x{{item.number}}</text>
+            </view>   
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+            <text style="margin-right:5px">共{{item.number}}件商品</text>
+            <text>合计：￥{{item.money*item.number}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 待付款 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="search_no" wx:if="{{!orderList.length}}">
+        <view class="noOrder">
+        <image class="scimg" src="/images/person/search_no.png"></image>
+        </view>
+        <view class="noOrder">
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+        </view>
+      </view>
+      <view class="orderDetails" wx:for="{{orderList}}" wx:key=" " >
+        <view class="orderListTitle">
+           <text class="userName">{{item.shop_name}}</text>
+          <text class="orderStatus">{{item.trade_status == currtab?'等待买家付款':''}}</text>
+        </view>
+        <view class="orderListDetails">
+          <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view>
+          <view class="productInfo">
+            <view class="productTitle">{{item.name}}</view>
+            <text class="productPrice">{{item.type}}</text>
+            <view style="height:10rpx">
+            <text style="float:left;color:red">￥{{item.money}}</text>
+            <text style="float:right;">x{{item.number}}</text>
+            </view>  
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+             <text style="margin-right:5px">共{{item.number}}件商品</text>
+             <text>合计：￥{{item.money*item.number}}</text>
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+            <button class="cu-btn line-red round">立即付款</button>
+          </view>
+          <view>
+            <button class="cu-btn line-info round" data-id="{{item.id}}"  bindtap="cancelOrder">取消订单</button>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 待发货 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="search_no" wx:if="{{!orderList.length}}">
+        <view class="noOrder">
+        <image class="scimg" src="/images/person/search_no.png"></image>
+        </view>
+        <view class="noOrder">
+        <text>没有待发货订单/(ㄒoㄒ)/~~</text>
+        </view>
+      </view>
+      <view class="orderDetails" wx:for="{{orderList}}" wx:key=" ">
+        <view class="orderListTitle">
+         <text class="userName">{{item.shop_name}}</text>
+          <text class="orderStatus">{{item.trade_status == currtab?'等待卖家发货':''}}</text>
+        </view>
+        <view class="orderListDetails">
+          <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view>
+          <view class="productInfo">
+            <view class="productTitle">{{item.name}}</view>
+            <text class="productPrice">{{item.type_id}}</text>
+            <view style="height:10rpx">
+            <text style="float:left;color:red">￥{{item.money}}</text>
+            <text style="float:right;">x{{item.number}}</text>
+            </view>  
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+             <text style="margin-right:5px">共{{item.number}}件商品</text>
+             <text>合计：￥{{item.money*item.number}}</text>
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+            <button class="cu-btn line-red round"  bindtap="remind">提醒卖家发货</button>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+<!-- 待收货 -->
+    <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="search_no" wx:if="{{!orderList.length}}">
+        <view class="noOrder">
+        <image class="scimg" src="/images/person/search_no.png"></image>
+        </view>
+        <view class="noOrder">
+        <text>没有可收货的订单~/(ㄒoㄒ)/~~</text>
+        </view>
+      </view>
+      <view class="orderDetails" wx:for="{{orderList}}" wx:key=" ">
+        <view class="orderListTitle">
+           <text class="userName">{{item.shop_name}}</text>
+          <text class="orderStatus">{{item.trade_status == currtab?'等待买家收货':''}}</text>
+        </view>
+        <view class="orderListDetails">
+          <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view>
+          <view class="productInfo">
+            <view class="productTitle">{{item.name}}</view>
+            <text class="productPrice">{{item.type_id}}</text>
+            <view style="height:10rpx">
+            <text style="float:left;color:red">￥{{item.money}}</text>
+            <text style="float:right;">x{{item.number}}</text>
+            </view>  
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+             <text style="margin-right:5px">共{{item.number}}件商品</text>
+             <text>合计：￥{{item.money*item.number}}</text>
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+            <button class="cu-btn line-red round" bindtap="confirmGet" data-id="{{item.id}}">确认收货</button>
+          </view>
+          <view>
+            <button class="cu-btn line-info round">查看物流</button>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+<!-- 待评价 -->
+    <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="search_no" wx:if="{{!orderList.length}}">
+        <view class="noOrder">
+        <image class="scimg" src="/images/person/search_no.png"></image>
+        </view>
+        <view class="noOrder">
+        <text>没有可评价的订单/(ㄒoㄒ)/~~</text>
+        </view>
+      </view>
+      <view class="orderDetails" wx:for="{{orderList}}" wx:key=" ">
+        <view class="orderListTitle">
+           <text class="userName">{{item.shop_name}}</text>
+          <text class="orderStatus">{{item.trade_status == currtab?'交易成功':''}}</text>
+        </view>
+        <view class="orderListDetails">
+          <view class="productImg">
+            <image src="{{item.url}}" background-size="cover"></image>
+          </view>
+          <view class="productInfo">
+            <view class="productTitle">{{item.name}}</view>
+            <text class="productPrice">{{item.type_id}}</text>
+            <view style="height:10rpx">
+            <text style="float:left;color:red">￥{{item.money}}</text>
+            <text style="float:right;">x{{item.number}}</text>
+            </view>  
+          </view>
+        </view>
+        <view class="productCount">
+          <view>
+             <text style="margin-right:5px">共{{item.number}}件商品</text>
+             <text>合计：￥{{item.money*item.number}}</text>
+          </view>
+        </view>
+          <view class="productCount">
+          <view>
+            <button class="cu-btn line-red round" bindtap="appraise" data-id="{{item.id}}">评价</button>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

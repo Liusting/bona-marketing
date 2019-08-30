@@ -1,0 +1,41 @@
+
+<form class="container" bindsubmit="bindFormSubmit">
+  <view class='stars'>
+    <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg"></image>
+    <view class='content'>
+        <text >描述相符</text>  
+      <view>
+        <view wx:for="{{stars}}" wx:key="" style='background:url("{{item.flag==1?item.bgImg:item.bgfImg}}") no-repeat top; background-size:100%;' data-index="{{index}}" bindtap='starClick'></view>
+       <text style="color:gray">{{starDesc}}</text>
+      </view>    
+    </view>
+  </view>
+  <view style="background-color:#fff;height:120px;">
+
+      <textarea maxlength:100 style="padding-top:10px;padding-left:10px;width:730rpx" name="textarea"  placeholder="宝贝满足您的期待吗？说说它的优点和美中不足吧"></textarea>
+  </view>
+
+  <view style="height:10px"></view>
+
+  <view class="stars-shop" >
+    <text style="margin-left:10px;">店铺评价</text>
+    
+    <view class='content-shop'>
+     <view style="margin-left:10px;margin-top:20px;">物流服务</view>
+      <view>
+        <view wx:for="{{serviceStar}}" wx:key="" style='background:url("{{item.flag==1?item.bgImg:item.bgfImg}}") no-repeat top; background-size:100%;' data-index="{{index}}" bindtap='serviceStarClick'></view>
+       <text style="color:gray">{{starDesc1}}</text>
+      </view>    
+    </view>
+   <view class='content-shop'>
+     <view style="margin-left:10px;margin-top:20px;">服务态度</view>
+      <view>
+        <view wx:for="{{mannerStar}}" wx:key="" style='background:url("{{item.flag==1?item.bgImg:item.bgfImg}}") no-repeat top; background-size:100%;' data-index="{{index}}" bindtap='mannerStarClick'></view>
+       <text style="color:gray">{{starDesc2}}</text>
+      </view>    
+    </view>
+  </view>
+  <view class="confirm-btn">
+    <button class="cu-btn bg-orange round" style="width:400rpx" form-type="submit">确认并发布</button>
+  </view>
+</form>

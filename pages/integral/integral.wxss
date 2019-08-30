@@ -1,0 +1,44 @@
+.integral{
+  background-color: #FFFFFF;
+  height: 100vh;
+  width: 100%;
+}
+.head{
+  background-color: rgb(55, 161, 231);
+  height: 80px;
+  padding: 10px 10px 10px 10px
+}
+.head-name{
+   color: #FFFFFF;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+.head-number{
+  color: #FFFFFF;
+  font-size:70rpx;
+  font-weight:400px;
+  margin-top: 10px;
+    display:flex;
+   align-items:center;
+   justify-content:center;
+}
+.integral-detail{
+   display:flex;
+  height: 40px;
+  background-color: #FFFFFF;
+  align-items: center;
+}
+.myorder-text {
+  font-size: 30rpx;
+  color: gray;
+  width: 80%;
+  margin-left: 10px;
+}
+.myorderlook-text {
+  font-size: 30rpx;
+  color: gray;
+  width: 60%;
+  text-align: right;
+  margin-left: 210px
+}

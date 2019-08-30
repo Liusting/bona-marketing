@@ -1,0 +1,11 @@
+/* pages/commodity_list/commodity_list.wxss */
+.height15{
+  height: 15rpx;
+}
+.box {  
+  margin: 20rpx 0; 
+}
+
+.box view.cu-bar {
+  margin-top: 20rpx; 
+}
