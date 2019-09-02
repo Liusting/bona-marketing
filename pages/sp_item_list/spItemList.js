@@ -38,10 +38,7 @@ Page({
     currentInt:1,
     //scrollIfSel 懒加载，是否继续去查询
     scrollIfSel: true,
-    
-  
     spList:[],//商品列表
-    
     groupList:[],//商品筛选条件
     clickGroupObj:{}
 
@@ -62,6 +59,7 @@ Page({
       isCard: e.detail.value
     })
   },
+  //获取商品列表数据
   spGetList:function(){
     console.log(this.data.currentInt);
     var that = this;

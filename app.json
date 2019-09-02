@@ -1,28 +1,31 @@
 {
   "pages": [
- 
     "pages/index/index",
+    /*底部导航页切换*/
+    "pages/home/home",//首页
+    "pages/item_type/itemType",//分类
+    "pages/cart/cart",//购物车
+    "pages/me/me",//我的
+    "pages/sp_item_list/spItemList",//商品列表
+    "pages/sp_item/spItem",//商品详情
     "pages/cesi/cesi",
     "pages/cesi2/cesi2",
     "pages/logs/logs",
-    "pages/item_type/itemType",
-    "pages/home/home",
-    "pages/sp_item_list/spItemList",
-    "pages/sp_item/spItem",
-    "pages/me/me",
+    /*收货地址*/
     "pages/address/address",
-    "pages/template/template",
+    "pages/addressList/addressList",
     "pages/accountSecurity/accountSecurity",
     "pages/sp_order_list/spOrderList",
     "pages/order/order",
-    "pages/addressList/addressList",
-    "pages/integral/integral",
+
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
-    "pages/integralDetail/integralDetail",
     "pages/invest/invest",
-    "pages/cart/cart",
-      "pages/integral/integralShop",
+    /*积分*/
+    "pages/integral/integral",
+    "pages/integral/integralShop",
+    "pages/integral/luckDraw",
+    "pages/integralDetail/integralDetail",
     "pages/appraise/appraise"
   ],
   "window": {
