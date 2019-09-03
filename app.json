@@ -1,17 +1,17 @@
 {
   "pages": [
+        
     "pages/index/index",
-    /*底部导航页切换*/
-    "pages/home/home",//首页
-    "pages/item_type/itemType",//分类
-    "pages/cart/cart",//购物车
-    "pages/me/me",//我的
-    "pages/sp_item_list/spItemList",//商品列表
-    "pages/sp_item/spItem",//商品详情
+    "pages/home/home",
+    "pages/item_type/itemType",
+    "pages/cart/cart",
+    "pages/me/me",
+    "pages/sp_item_list/spItemList",
+    "pages/sp_item/spItem",
     "pages/cesi/cesi",
     "pages/cesi2/cesi2",
     "pages/logs/logs",
-    /*收货地址*/
+    "pages/integral/luckDraw",
     "pages/address/address",
     "pages/addressList/addressList",
     "pages/accountSecurity/accountSecurity",
@@ -21,10 +21,10 @@
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
     "pages/invest/invest",
-    /*积分*/
+
     "pages/integral/integral",
     "pages/integral/integralShop",
-    "pages/integral/luckDraw",
+
     "pages/integralDetail/integralDetail",
     "pages/appraise/appraise"
   ],

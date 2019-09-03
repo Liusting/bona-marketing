@@ -40,7 +40,8 @@ Page({
     scrollIfSel: true,
     spList:[],//商品列表
     groupList:[],//商品筛选条件
-    clickGroupObj:{}
+    clickGroupObj:{},
+    navshow: false
 
   },
   // 导航条组件基础事件
@@ -61,7 +62,6 @@ Page({
   },
   //获取商品列表数据
   spGetList:function(){
-    console.log(this.data.currentInt);
     var that = this;
     wx.request({
       url: app.ipAndPort + '/spItem/getSpItem2',
@@ -87,6 +87,28 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options);
+    wx.request({
+      url: app.ipAndPort + '/spItem/getSearchList',
+      method: 'POST',
+      data: {
+        currentInt: this.data.currentInt,
+        name: options.name
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        let data = res.data;
+        if (data.length > 0) {
+          that.setData({
+            spList: data
+          });
+        } else {
+          that.setData({
+            scrollIfSel: false,
+          });
+        }
+      }
+    })
     var that = this;
     wx.getSystemInfo({ //微信自身api
       success: function (res) {
@@ -95,7 +117,7 @@ Page({
         });
       }
     });
-    this.spGetList();
+    // this.spGetList();
     wx.request({
       url: app.ipAndPort + '/spItemTypeSpecs/spItemTypeSpecs',
       method: 'POST',
@@ -131,6 +153,15 @@ Page({
   
   // 搜索类型单选框点击事件处理
   radioClick:function(e){
+    if (e.currentTarget.dataset.index.type == 2){
+      this.setData({
+        navshow: true
+      })
+    }else{
+      this.setData({
+        navshow: false
+      })
+    }
     let name = e.currentTarget.dataset['index'].name;
     let type = e.currentTarget.dataset['index'].type;
     let list = this.data.radioList;
@@ -152,8 +183,6 @@ Page({
 //滚动的时候显示数据
   scrollBottomEvent:function(e){
     let that = this;
-    console.log(this.data.currentInt);
-    console.log(this.data.scrollIfSel);
     if (this.data.scrollIfSel){
       wx.request({
         url: app.ipAndPort + '/spItem/getSpItem2',
@@ -186,7 +215,33 @@ Page({
 
   // 搜索输入框回车事件
   searchOnclick:function(e){
-   
+    if (this.data.radioType == 2){
+      wx.request({
+        url: app.ipAndPort + '/spItem/getShopList',
+        method: 'POST',
+        data: {
+          currentInt: this.data.currentInt,
+          name: e.detail.value
+        },
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        success: function (res) {
+          console.log(JSON.stringify(res));
+        }
+      })
+    }else{
+      wx.request({
+        url: app.ipAndPort + '/spItem/getSearchList',
+        method: 'POST',
+        data: {
+          currentInt: this.data.currentInt,
+          name: e.detail.value
+        },
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        success: function (res) {
+          console.log(JSON.stringify(res));
+        }
+      })
+    }
   },
 
   // 右边规格滑窗内点击规格事件

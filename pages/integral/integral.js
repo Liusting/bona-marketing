@@ -68,10 +68,10 @@ Page({
         wx.navigateTo({
           url: '../integral/integralShop',//去积分商城
         })
-        // case 1:
-        // wx.navigateTo({
-        //   url: '',
-        // })
+        case 1:
+        wx.navigateTo({
+          url: '../integral/luckDraw',//去积分抽奖
+        })
         // case 2:
         // wx.navigateTo({
         //   url: '',

@@ -2,13 +2,13 @@
   <view class="cu-bar search bg-white" data-id="id_search">
     <view class="search-form round">
       <text class="cuIcon-search"></text>
-      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search" bindconfirm="searchOnclick"></input>
+      <input type="text" placeholder="寻找宝贝、店铺" confirm-type="search" bindconfirm="searchOnclick"></input>
     </view>
     <view class="action">
       <view class="cu-tag bg-yellow round" bindtap="showModal" data-target="RadioModal">{{radioName}}</view>
     </view>
   </view>
-  <view class="cu-bar search bg-white cu-form-group">
+  <view class="cu-bar search bg-white cu-form-group" hidden="{{navshow}}">
     <scroll-view scroll-x class="bg-white nav">
       <view class="flex text-center">
         <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{orderList}}" wx:key bindtap="tabSelect" data-index="{{index}}">
