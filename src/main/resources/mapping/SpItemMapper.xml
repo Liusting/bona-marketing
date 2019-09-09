@@ -30,6 +30,7 @@
         LEFT JOIN sp_shop s ON ( s.id = i.shop_id )
         LEFT JOIN sp_object ot ON ( ot.item_id = i.id )
         LEFT JOIN ( SELECT item_id AS "itemId", count( 1 ) AS "total" FROM sp_order GROUP BY item_id ) o ON ( o.itemId = i.id )
+        where i.Name like '%${name}%'
         GROUP BY
         i.id
         <if test="type1 != null and type1 != ''">
@@ -57,7 +58,23 @@
         <if test="itemId != '' and itemId != null">
             and item_id = #{itemId}
         </if>
+    </select>
 
+    <select id="getSearchList" resultType="java.util.Map">
+        select * from sp_item
+        <where>
+            <if test="name!=null">
+                Name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <select id="getShopList" resultType="java.util.Map" >
+        select * from sp_shop
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
     </select>
 
 

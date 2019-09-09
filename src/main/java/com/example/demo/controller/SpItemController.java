@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.mapper.SpItemMapper;
 import com.example.demo.po.SpItem;
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.stereotype.Controller;
@@ -22,20 +23,36 @@ public class SpItemController {
     @Autowired
     private SpItemMapper spItemMapper;
 
-//    @RequestMapping(value = { "/getSpItem" }, method = { RequestMethod.POST })
-//    @ResponseBody
-//    public Object getSpItem(HttpServletRequest request){
-//        String name = request.getParameter("name");
-//        List<SpItem> list = spItemMapper.getSpItem(name);
-//        return list;
-//    }
+    //商品模糊查询
+    @RequestMapping(value = { "/getSearchList" }, method = { RequestMethod.POST })
+    @ResponseBody
+    public Object getSpItem(HttpServletRequest request){
+        String currentInt = request.getParameter("currentInt");
+        String name = request.getParameter("name");
+        System.out.println(currentInt);
+        System.out.println(name);
+        Page page = new Page(Integer.parseInt(currentInt), 10);
+        List<Map<String, Object>> list = spItemMapper.getSearchList(page,name);
+        return list;
+    }
+
+    //商店模糊查询
+    @RequestMapping(value = {"/getShopList"}, method = {RequestMethod.POST})
+    @ResponseBody
+    public Object getShopList(HttpServletRequest request){
+        String currentInt = request.getParameter("currentInt");
+        String name = request.getParameter("name");
+        Page page = new Page(Integer.parseInt(currentInt), 10);
+        List<Map<String,Object>> shopList = spItemMapper.getShopList(page,name);
+        return shopList;
+    }
 
     @RequestMapping(value = { "/getSpItem2" }, method = { RequestMethod.POST })
     @ResponseBody
     public Object listDel(HttpServletRequest request) {
         String currentInt=request.getParameter("currentInt");
         String  tabcur = request.getParameter("tabcur");
-        System.out.println(currentInt);
+        String name = request.getParameter("name");
         String type1 = null;
         String type2 = null;
         String type3 = null;
@@ -54,11 +71,7 @@ public class SpItemController {
         }
         /*每次熟悉只拿十条数据*/
         Page page = new Page(Integer.parseInt(currentInt), 10);
-        List<Map<String, Object>> spItemList = spItemMapper.getSpItem(page,type1,type2,type3);
-
-        List<Map<String,Object>> list = new ArrayList<>();
-
-
+        List<Map<String, Object>> spItemList = spItemMapper.getSpItem(page,type1,type2,type3,name);
         return spItemList;
     }
 

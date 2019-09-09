@@ -37,8 +37,8 @@ public class SpItemTypeController {
             map1.put("upperId",listType2.get(i).getUpperId());
             List<Map<String,Object>> maplist = new ArrayList<>();
             for(int j=0;j<listType3.size();j++){
-//                if(listType2`.get(i).getId().equals(listType3.get(j).getUpperId())){
-                if(true){
+                if(listType2.get(i).getId().equals(listType3.get(j).getUpperId())){
+//                if(true){
                     Map<String, Object> map2 = new HashMap<String, Object>();
                     map2.put("name",listType3.get(j).getName());
                     maplist.add(map2);
