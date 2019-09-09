@@ -2,7 +2,9 @@
   <view class="cu-bar search bg-white" data-id="id_search">
     <view class="search-form round">
       <text class="cuIcon-search"></text>
-      <input type="text" placeholder="寻找宝贝、店铺" confirm-type="search" bindconfirm="searchOnclick"></input>
+      <input type="text" value="{{name}}" bindinput='search' placeholder="寻找宝贝、店铺" confirm-type="search" bindconfirm="searchOnclick"></input>  
+      <text hidden="{{clearSearch}}" bindtap='clearTap' class="cuIcon-roundclosefill"></text>
+      <!-- <image class="{{isClearShow?'clearImgShow':'clearImgHide'}}" src='clear.png' bindtap='clearTap' mode='widthFix'></image> -->
     </view>
     <view class="action">
       <view class="cu-tag bg-yellow round" bindtap="showModal" data-target="RadioModal">{{radioName}}</view>

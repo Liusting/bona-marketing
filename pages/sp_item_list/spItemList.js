@@ -41,8 +41,31 @@ Page({
     spList:[],//商品列表
     groupList:[],//商品筛选条件
     clickGroupObj:{},
-    navshow: false
+    navshow: false,
+    clearSearch: false,
+    name: ''
 
+  },
+  //实时监听搜索框输入内容
+  search:function(e){
+    var value = e.detail.value;
+    if (value === null || value === undefined || value.length === 0) {
+      this.setData({
+        clearSearch: true
+      });
+    } else {
+      this.setData({
+        clearSearch: false,
+        name: e.detail.value
+      });
+    }
+  },
+  //清除搜索框
+  clearTap: function () {
+    this.setData({
+      clearSearch: true,
+      name: ''
+    });
   },
   // 导航条组件基础事件
   tabSelect(e) {
@@ -67,8 +90,9 @@ Page({
       url: app.ipAndPort + '/spItem/getSpItem2',
       method: 'POST',
       data: {
-        currentInt: this.data.currentInt,
-        tabcur: this.data.TabCur
+        currentInt: that.data.currentInt,
+        tabcur: that.data.TabCur,
+        name: that.data.name
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
@@ -87,29 +111,12 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log(options);
-    wx.request({
-      url: app.ipAndPort + '/spItem/getSearchList',
-      method: 'POST',
-      data: {
-        currentInt: this.data.currentInt,
-        name: options.name
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
-        let data = res.data;
-        if (data.length > 0) {
-          that.setData({
-            spList: data
-          });
-        } else {
-          that.setData({
-            scrollIfSel: false,
-          });
-        }
-      }
-    })
     var that = this;
+
+    this.setData({
+      name: options.name
+    });
+    this.spGetList();
     wx.getSystemInfo({ //微信自身api
       success: function (res) {
         that.setData({
@@ -189,7 +196,8 @@ Page({
         method: 'POST',
         data: {
           currentInt: (that.data.currentInt+1),
-          tabcur: that.data.TabCur
+          tabcur: that.data.TabCur,
+          name: this.data.name
         },
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         success: function (res) {
@@ -215,6 +223,8 @@ Page({
 
   // 搜索输入框回车事件
   searchOnclick:function(e){
+    console.log(e);
+    var that = this;
     if (this.data.radioType == 2){
       wx.request({
         url: app.ipAndPort + '/spItem/getShopList',
@@ -230,15 +240,25 @@ Page({
       })
     }else{
       wx.request({
-        url: app.ipAndPort + '/spItem/getSearchList',
+        url: app.ipAndPort + '/spItem/getSpItem2',
         method: 'POST',
         data: {
-          currentInt: this.data.currentInt,
+          currentInt: that.data.currentInt,
+          tabcur: that.data.TabCur,
           name: e.detail.value
         },
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         success: function (res) {
-          console.log(JSON.stringify(res));
+          let data = res.data;
+          if (data.length > 0) {
+            that.setData({
+              spList: data
+            });
+          } else {
+            that.setData({
+              scrollIfSel: false,
+            });
+          }
         }
       })
     }

@@ -30,7 +30,6 @@ Component({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let data = res.data;
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
           list[i] = {};
           list[i].name = data[i].name;

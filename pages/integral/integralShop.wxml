@@ -28,8 +28,7 @@
 
   <!-- 底部 -->
   <view class='footer'>
-    <view class="footer-name" ><text>商城首页</text></view>   
-    <view class="footer-name" > <text>我的积分</text></view>     
+    <view class="footer-name" ><text>商城首页</text></view>      
     <view class="footer-name" ><text>兑换记录</text></view>     
   </view> 
 
