@@ -84,6 +84,7 @@ page {
     color: black
 
 }
+
 .msg_list {
     margin: 20rpx;
     background: white;

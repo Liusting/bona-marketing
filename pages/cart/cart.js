@@ -1,6 +1,7 @@
 var app = getApp();
 Component({
   data: {
+    hfShow:'',//头部底部显示
     adminShow: false,//管理      
     shopcarData: [],//购物车商品列表     
     total: 0,//总金额      
@@ -12,6 +13,7 @@ Component({
     cartId :'',//购物车id
     itemId:'',//商品id
     pageBackgroundColor: 'gray',
+
   },
   // tab切换的时候马上响应数据
   ready: function () {
@@ -24,10 +26,19 @@ Component({
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
+        // console.log(resData.length);
         let resData = res.data.CartDetailList;
-        that.setData({
-          shopcarData: resData,
-        })
+        if(resData.length == 0){
+          that.setData({
+            hfShow: true,
+          })
+        }else{
+          that.setData({
+            shopcarData: resData,
+            hfShow: false
+          })
+        }
+
       }
     })
   },
@@ -77,16 +88,20 @@ Component({
     if (allsel) {//点击全选的时候删除
       shopcar = this.data.shopcarData;
       for(var y = 0; y < shopcar.length; y++){
-        // console.log(shopcar[y].id);
         that.del(shopcar[y].id);
       }
       this.setData({
-        allsel: true
+        allsel: true,
+        hfShow: true,
+        total: 0
       });
     } else {//点击多选的时候的删除
-      for (var i = 0, len = selarr.length; i < len; i++) {//将选中的商品从购物车移除     
-        // console.log(selarr[i].id);   
+      for (var i = 0, len = selarr.length; i < len; i++) {//将选中的商品从购物车移除      
         that.del(selarr[i].id);
+        that.setData({
+          total: 0,
+          selarr: []
+        })
       }
     }
   },
@@ -214,6 +229,7 @@ Component({
   },
   //点击结算
   goclearingTap:function(e){
+    console.log(this.data.selarr);
     // 先开始判断，如果为空的话提示
     // console.log(this.data.selarr.length)
     if (this.data.selarr.length == 0){
@@ -224,10 +240,18 @@ Component({
       })
       return;
     }else{
+      var model = JSON.stringify(this.data.selarr);
       wx.navigateTo({
-        url: '../order/order',
+        
+        url: '../order/order?model=' + model
       })
     }
+  },
+  //点击去逛逛
+  goshop:function(){
+    wx.reLaunch({
+      url: '../home/home'
+    })
   },
   onLoad:function(){
     var that = this;

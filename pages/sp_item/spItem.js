@@ -436,7 +436,8 @@ Page({
       }
     }
     if (selectedList != null) {
-      let url = '../order/order?GMSL=' + this.data.GMSL + '&itemId=' + this.data.itemId + '&money=' +this.data.money;
+      let url = '../order/order?GMSL=' + this.data.GMSL + '&itemId=' + this.data.itemId + '&money=' +this.data.money + 
+      '&type=' + 1;
       wx.navigateTo({
         url: url,
       });
@@ -445,10 +446,9 @@ Page({
   },
   //点击购物车
   cart:function(){
-    let url = "../cart/cart";
-    wx.navigateTo({
-      url: url,
-    });
+    wx.switchTab({
+      url: '../index/index'
+    })
   },
   // 加入购物车点击方法
   jrgwcClick: function () {

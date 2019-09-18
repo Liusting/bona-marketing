@@ -5,13 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nameShow:'',
+    nameShow1: '',
+    name:'刘桂廷',
     array: ['男', '女'],//性别选择
     date: '2019-08-10',//生日默认时间
     index : 0,//性别默认男
+    phoneNumber:'18648840747'
 
   },
  showModal(e) {
-   console.log(e.currentTarget.dataset.target);
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
@@ -21,9 +24,21 @@ Page({
       modalName: null
     })
   },
+  formSubmit:function(e){
+    this.setData({
+      name:e.detail.value.userName
+    })
+  },
+  phoneNumberSubmit:function(e){
+    this.setData({
+      phoneNumber: e.detail.value.phoneNumber
+    })
+  },
+  changphoneNumber:function(e){
+
+  },
   //性别改变
   changeSexy: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
@@ -39,6 +54,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(this.data.name == null){
+      this.setData({
+        nameShow: false,
+        nameShow1: true
+      })
+    }else{
+      this.setData({
+        nameShow: true,
+        nameShow1: false
+      })
+    }
   },
 
   /**

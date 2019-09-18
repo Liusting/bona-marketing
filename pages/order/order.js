@@ -6,6 +6,7 @@ Page({
    */
   data: {
     address_info: {}, //地址信息
+    preferential_info: {},//商品优惠信息
     goods_info: [], //商品信息
     goods_count: '', //商品件数
     goods_freight: '', //运费
@@ -22,26 +23,15 @@ Page({
     type: '', //选项
     order_message: '', //订单留言
     cart_ids: [], // 购物车商品id
+    addressId: '',
+    show:true
   },
   //选择地址
-  selectAddress: function () {
-
-    // var type = this.data.type;
-
-    if (type == 1) {
-      // var goods_id = this.data.goods_id;
-      // var goods_num = this.data.goods_num;
+  bindaddress: function () {
+    // console.log(this.data.type)
       wx.navigateTo({
-        url: '../myAddress/myAddress' + '?goods_id=' + goods_id + '&goods_num=' + goods_num + '&type=' + type
+        url: '../addressList/addressList?type=' + this.data.type
       })
-    } else {
-      // var cart_ids = JSON.stringify(this.data.cart_ids);
-      wx.navigateTo({
-        url: '../addressList/addressList?cart_ids=' + cart_ids + '&type=' + type
-      })
-    }
-
-
   },
   // 留言
   bindwaitMsg: function (event) {
@@ -50,7 +40,11 @@ Page({
       order_message: event.detail.value, // 订单留言
     })
   },
-
+  preferential:function(){
+    wx.navigateTo({
+      url: '../preferential/preferential'
+    })
+  },
 
   /**
    * 支付订单
@@ -167,35 +161,39 @@ Page({
   //   }
 
   // },
-  // //返回上一页
-  // onBack: function () {
-  //   wx.navigateBack({
-  //     delta: 1
-  //   })
+  //返回上一页
+  onBack: function () {
+    wx.navigateBack({
+      delta: 1
+    })
 
-  // },
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      goods_count: options.GMSL,
-      goods_price: options.money
+    var model = JSON.parse(options.model);
+    // console.log(this.data.preferential_info)
+    // this.setData({
+    //   goods_count: options.GMSL,
+    //   goods_price: options.money
 
-    })
-    // total_price = goods_count * goods_price;
-    // console.log(goods_count * goods_price);
-    // console.log(options)
-    // var that = this;
-    // var type = options.type;
+    // })
+    // // total_price = goods_count * goods_price;
+    // // console.log(goods_count * goods_price);
+    // console.log(model)
+    var that = this;
+    var type = options.type;//用来判断是购物车下单还是详情页下单
 
 
     // if (type == 1) {
-    //   that.setData({
-    //     goods_id: options.goods_id,
-    //     goods_num: options.goods_num,
-    //     type: options.type,
-    //   })
+      that.setData({
+    //     goods_id: options.itemId,//商品id
+    //     goods_num: options.GMSL,//商品数量
+        type: options.type,
+        goods_info: model
+      })
+      console.log(this.data.goods_info)
     //   // 立即购买
     //   //直接购买
     //   MBC.Ajax({
@@ -224,7 +222,8 @@ Page({
     //     }
     //   })
 
-    // } else {
+    // }
+    //  else {
     //   that.setData({
     //     type: options.type,
     //     cart_ids: JSON.parse(options.cart_ids),
@@ -267,7 +266,26 @@ Page({
   // /**
   //  * 生命周期函数--监听页面显示
   //  */
-  // onShow: function (options) {
+  onShow: function (options) {
+    var that = this;
+    //获取收货地址缓存数据
+    wx.getStorage({
+      key: 'addressId',
+      success: function (res) {
+        that.setData({
+          address_info: res.data
+        })
+      }
+    })
+    //获取优惠金额缓存数据
+    wx.getStorage({
+      key: 'preferential',
+      success: function (res) {
+        that.setData({
+          preferential_info: res.data
+        })
+      }
+    })
   //   var that = this;
   //   var goods_id = that.data.goods_id;
   //   var goods_num = that.data.goods_num;
@@ -298,7 +316,7 @@ Page({
   //     })
   //   }
 
-  // },
+  },
 
   // /**
   //  * 生命周期函数--监听页面隐藏

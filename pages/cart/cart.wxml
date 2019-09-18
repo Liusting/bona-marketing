@@ -1,16 +1,23 @@
+
+<view  style="height:calc(100vh - 100rpx)">
+
 <!-- 头部：显示全选以及管理 -->
 <!-- 头部高度90rpx -->
-<view style="height:calc(100vh - 100rpx)">
-  <view class='header' >
+  <view  class='header' hidden='{{hfShow}}'>
     <text class='header_text' catchtap='adminTap'>{{adminShow?'完成':'编辑'}}</text>
   </view>
 
   <!-- 中部滑动：显示购物车列表 -->
   <scroll-view scroll-y  style="height:460px;"> 
       <view class="container carts-list" wx:if="{{shopcarData==''}}">
-          <view class="pp">
-              <image class="kong" src="" mode="aspectFill"/>
-              <view class="cla">购物车空空如也</view>
+          <view class="cartnull">
+              <image class="scimg" src="/images/person/search_no.png" mode="aspectFill"/>
+          </view>
+          <view class="cartnull">
+              <text >购物车空空如也/(ㄒoㄒ)/~~</text>
+          </view>
+          <view class="cartnull">
+            <button bindtap="goshop" style="width:300rpx;margin-top:50rpx;" class="cu-btn line-orange lg">去逛逛</button>
           </view>
       </view>
       <view class='shop' 
@@ -58,7 +65,7 @@
   </scroll-view>
 
   <!-- 底部 -->
-  <view class='footer'>   
+  <view class='footer' hidden='{{hfShow}}' >   
       <text style="margin-left: 20rpx;" class="cuIcon-round" hidden='{{allsel}}' catchtap='allcheckTap'></text>   
       <text style="margin-left: 20rpx;" class="cuIcon-roundcheckfill"  hidden='{{!allsel}}' catchtap='allcheckTap'></text>    
       <text class='check_text'>全选</text>   

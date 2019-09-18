@@ -10,11 +10,12 @@ Page({
       { name: '已使用', index: 1 },
       { name: '已过期', index: 2 },
     ],
-    allOrder: [{
-    },
-    {
-
-    },{},{}],
+    allOrder: [
+      { total: 100, reduce: 10, usetime: '2019.08.26-2019.09.01'},
+      { total: 200, reduce: 20, usetime: '2012.08.26-2019.09.01'},
+      { total: 250, reduce: 30, usetime: '2013.08.23-2019.09.01'},
+      { total: 300, reduce: 50, usetime: '2014.08.23-2019.09.01'}
+      ],
   },
   // 
   /**
@@ -100,24 +101,17 @@ Page({
 
   // 点击立即使用
   cupon_use: function (e) {
-    console.log(this.data.currtab);
-    wx.showModal({
-      title: '温馨提示',
-      content: '您确认收到宝贝了吗？',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定');
-          wx.showToast({
-            title: '收货成功',
-            icon: 'success',
-            duration: 2000,
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
-
+    // console.log(e.currentTarget.dataset);
+    var preferential = e.currentTarget.dataset;
+   wx.setStorage({
+     key: 'preferential',
+     data: preferential,
+     success: function (res) {
+       wx.navigateBack({
+         delta: 1
+       })
+     }
+   })
   }
 
 })

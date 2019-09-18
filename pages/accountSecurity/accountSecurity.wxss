@@ -39,9 +39,11 @@
   height: 80rpx;
 }
 .item-text {
+  margin-left: 20rpx;
   color: gray;
   font-size: 25rpx;
-  margin-left: 10rpx;
+  display: flex;
+  float: left;
   width: 200rpx
 }
 .item-text1 {

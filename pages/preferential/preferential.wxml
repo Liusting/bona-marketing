@@ -13,22 +13,25 @@
         <view class="font_14"><image class="scimg" src="/images/person/search_no.png"></image></view>
         <text>没有可用优惠券/(ㄒoㄒ)/~~</text>
       </view>
-      <view  class="cuponDetails" wx:for="{{allOrder}}" wx:key=" ">
+      <view  class="cuponDetails" wx:for="{{allOrder}}" wx:key>
         <view class="cuponListDetails">
           <view class="cupon_view">
           <view>
-            <text class="cupon_money">10</text><text style="color:red">元</text>
+            <text class="cupon_money">{{item.reduce}}</text><text style="color:red">元</text>
             <view>
-            <text>满200元使用</text>
+            <text>满{{item.total}}元使用</text>
             </view>
           </view>
           </view>
           <view class="cuponInfo">
-            <view style="font-size:15px;margin-bottom:10px;">满200立减10元</view>
-            <view style="font-size:8px;margin-bottom:10px;">2019.08.26-2019.09.01</view> 
+            <view style="font-size:15px;margin-bottom:10px;">满{{item.total}}立减{{item.reduce}}元</view>
+            <view style="font-size:8px;margin-bottom:10px;">{{item.usetime}}</view> 
           </view>
           <view class="cupon_use">
-            <button class="cu-btn bg-red round sm" bindtap="cupon_use">立即使用</button>
+            <button class="cu-btn bg-red round sm" bindtap="cupon_use" data-total="{{item.total}}"
+            data-reduce="{{item.reduce}}"
+            data-usetime="{{item.usetime}}"
+            >立即使用</button>
           </view>
         </view>
       </view>

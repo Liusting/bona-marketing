@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressList: []
+    addressList: [],
   },
   // 获取微信用户收货地址
   getWeixinAddress:function(e){
@@ -70,7 +70,7 @@ Page({
       url: app.ipAndPort + '/spAddress/getAddressList',
       method: 'POST',
       data: {
-        userId: 3
+        userId: 2
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
@@ -90,6 +90,19 @@ Page({
 // 点击新增收货地址
   addAddress: function () {
     wx.navigateTo({ url: '../address/address' });
+  },
+  //点击地址
+  addClick: function(e){
+    var address = e.currentTarget.dataset;
+    wx.setStorage({
+      key: 'addressId',
+      data: address,
+      success: function(res){
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    })
   },
 //  删除地址
   delAddress: function (e) {

@@ -9,36 +9,16 @@
   line-height: 30rpx;
   margin-top: 30rpx;
 }
-.myorder-text {
-  font-size: 30rpx;
-  color: gray;
-  margin: 20rpx;
-  width: 40%;
-}
+
 .myorderlook-text {
   font-size: 30rpx;
   color: gray;
-  width: 60%;
+  width: 100%;
   text-align: right;
-  margin-left: 55px
-}
-.picker-date {
-  font-size: 30rpx;
-  color: gray;
-  width: 60%;
-  text-align: right;
-  margin-left: 149px
-}
-.picker-sexy{
-  font-size: 30rpx;
-  color: gray;
-  width: 60%;
-  text-align: right;
-  margin-left: 172px
+
 }
 
 .list-item {
-  margin-left: 20rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,9 +33,11 @@
   height: 80rpx;
 }
 .item-text {
+  margin-left: 20rpx;
   color: gray;
   font-size: 25rpx;
-  margin-left: 10rpx;
+  display: flex;
+  float: left;
   width: 100rpx
 }
 .item-text1 {

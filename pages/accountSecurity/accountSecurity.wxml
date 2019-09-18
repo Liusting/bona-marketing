@@ -3,7 +3,8 @@
  <image style="height:90px"  src='../../images/head.png'></image>  
 </view>
   <view style="height: 10rpx; background-color:#f1f1f1;"></view>
-<view style="background-color:white;flex-direction:row;">
+<view style="background:#f1f1f1" class=" text-center">
+ <view style="margin:0rpx 20rpx 0rpx 20rpx" class=" radius shadow bg-white">
 <!-- 姓名 -->
   <view class="list-item">
     <text class="item-text">修改登录密码</text>
@@ -12,31 +13,21 @@
     <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
   </view>
 
-  <!-- 地区 -->
-  <view class="list-item">
-    <text class="item-text">修改用户名</text>
-    <text class="myorderlook-text" bindtap="showModal" data-target="usernameModal" data-typeid="{{0}}">请填写</text>
-    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
-  </view>
-  
+
 <!-- 手机号 -->
   <view class="list-item" >
-    <text class="item-text">修改手机号码</text>
-    <text class="myorderlook-text" bindtap="showModal" data-target="phonenumberModal" data-typeid="{{0}}">18648840747</text>
+    <text class="item-text">注销账号</text>
+    <text class="myorderlook-text"></text>
     <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
   </view>
 
-<!-- 地区 -->
-  <view class="list-item" bindtap="deleteAccount">
-    <text class="item-text">注销账号</text>
-    <view class="{{'cuIcon-right text-gray'}}" style="margin-left:575rpx"></view>
+<!-- 手机号 -->
+  <view class="list-item" >
+    <text class="item-text">我的会员</text>
+    <text class="myorderlook-text"></text>
+    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
   </view>
-
-<!-- 收货地址 -->
-      <view class="list-item1">
-      <text class="item-text">我的会员</text>
-      <view class="{{'cuIcon-right text-gray'}}" style="margin-left:575rpx"></view>
-      </view>
+</view>
 </view>
 </view>
 <!-- 点击修改登录密码时出现弹框 -->
@@ -85,7 +76,7 @@
 					<view class="content">修改手机号码</view>
 				</view>
 				<view style="background-color:white">
-   <input class="password-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新的手机号码" />
+   <input class="password-input" maxlength="11" type="text" bindinput="passWdBindKeyInput" placeholder="请输入新的手机号码" />
 				</view>
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">

@@ -1,7 +1,5 @@
 @import "/colorui/main.wxss";
 @import "/colorui/icon.wxss";
-
-
 .header{  
     padding: 0 20rpx;  
     background: #fff;  
@@ -95,10 +93,8 @@
   height: 38rpx;
 }
 .footer{
-  
 width: 100%;
 background-color: #fff;
-margin: 0;
 border: none;
 height: 100rpx;
 border-bottom: 1px solid #f1f1f1
@@ -133,3 +129,14 @@ border-bottom: 1px solid #f1f1f1
   float:right;
   width:30%;
 }
+.scimg{
+  height: 180rpx;
+  width: 180rpx;
+}
+.cartnull{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+ 

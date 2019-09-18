@@ -1,44 +1,42 @@
-<view class="order_address" bindtap="selectAddress">
-    <view class="select_address"><text style="background-color:blue;margin-right:5px" class="{{'cuIcon-add text-white'}}"></text>选择收货地址</view>
-    <view> <view class="{{'cuIcon-right text-gray'}}"></view></view>
-</view>
-<view class="Receiving_address" bindtap="bindaddress">
+<view class="Receiving_address" bindtap="bindaddress" >
     <view>
         <view class="reviver" style="font-size:32rpx;font-weight:900">
         <text class="{{'cuIcon-location text-gray'}}"></text>收货人：
-        <text >刘桂廷</text>
-        <text style="margin-left:65px">13047838940</text>
+        <text >{{address_info.name}}</text>
+        <text style="margin-left:45px">{{address_info.phone}}</text>
        </view> 
         <view style="margin-top:8px">收货地址：
-        <text>广东省佛山市禅城区石湾街道泛家居创意园6B一楼前台</text>
-         <!-- <view class="{{'cuIcon-right text-gray'}}" ></view> -->
+        <text>{{address_info.address}}</text>
         </view> 
     </view>
-    <view><text class="iconfont icon-arrowright"></text></view>
+    <view class="{{'cuIcon-right text-gray'}}" ></view>
 </view>
- 
-<view class="goods_msg">
+
+ <scroll-view scroll-y style="height:430px;">
+<view class="goods_msg" wx:for='{{goods_info}}' wx:key>
     <view class="goods_img">
-    <image src="../../images/logo.png" mode="widthFix"></image>
+    <!-- <image src="../../images/logo.png" mode="widthFix"></image> -->
     </view>
     <view class="goods_content">
-    <text class='shop_name' >xiaomi小米5s高通骁龙330液冷散热NFCxiaomi小米5s高通骁龙330液冷散热NFCxiaomi小米5s高通骁龙330液冷散热NFCxiaomi小米5s高通骁龙330液冷散热NFCxiaomi小米5s高通骁龙330液冷散热NFCxiaomi小米5s高通骁龙330液冷散热NFC</text>        
+    <text class='shop_name' >{{item.name}}</text>        
     <text class='shop_type' style="display: block; margin-right:10px  ">天蓝色，8G，16G，顺丰配送</text>  
-    <text class="iconfont icon-arrowright" style="color:red;margin-right:90px">￥{{goods_price}}</text>
-     <text class="iconfont icon-arrowright">共{{goods_count}}件</text>
+    <text class="iconfont icon-arrowright" style="color:red;margin-right:90px">￥{{item.money}}</text>
+     <text class="iconfont icon-arrowright">共{{item.number}}件</text>
      </view>
 </view>
 
-<view class="preferential" bindtap="preferential">
-    <view style="color:black"><text class="iconfont icon-map_line-"></text>商品优惠</view>
-    <!-- <text style="margin-left:80px">暂无可用</text> -->
-    <view class="{{'cuIcon-right text-gray'}}"></view>
+<view class="msg_list" bindtap="preferential">
+    <view class="msg_item">
+        <view>商品优惠</view>
+        <view >满{{preferential_info.total}}减{{preferential_info.reduce}}<text class="{{'cuIcon-right text-gray'}}"></text></view> 
+        <!-- <view >使用优惠券<text class="{{'cuIcon-right text-gray'}}"></text></view>  -->
+    </view>   
 </view>
  
 <view class="msg_list">
     <view class="msg_item">
         <view>商品金额</view>
-        <view>￥{{goods_price}}</view>
+        <view>￥300</view>
     </view>
     <view class="msg_item">
         <view>配送方式</view>
@@ -49,11 +47,11 @@
         <input maxlength="50" placeholder="留言建议提前协商" style="witdth:50px"></input>
     </view>
     <view class="Total">
-       合计 <text class="Total_price">￥{{total_price}}</text>
+       合计 <text class="Total_price">￥12</text>
     </view>
 </view>
- 
+</scroll-view>
 <view class="order_pay">
-    <view class="pay_money">付款 <text class="Total_price">￥{{total_price}}</text></view>
+    <view class="pay_money">付款 <text class="Total_price">￥12</text></view>
     <view class="submit_order" bindtap="bindSubmitOrder">提交订单</view>
 </view>
