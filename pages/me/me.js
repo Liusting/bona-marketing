@@ -54,6 +54,13 @@ Page({
         name: '待评价',
         url: 'bill',
         imageurl: '../../images/person/personal_comment.png'
+      },
+      {
+        typeId: 5,
+        icon: 'edit',
+        name: '退货维权',
+        url: 'bill',
+        imageurl: '../../images/person/personal_comment.png'
       }
     ],
   },
