@@ -41,4 +41,5 @@
       <text class="item-text">个人信息</text>
       <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
     </view>
+
 </view>

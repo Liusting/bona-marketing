@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+<text >秒杀: {{clock}}</text>
+<text>{{micro_second}}</text>
+</view>

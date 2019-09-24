@@ -185,7 +185,6 @@ Page({
     var that = this;
     var type = options.type;//用来判断是购物车下单还是详情页下单
 
-
     // if (type == 1) {
       that.setData({
     //     goods_id: options.itemId,//商品id
@@ -193,7 +192,7 @@ Page({
         type: options.type,
         goods_info: model
       })
-      console.log(this.data.goods_info)
+      // console.log(this.data.goods_info)
     //   // 立即购买
     //   //直接购买
     //   MBC.Ajax({

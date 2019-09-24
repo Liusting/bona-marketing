@@ -94,4 +94,5 @@
   height: 2rpx;
   background: lightgray;
   margin-left: 30rpx;
+  
 }

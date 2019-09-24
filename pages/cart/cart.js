@@ -26,7 +26,6 @@ Component({
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
-        // console.log(resData.length);
         let resData = res.data.CartDetailList;
         if(resData.length == 0){
           that.setData({
@@ -243,7 +242,7 @@ Component({
       var model = JSON.stringify(this.data.selarr);
       wx.navigateTo({
         
-        url: '../order/order?model=' + model
+        url: '../order/order?model=' + model +'&type='+2
       })
     }
   },

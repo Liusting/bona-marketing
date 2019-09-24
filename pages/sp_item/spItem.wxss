@@ -36,7 +36,7 @@
 }
 /* 规格弹框样式 */
 .addcart{
-  background-color: orange;
+  background-color: #fbbd08;
   color: white;
   border-radius: 70rpx; 
   height: 30px;
@@ -46,7 +46,7 @@
   width: 155px
 }
 .buy{
-  background-color: orange;
+  background-color: #fbbd08;
   color: white;
   border-radius: 70rpx; 
   height: 30px;
@@ -61,11 +61,12 @@
   margin:0px 10px 0px 5px;
   padding:10px 10px 10px 10px;
   font-size:10px;
+  display: flex
 }
 .parameter-msg{
-  margin-left:20px;
+  margin-left:40rpx;
   color: gray;
-  width: 50px;
+  width: 200rpx;
 
 }
 .parameter-done{
@@ -82,7 +83,7 @@
 /* ************************ */
 /* 立即订购弹框样式 */
 .confirm{
-    background-color: orange;
+    background-color: #fbbd08;
   color: white;
   border-radius: 70rpx; 
   height: 30px;

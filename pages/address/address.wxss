@@ -1,18 +1,28 @@
-@import '../../utils/weui.wxss';
 
-
-.weui-cells:before{
-  top:0;
-  border-top:1rpx solid white;
-  }
-.weui-cell{
-  line-height: 3.5rem;
+.secetion{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 30rpx;
+  border: 1px solid #f1f1f1;
 }
-.weui-cells:after{
-  bottom:0;border-bottom:1rpx solid white
+.secetion-hd{
+  width:150rpx;
 }
+.secetion-input{
+  margin-left:30rpx;
+  width:500rpx;
+}
+.picker{
+  overflow:hidden;
 
+text-overflow:ellipsis;
+
+white-space:nowrap;
+}
 .weui-btn{
-  width: 250px;
-  
+  width: 500rpx;
+  margin-top:20rpx;
 }

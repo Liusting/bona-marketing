@@ -1,23 +1,11 @@
-<view class="container">
-  停止位置:<input value='{{luckPosition}}' style="width:100%;text-align:center" bindinput='input' type='number'></input>
-  <view class='frame_view'>
-<view class='frame_row'>
-<image class='frame_item' style='opacity:{{color[0]}}' src='{{images[0]}}'></image>
-<image class='frame_item' style='opacity:{{color[1]}}' src='{{images[1]}}'></image>
-<image class='frame_item' style='opacity:{{color[2]}}' src='{{images[2]}}'></image>
-</view>
-
-<view class='frame_row'>
-<image class='frame_item' style='opacity:{{color[7]}}' src='{{images[7]}}'></image>
-<image class='frame_item' src='{{btnconfirm}}' bindtap='{{clickLuck}}'></image>
-<text class='frame_item' style='opacity:{{color[3]}}' src='{{images[3]}}'>1111
-</text>
-</view>
-
-<view class='frame_row'>
-<image class='frame_item' style='opacity:{{color[6]}}' src='{{images[6]}}'></image>
-<image class='frame_item' style='opacity:{{color[5]}}' src='{{images[5]}}'></image>
-<image class='frame_item' style='opacity:{{color[4]}}' src='{{images[4]}}'></image>
-</view>
-</view>
+<view class="container-out">
+  <view 
+  class="circle" wx:for="{{circleList}}" 
+  style="top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color: {{(index%2==0)?colorCircleFirst:colorCircleSecond}};"></view>
+  <view class="container-in">
+    <view class="content-out" wx:for="{{awardList}}" style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;background-color: {{(index==indexSelect)?colorAwardSelect:colorAwardDefault}};">
+      <image class="award-image" src="{{item.imageAward}}"></image>
+    </view>
+    <view class="start-btn" bindtap="startGame" style=" background-color:{{isRunning?'#e7930a':'#ffe400'}}">START</view>
+  </view>
 </view>

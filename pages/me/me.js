@@ -122,7 +122,7 @@ Page({
   address: function (e) {
     let url = "../addressList/addressList";
     wx.navigateTo({
-      url: '../addressList/addressList'
+      url: '../addressList/addressList?type=' + 3
     });
   },
   // 个人信息

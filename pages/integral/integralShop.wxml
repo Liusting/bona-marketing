@@ -1,20 +1,22 @@
+
+<view>
+
 <!-- 头部：显示全选以及管理 -->
 <!-- 头部高度90rpx -->
-<view>
-  <view >
+  <view style="height:300rpx">
     <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{imgUrls}}" wx:key>
-    <image src="{{item}}" mode='aspectFill'></image>
-  </swiper-item>
-</swiper>
+      <swiper-item wx:for="{{imgUrls}}" wx:key>
+        <image src="{{item}}" mode='aspectFill'></image>
+      </swiper-item>
+    </swiper>
   </view>
 
   <!-- 中部滑动：显示兑换商品列表 -->
-  <scroll-view  scroll-y  style="height:367px;background-color:#1cbbb4"> 
+  <scroll-view  scroll-y  style="height:calc(100vh - 300rpx - 100rpx);background-color:#1cbbb4"> 
     <view class="cu-list grid col-2">
       <view  wx:for="{{shopData}}">
         <view  class="cu-card article {{isCard?'no-card':''}}">
-          <view style="background-color:#f37b1d;" class="cu-item shadow">
+          <view  class="cu-item shadow">
           <image class='shop_img' src="{{item.imageUrl}}"  mode='aspectFill' ></image>
           <view>{{item.name}}一台</view>
           <view>数量<text>{{item.number}}</text></view>

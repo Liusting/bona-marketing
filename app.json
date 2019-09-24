@@ -24,6 +24,8 @@
 
     "pages/integral/integral",
     "pages/integral/integralShop",
+    "pages/integral/integralSeckill",
+    
 
     "pages/integralDetail/integralDetail",
     "pages/appraise/appraise"

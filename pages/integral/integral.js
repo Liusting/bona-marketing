@@ -72,10 +72,10 @@ Page({
         wx.navigateTo({
           url: '../integral/luckDraw',//去积分抽奖
         })
-        // case 2:
-        // wx.navigateTo({
-        //   url: '',
-        // })
+        case 2:
+        wx.navigateTo({
+          url: '../integral/integralSeckill',
+        })
     }
   },
   /**

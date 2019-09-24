@@ -1,8 +1,5 @@
 @import "/colorui/main.wxss";
 @import "/colorui/icon.wxss";
-
-
-
 .shop_img{
   width: 280rpx;  
   height: 180rpx;  

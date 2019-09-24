@@ -5,6 +5,7 @@ Page({
    */
   data: {
     addressList: [],
+    type:''
   },
   // 获取微信用户收货地址
   getWeixinAddress:function(e){
@@ -65,12 +66,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.type);
+    this.setData({
+      type: options.type
+    })
     var that = this;
     wx.request({
       url: app.ipAndPort + '/spAddress/getAddressList',
       method: 'POST',
       data: {
-        userId: 2
+        userId: 3
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
@@ -85,24 +90,44 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.onLoad();
+    var that = this;
+    wx.request({
+      url: app.ipAndPort + '/spAddress/getAddressList',
+      method: 'POST',
+      data: {
+        userId: 3
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        let resData = res.data;
+        that.setData({
+          addressList: resData
+        })
+      }
+    })
   },
 // 点击新增收货地址
   addAddress: function () {
+    // debugger;
     wx.navigateTo({ url: '../address/address' });
   },
   //点击地址
   addClick: function(e){
-    var address = e.currentTarget.dataset;
-    wx.setStorage({
-      key: 'addressId',
-      data: address,
-      success: function(res){
-        wx.navigateBack({
-          delta: 1
-        })
-      }
-    })
+    //根据传入的类型来判断点击地址出现什么效果 2：从订单页进来  3：从地址管理进来
+    if(this.data.type == 2){
+      var address = e.currentTarget.dataset;
+      wx.setStorage({
+        key: 'addressId',
+        data: address,
+        success: function (res) {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      })
+    }else{
+
+    }
   },
 //  删除地址
   delAddress: function (e) {

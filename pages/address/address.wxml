@@ -1,66 +1,45 @@
 <form bindsubmit="saveAddress">
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">收货人</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input class="weui-input" name="addresseeName" placeholder="收货人姓名" />
-      </view>
+<view class=" bg-white">
+  
+  <view class="secetion">
+    <view class="secetion-hd">
+      <text>姓名</text>
     </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">手机号</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input class="weui-input" name="phoneNumber" placeholder="收货人手机号" />
-      </view>
+    <view class="secetion-input">
+      <input clearable name="addresseeName" placeholder="收货人姓名"/>
     </view>
   </view>
-  <view class="weui-cells__title"></view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_select">
-      <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">省份</view>
-      </view>
-      <view class="weui-cell__bd">
-        <picker bindchange="bindProvinceNameChange" value="{{provinceIndex}}" range="{{provinceNames}}">
-          <view class="weui-select weui-select_in-select-after">{{provinceNames[provinceIndex]}}</view>
-          <input name="provinceName" hidden="true" value="{{provinceNames[provinceIndex]}}" />
-        </picker>
-      </view>
-    </view>
-    <view class="weui-cell weui-cell_select">
-      <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">城市</view>
-      </view>
-      <view class="weui-cell__bd">
-        <picker bindchange="bindCityNameChange" value="{{cityIndex}}" range="{{cityNames}}">
-          <view class="weui-select weui-select_in-select-after" name="city_name">{{cityNames[cityIndex]}}</view>
 
-          <input name="cityName" hidden="true" value="{{cityNames[cityIndex]}}" />
-        </picker>
-      </view>
+  <view class="secetion">
+    <view class="secetion-hd">
+      <text>电话</text>
     </view>
-    <view class="weui-cell weui-cell_select">
-      <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">区县</view>
-      </view>
-      <view class="weui-cell__bd">
-        <picker bindchange="bindCountyNameChange" value="{{countyIndex}}" range="{{countyNames}}">
-          <view class="weui-select weui-select_in-select-after">{{countyNames[countyIndex]}}</view>
-          <input name="countyName" hidden="true" value="{{countyNames[countyIndex]}}" />
-        </picker>
-      </view>
-    </view>
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-        <view class="weui-label">详细地址</view>
-      </view>
-      <view class="weui-cell__bd">
-        <input class="weui-input" name="addressdetail" placeholder="请输入收货人详细地址" />
-      </view>
+    <view class="secetion-input">
+      <input maxlength="11" name="phoneNumber" placeholder="收货人手机号"/>
     </view>
   </view>
-  <button class="weui-btn" type="primary" form-type="submit">保存</button>
+
+  <view class="secetion">
+    <view class="secetion-hd">
+      <text>地区</text>
+    </view>
+    <view class="secetion-input">
+      <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="picker" >
+        {{region[0]}}/{{region[1]}}/{{region[2]}}
+      </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="secetion">
+    <view class="secetion-hd">
+      <text>详细地址</text>
+    </view>
+    <view class="secetion-input">
+      <input name="addressdetail" placeholder="街道门牌、楼层房间号等信息"/>
+    </view>
+  </view>
+</view>
+<button class="weui-btn" type="primary" form-type="submit">保存并使用</button>
 </form>
