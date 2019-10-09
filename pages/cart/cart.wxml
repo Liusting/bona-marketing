@@ -19,40 +19,45 @@
         <button bindtap="goshop" style="width:300rpx;margin-top:50rpx;" class="cu-btn line-orange lg">去逛逛</button>
       </view>
     </view>
-    <view class='shop' wx:for='{{shopcarData}}' wx:key bindlongtap="delete" data-id="{{item.id}}" data-index="{{index}}">  
-      <view class="orderListTitle">
-        <text class="userName">华为旗舰店</text>
+    <view class='shop' wx:for='{{shopcarData}}' wx:key>  
+      <view class="orderListTitle" >
+      <view style="height:100%;width:30rpx;" >
+        <text class="cuIcon-round" hidden='{{item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
+        <text class="cuIcon-roundcheckfill" hidden='{{!item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
+        </view>
+      <view style="height:100%;width:100%;" bindtap="gotoShop" data-shopId="{{item.shopId}}" data-shopName="{{item.shopName}}">
+        <text class="userName" >{{item.shopName}}</text>
         <text class="{{'cuIcon-right text-gray'}}" ></text>
-        <text class="orderStatus">{{item.state}}</text>
+        </view>
       </view>
-      <view class="orderListDetails">
-        <view class='shop_check_box' data-index='{{index}}' catchtap='checkTap'  data-id="{{item.id}}">  
-          <text class="cuIcon-round"  hidden='{{!item.check}}'></text>   
-          <text class="cuIcon-roundcheckfill"  hidden='{{item.check}}'></text>  
+      <view class="orderListDetails" wx:for='{{item.itemdata}}' wx:for-item="items" wx:key bindlongtap="delete" data-id="{{items.item_id}}" data-index="{{index}}">
+        <view class='shop_check_box'>  
+          <text class="cuIcon-round" bindtap="checkTap"  hidden='{{items.check}}' data-id="{{items.item_id}}" data-index="{{item.shopId}}"></text>   
+          <text class="cuIcon-roundcheckfill" bindtap="checkTap"  hidden='{{!items.check}}' data-id="{{items.item_id}}" data-index="{{item.shopId}}"></text>  
         </view>    
         <view class="productImg">
-          <image src="" background-size="cover"></image>
+          <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
         </view>  
         <view class='shop_detail' >
           <view style="height:140rpx;">
-            <text class='shop_name'>{{item.name}}</text>        
+            <text class='shop_name'>{{items.name}}</text>        
             <text class='shop_type'>4G全网通；幻夜黑；官方标配；4+64G4G全网通；幻夜黑；官方标配；4+64G4G全网通；幻夜黑；官方标配；4+64G</text>   
           </view>        
           <view style="margin-top:10rpx;height:58rpx;display:flex;align-items:center">
-            <text class='shop_price'>￥{{item.money}}</text> 
-            <view class="cu-tag {{item.number == '1' ? 'bg-gray':'bg-grey'}}" 
-              data-index='{{index}}' 
+            <text class='shop_price'>￥{{items.money}}</text> 
+            <view class="cu-tag {{items.number == '1' ? 'bg-gray':'bg-grey'}}" 
+              data-index='{{item.shopId}}' 
               data-types='minus' 
-              data-id="{{item.id}}"
+              data-id="{{items.item_id}}"
               catchtap='numchangeTap'>
               <text class="cuIcon-move"></text>
             </view> 
-            <view class="cu-tag line-grey">{{item.number}} </view> 
+            <view class="cu-tag line-grey">{{items.number}} </view> 
             <view class="cu-tag  bg-grey" 
-              data-index='{{index}}' 
+              data-index='{{item.shopId}}' 
               data-types='add' 
               catchtap='numchangeTap' 
-              data-id="{{item.id}}">
+              data-id="{{items.item_id}}">
               <text class="cuIcon-add"></text>
             </view> 
           </view>       
@@ -67,7 +72,7 @@
       <text style="margin-left: 20rpx;" class="cuIcon-roundcheckfill"  hidden='{{!allsel}}' catchtap='allcheckTap'></text>    
       <text class='check_text'>全选</text>   
           <text class='footer_total_text' hidden='{{adminShow}}'>合计：<text class='footer_total_price'>￥{{total}}    </text> </text>  
-    <text class='footer_total' hidden='{{adminShow}}' catchtap="goclearingTap">结算<text>({{selarr.length}})</text></text>
+    <text class='footer_total' hidden='{{adminShow}}' catchtap="goclearingTap">结算<text>({{itemNumber}})</text></text>
     
     <text hidden='{{!adminShow}}' style="background-color:{{pageBackgroundColor}}" class='deleteshop'  catchtap='deleteshopTap'>删除</text>
     </view> 

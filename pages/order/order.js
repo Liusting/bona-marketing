@@ -12,6 +12,13 @@ Page({
     goods_freight: '', //运费
     goods_price: '', //商品价格
     total_price: '', //合计价格
+    modeName:'快递',
+    mode: [
+      { type: '0', name: '快递', checked:'true' },
+     { type: '1', name: '门店取货' }, 
+     { type: '2', name: '商家配送' }, 
+     { type: '3', name: '系统配送'}
+     ],
     item: {
       iconfontBack: "icon-arrowleft",
       navigationBarTitle: "确认订单",
@@ -24,13 +31,32 @@ Page({
     order_message: '', //订单留言
     cart_ids: [], // 购物车商品id
     addressId: '',
-    show:true
+    show:true,
+    flag:false,
+    flag1:true
+  },
+  radioselect: function(e){
+      console.log(e.currentTarget.dataset.item.name);
+    if (e.currentTarget.dataset.item.type == 1){
+      this.setData({
+        flag:true,
+        flag1: false
+      })
+    } else if (e.currentTarget.dataset.item.type == 0 || 2){
+      this.setData({
+        flag: false,
+        flag1: true
+      })
+    }
+    this.setData({
+      modeName: e.currentTarget.dataset.item.name
+    })
   },
   //选择地址
   bindaddress: function () {
     // console.log(this.data.type)
       wx.navigateTo({
-        url: '../addressList/addressList?type=' + this.data.type
+        url: '../addressList/addressList?type=' + 2
       })
   },
   // 留言
@@ -108,6 +134,16 @@ Page({
     })
 
   },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
   // //  提交订单
   // bindSubmitOrder: function (e) {
   //   var form_id = e.detail.formId;
@@ -172,7 +208,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var model = JSON.parse(options.model);
+    // var model = JSON.parse(options.model);
     // console.log(this.data.preferential_info)
     // this.setData({
     //   goods_count: options.GMSL,
@@ -189,8 +225,8 @@ Page({
       that.setData({
     //     goods_id: options.itemId,//商品id
     //     goods_num: options.GMSL,//商品数量
-        type: options.type,
-        goods_info: model
+        // type: options.type,
+        // goods_info: model
       })
       // console.log(this.data.goods_info)
     //   // 立即购买

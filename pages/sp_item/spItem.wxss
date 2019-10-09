@@ -13,11 +13,27 @@
 	min-height: 80rpx;
 	justify-content: space-between;
 }
+.spItem-form-group1 {
+	background-color: var(--white);
+	padding: 1rpx 30rpx;
+	display: flex;
+	align-items: center;
+	min-height: 80rpx;
+	justify-content: space-between;
+}
 .spItem-form-group .title {
   min-width: calc(4em + 30rpx);
 }
 
-
+.detail{
+  height:80rpx;
+  width:100%;
+  display:flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 25rpx;
+}
 .background-white{
   background-color: var(--white);
 }

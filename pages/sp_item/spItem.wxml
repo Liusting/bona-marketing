@@ -1,10 +1,15 @@
-<scroll-view scroll-y="hidden" style='height:calc(100vh - 50px)'>
-  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-    <swiper-item wx:for="{{swiperList}}" wx:key>
-      <image height="500px" src="{{item.url}}" mode="scaleToFill" wx:if="{{item.type=='image'}}"></image>
-      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
-    </swiper-item>
-  </swiper>
+<scroll-view scroll-y="hidden" style='height:100%'>
+<swiper class="" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+ <swiper-item>  
+        <video style="width:100%" id="myVideo" src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' bindtap="bofang" controls='true'></video>
+      </swiper-item>   
+  <block wx:for="{{swiperList}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item.url}}" data-index='{{index}}' class="slide-image" mode="aspectFill" bindtap='previewImg' data-previewurl='{{item.url}}'
+      data-currenturl='{{item.url}}'/>
+    </swiper-item>   
+  </block>  
+</swiper>
 
   <form >
     <view class="spItem-form-group">
@@ -19,13 +24,16 @@
       </view>
       <view class='text-grey'>
         领劵
-        <text class="cuIcon-right text-orange"></text>
+        <text class="cuIcon-right text-grat"></text>
       </view>
     </view>
 
     <view >
-    <view class="spItem-form-group"  >
+    <view class="spItem-form-group1" >
       <text class='text-bold'>{{goodsDetailList[0].name}}</text>
+      <view style="height:100%;width:30%;margin-left:5rpx;float:right">
+      <text class="cuIcon-share text-grey" style="font-size:25rpx;background:#f1f1f1;padding:10rpx">分享</text>
+      </view>
     </view>
 
 
@@ -50,8 +58,6 @@
       <view class="title text-grey">参数</view>
       <text class="cuIcon-right text-orange"></text>
     </view>
-        <!-- 分割 -->
-  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
   
     <view wx:if="{{groupViewOpen}}">
       <view wx:for="{{groupValList}}" wx:key>
@@ -64,9 +70,15 @@
   </form>
 
   <scroll-view scroll-y="true">
-    <text>商品详情</text>
-    <view wx:for="{{swiperList}}">
-       <image style="width:100%" src="{{item.url}}" mode='aspectFill'/> 
+  <view class="detail">
+<text>—— 宝贝详情 ——</text>
+  </view>
+    
+    <view>
+    <video style="height:300px;width:100%" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"  controls show-center-play-btn></video>
+    </view>
+    <view wx:for="{{swiperList}}" wx:key="key" >
+       <image style="width:100%" src="{{item.url}}" mode="widthFix"/> 
     </view>
   </scroll-view>
 
@@ -157,14 +169,14 @@
   </view>
 
   <view class="cu-bar tabbar bg-white shadow foot bottom_view_height2">
-    <button class="action" open-type="contact">
+    <view class="action" open-type="contact">
       <view class="cuIcon-service">
         <!-- <view class="cu-tag badge"></view> -->
       </view>
       客服
-    </button>
-    <view class="action" bindtap="collect">
-      <view class="{{change==1?'cuIcon-favorfill text-orange' : 'cuIcon-favor text-gray'}}"></view> 已收藏
+    </view>
+    <view class="action" bindtap="home">
+      <view class="cuIcon-home"></view> 首页
     </view>
     <view class="action">
       <view class="cuIcon-cart" bindtap="cart">

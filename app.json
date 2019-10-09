@@ -1,6 +1,5 @@
 {
   "pages": [
-        
     "pages/index/index",
     "pages/home/home",
     "pages/item_type/itemType",
@@ -16,7 +15,7 @@
     "pages/addressList/addressList",
     "pages/accountSecurity/accountSecurity",
     "pages/sp_order_list/spOrderList",
-    "pages/order/order",
+"pages/order/order",
 
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
@@ -28,7 +27,8 @@
     
 
     "pages/integralDetail/integralDetail",
-    "pages/appraise/appraise"
+    "pages/appraise/appraise",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -113,6 +113,7 @@ Page({
   },
   //点击地址
   addClick: function(e){
+    console.log(e);
     //根据传入的类型来判断点击地址出现什么效果 2：从订单页进来  3：从地址管理进来
     if(this.data.type == 2){
       var address = e.currentTarget.dataset;
@@ -140,7 +141,20 @@ Page({
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
-        that.onLoad();
+        wx.request({
+          url: app.ipAndPort + '/spAddress/getAddressList',
+          method: 'POST',
+          data: {
+            userId: 3
+          },
+          header: { 'content-type': 'application/x-www-form-urlencoded' },
+          success: function (res) {
+            let resData = res.data;
+            that.setData({
+              addressList: resData
+            })
+          }
+        });
         wx.showToast({
           title: '删除成功',
           icon: 'success',

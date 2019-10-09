@@ -49,15 +49,11 @@
 
 }
 
-.navs {
-  display: flex;
-}
 .nav-item {
-  width: 25%;
+  width: 35%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 20rpx;
 }
 .nav-item .nav-image {
   width: 40rpx;

@@ -97,6 +97,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let data = res.data;
+        // console.log(data);
         if(data.length > 0){
           that.setData({
             spList: data
@@ -223,7 +224,7 @@ Page({
 
   // 搜索输入框回车事件
   searchOnclick:function(e){
-    console.log(e);
+    // console.log(e);
     var that = this;
     if (this.data.radioType == 2){
       wx.request({
@@ -235,7 +236,7 @@ Page({
         },
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         success: function (res) {
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
         }
       })
     }else{
@@ -281,12 +282,19 @@ Page({
       }
     }
   },
-
+  //点击进店跳到店铺首页
+  gotoShop: function(e){
+    // console.log(e);
+    var shopId = e.currentTarget.dataset.id
+    var shopname = e.currentTarget.dataset.shopname
+    wx.navigateTo({
+      url: '../shop/shop?shopId=' + shopId + '&shopName=' + shopname
+    })
+  },
   // 商品列表点击跳到商品详情
   spClick:function(e){
     var that = this;
     var itemId = e.currentTarget.dataset.id;//获取商品的id值
-    let url = "../sp_item/spItem";
     wx.navigateTo({
       url: '../sp_item/spItem?itemId=' + itemId
     });

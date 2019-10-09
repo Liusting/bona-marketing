@@ -1,4 +1,4 @@
-<view class="Receiving_address" bindtap="bindaddress" >
+<view class="Receiving_address" bindtap="bindaddress" hidden="{{flag}}">
     <view>
         <view class="reviver" style="font-size:32rpx;font-weight:900">
         <text class="{{'cuIcon-location text-gray'}}"></text>收货人：
@@ -12,16 +12,39 @@
     <view class="{{'cuIcon-right text-gray'}}" ></view>
 </view>
 
+<view class="Receiving_address" hidden="{{flag1}}">
+    <view>
+        <view class="reviver" style="font-size:32rpx;font-weight:900">
+        <text class="{{'cuIcon-location text-gray'}}"></text>负责人：
+        <text >母夜叉</text>
+        <text style="margin-left:45px">13847439087</text>
+       </view> 
+        <view style="margin-top:8px">门店地址：
+        <text>广东省佛山市禅城区季华五路沃尔玛三楼3B超市自取点</text>
+        </view> 
+    </view>
+</view>
+
+
  <scroll-view scroll-y style="height:430px;">
-<view class="goods_msg" wx:for='{{goods_info}}' wx:key>
-    <view class="goods_img">
-    <!-- <image src="../../images/logo.png" mode="widthFix"></image> -->
+<view class="shop">
+      <view class="orderListTitle" >
+      <view style="height:100%;width:100%;">
+        <text class="userName" >小米旗舰店</text>
+        </view>
+      </view>
+      <view class="orderListDetails">
+          <view class="goods_img">
+    <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
     </view>
     <view class="goods_content">
-    <text class='shop_name' >{{item.name}}</text>        
-    <text class='shop_type' style="display: block; margin-right:10px  ">天蓝色，8G，16G，顺丰配送</text>  
-    <text class="iconfont icon-arrowright" style="color:red;margin-right:90px">￥{{item.money}}</text>
-     <text class="iconfont icon-arrowright">共{{item.number}}件</text>
+      <text class='shop_name' >小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>        
+      <text style="margin-top:10rpx;" class='shop_type'>天蓝色，8G，16G，顺丰配送</text>  
+      <view style="margin-top:20rpx;">
+      <text class="iconfont icon-arrowright" style="color:red;margin-right:90px">￥{{1699.00}}</text>
+      <text class="iconfont icon-arrowright">共2件</text>
+      </view>
+     </view>
      </view>
 </view>
 
@@ -36,22 +59,51 @@
 <view class="msg_list">
     <view class="msg_item">
         <view>商品金额</view>
-        <view>￥300</view>
+        <view>￥1699.00</view>
     </view>
     <view class="msg_item">
         <view>配送方式</view>
-        <view>快递免运费</view>
+        <view bindtap="showModal" data-target="RadioModal">{{modeName}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
     </view>
     <!-- 留言模块 -->
-        <view class="message">买家留言
-        <input maxlength="50" placeholder="留言建议提前协商" style="witdth:50px"></input>
+    <view class="message">
+        <view style="width:18%;">买家留言</view>
+        <input style="width:82%;" placeholder="留言建议提前协商"/>
     </view>
     <view class="Total">
-       合计 <text class="Total_price">￥12</text>
+       合计 <text class="Total_price">￥3398.00</text>
     </view>
 </view>
 </scroll-view>
 <view class="order_pay">
-    <view class="pay_money">付款 <text class="Total_price">￥12</text></view>
-    <view class="submit_order" bindtap="bindSubmitOrder">提交订单</view>
+    <view class="pay_money">付款 <text class="Total_price">￥3348.00</text></view>
+    <view class="submit_order" bindtap="showModal" data-target="bottomModal">提交订单</view>
+</view>
+
+<!-- 选择底部滑窗 -->
+  <view class="cu-modal justify-start bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal" style='overflow: hidden;'>
+    <view class="cu-dialog background-white" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+        <view class="cu-item shadow">
+          <view class="bottom text-green">微信支付</view>
+          <view class="bottom">货到付款</view>
+          <view class="bottom">储值支付</view>
+          <view class="bottom" bindtap="hideModal" >取消</view>
+        </view>
+       </view>
+        </view>
+
+<!-- 配送方式选择 -->
+<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{mode}}" wx:key>
+          <label class="flex justify-between align-center flex-sub" bindtap="radioselect" data-item="{{item}}">
+            <view class="flex-sub">{{item.name}}</view>
+            <radio  bindtap="hideModal" checked="{{item.checked}}" class="round"></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
 </view>

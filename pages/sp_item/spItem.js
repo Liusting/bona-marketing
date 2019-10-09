@@ -7,9 +7,8 @@ Page({
       type: 'image',
       url: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg'
     }, {
-      id: 1,
-      type: 'image',
-        url: 'https://m.360buyimg.com/n12/jfs/t11575/282/348533702/60173/d75cd1cc/59edb8d6N688b420f.jpg!q70.jpg',
+
+        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532429494100&di=f3712ddf9ca5b37bf81f2cea4ae40c54&imgtype=0&src=http%3A%2F%2Fpic32.photophoto.cn%2F20140808%2F0042040230406581_b.jpg',
     }, {
       id: 2,
       type: 'image',
@@ -24,8 +23,6 @@ Page({
     // bottom_view_height1和bottom_view_height2是初始化高度用到的
     bottom_view_height1: 50,
     bottom_view_height2: 100,
-    //收藏默认为false
-    change : 1,
     cartslength:[],
     // GMSL 购买数量，初始化为1
     GMSL: 1,
@@ -343,15 +340,6 @@ Page({
       modalName: null
     })
   },
-  // 收藏
-  collect() {
-    change: 0;
-    wx.showToast({
-      title: '收藏成功',
-      icon: 'success',
-      duration: 2000
-    })
-  },
   // 购买数量加减
   GMSLMoveOrAdd(e) {
     let type = e.currentTarget.dataset.target;
@@ -444,9 +432,29 @@ Page({
     }
 
   },
+  //点击图片预览
+  previewImg: function (e) {
+    console.log(e.currentTarget.dataset.index)
+    var index = e.currentTarget.dataset.index;
+    var currentUrl = e.currentTarget.dataset.currenturl
+    var previewUrls = e.currentTarget.dataset.previewurl
+    wx.previewImage({
+      current: currentUrl, //必须是http图片，本地图片无效
+      urls: [this.data.swiperList[index].url]//必须是http图片，本地图片无效
+    })
+  },
   //点击购物车
   cart:function(){
-    wx.switchTab({
+    wx.reLaunch({
+      url: '../cart/cart'
+    })
+    // wx.switchTab({
+    //   url: '../index/index'
+    // })
+  },
+  // 首页
+  home() {
+    wx.reLaunch({
       url: '../index/index'
     })
   },

@@ -51,8 +51,7 @@
   <view class="list-item1" bindtap="preferential">
     <text class="item-text1">黄金会员特权</text>
   </view>
-     <view style="margin:0rpx 20rpx 0rpx 20rpx" class=" radius shadow bg-white">
-    <block >
+     <view  style="margin:0rpx 20rpx 0rpx 20rpx;flex-direction: row;display:flex" class=" radius shadow bg-white">
       <view class="nav-item" >
         <text class="{{'cuIcon-emoji text-green'}}" ></text>
         <text>购物8.8折</text>
@@ -69,7 +68,6 @@
         <text class="{{'cuIcon-redpacket text-red'}}" ></text>
         <text>返现</text>
       </view>
-    </block>
 
     </view>
 </view>

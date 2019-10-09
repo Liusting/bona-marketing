@@ -21,12 +21,6 @@
     <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
   </view>
 
-<!-- 手机号 -->
-  <view class="list-item" >
-    <text class="item-text">我的会员</text>
-    <text class="myorderlook-text"></text>
-    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
-  </view>
 </view>
 </view>
 </view>
