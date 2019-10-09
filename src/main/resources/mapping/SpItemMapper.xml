@@ -23,6 +23,7 @@
         i.NAME AS "name",
         min( ot.money ) AS "money",
         i.place AS "place",
+        i.shop_id AS "shopId",
         s.NAME AS "shopName",
         o.total AS "total"
         FROM
@@ -75,6 +76,24 @@
                 name like '%${name}%'
             </if>
         </where>
+    </select>
+    <select id="getShopItem" resultType="java.util.Map">
+           SELECT
+        i.id AS "id",
+        i.NAME AS "name",
+        min( ot.money ) AS "money",
+        i.place AS "place",
+        i.shop_id AS "shopId",
+        s.NAME AS "shopName",
+        o.total AS "total"
+        FROM
+        sp_item i
+        LEFT JOIN sp_shop s ON ( s.id = i.shop_id )
+        LEFT JOIN sp_object ot ON ( ot.item_id = i.id )
+        LEFT JOIN ( SELECT item_id AS "itemId", count( 1 ) AS "total" FROM sp_order GROUP BY item_id ) o ON ( o.itemId = i.id )
+				where i.shop_id = #{shopId}
+        GROUP BY
+        i.id
     </select>
 
 

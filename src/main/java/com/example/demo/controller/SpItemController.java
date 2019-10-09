@@ -47,6 +47,18 @@ public class SpItemController {
         return shopList;
     }
 
+    //店铺商品查询
+    @RequestMapping(value = "/shopItemList", method = {RequestMethod.POST})
+    @ResponseBody
+    public Object shopItems(HttpServletRequest request){
+        String currentInt = request.getParameter("currentInt");
+        String shopId = request.getParameter("shopId");
+        Page page = new Page(Integer.parseInt(currentInt), 10);
+        List<Map<String, Object>> shopItemList = spItemMapper.getShopItem(page, shopId);
+        return shopItemList;
+    }
+
+    //商品列表查询
     @RequestMapping(value = { "/getSpItem2" }, method = { RequestMethod.POST })
     @ResponseBody
     public Object listDel(HttpServletRequest request) {

@@ -17,4 +17,6 @@ public interface SpItemMapper {
     List<Map<String,Object>> getSearchList(Page page,@Param("name") String name);
 
     List<Map<String, Object>> getShopList(Page page,@Param("name") String name);
+
+    List<Map<String, Object>> getShopItem(Page page,@Param("shopId") String shopId);
 }

@@ -17,10 +17,11 @@
     </sql>
     <!--购物车查询-->
     <select id="getCartDetail" resultType="java.util.Map">
-        SELECT sc.id,sc.type_id,sc.item_id,sc.user_id,sc.number,si.name,si.shop_id,'false' AS 'check','200' AS 'money'
+        SELECT sc.id,sc.type_id,sc.item_id,sc.user_id,sp.name AS shopName,sc.number,si.name,si.shop_id,'false' AS 'check','200' AS 'money'
         from sp_cart sc
-        JOIN sp_item si
-        ON sc.item_id = si.id
+        LEFT JOIN sp_item si ON (sc.item_id = si.id)
+	    LEFT JOIN sp_shop sp ON (si.shop_id = sp.id)
+	    GROUP BY si.shop_id,sp.name
     </select>
     <!--加入购物车-->
     <insert id="insertCart">
