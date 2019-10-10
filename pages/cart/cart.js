@@ -108,7 +108,7 @@ Component({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let resData = res.data.CartDetailList;
-        console.log(resData);
+        // console.log(resData);
         if(resData.length == 0){
           that.setData({
             hfShow: true,

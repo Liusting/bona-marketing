@@ -25,28 +25,31 @@
 .cuponListDetails {
   display: flex;
   height: 200rpx;
-  background-color: #fff;
   border-radius: 10px;
   margin: 5px 10px 0px 10px
 }
 .cuponListDetails .cupon_view {
   display: flex;
-  height:190rpx;
+  height:200rpx;
   width:130px;
-  margin-top: 5rpx;
   margin-left: 10rpx;
   text-align: center;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
 }
-.cuponListDetails .cuponInfo {
+.Info{
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  display: flex
+}
+.Info .cuponInfo {
   flex: 4;
   margin: 50rpx 10px 20px 30rpx;
   font-size:8px;
-}
-.cupon_money{
-  color: red;
-  font-size: 50rpx;
+
 }
 .cupon_use{
   display: flex; 
@@ -55,6 +58,11 @@
   align-items: center;
   margin-right: 10rpx;
 }
+.cupon_money{
+  color: red;
+  font-size: 50rpx;
+}
+
 
 
 

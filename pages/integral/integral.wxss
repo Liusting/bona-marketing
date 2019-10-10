@@ -3,6 +3,12 @@
   height: 100vh;
   width: 100%;
 }
+.inte{
+  height:60px;
+  width:50%;
+  display: flex;
+  align-items: center;
+}
 .head{
   background-color: rgb(55, 161, 231);
   height: 80px;
@@ -24,21 +30,28 @@
    justify-content:center;
 }
 .integral-detail{
-   display:flex;
   height: 40px;
-  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   align-items: center;
 }
 .myorder-text {
   font-size: 30rpx;
   color: gray;
-  width: 80%;
+
   margin-left: 10px;
 }
 .myorderlook-text {
+  position: relative;
   font-size: 30rpx;
   color: gray;
-  width: 60%;
-  text-align: right;
-  margin-left: 210px
+  float: right;
+  margin-left: 200px
+}
+.integralList{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }

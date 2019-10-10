@@ -1,4 +1,4 @@
-Page({
+  Page({
 
   /**
    * 页面的初始数据
@@ -6,9 +6,8 @@ Page({
   data: {
     currtab: 0,
     swipertab: [
-      { name: '未使用', index: 0 },
-      { name: '已使用', index: 1 },
-      { name: '已过期', index: 2 },
+      { name: '全部', index: 0 },
+      { name: '即将过期', index: 1 },
     ],
     allOrder: [
       { total: 100, reduce: 10, usetime: '2019.08.26-2019.09.01'},

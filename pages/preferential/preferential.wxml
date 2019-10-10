@@ -23,9 +23,11 @@
             </view>
           </view>
           </view>
+        <view class="Info">
           <view class="cuponInfo">
             <view style="font-size:15px;margin-bottom:10px;">满{{item.total}}立减{{item.reduce}}元</view>
-            <view style="font-size:8px;margin-bottom:10px;">{{item.usetime}}</view> 
+                        <view style="font-size:8px;margin-bottom:10px;">适用时间：2019.08.26-2019.09.01</view> 
+            <view style="font-size:8px;margin-bottom:10px;">适用门店：华为旗舰店，小米旗舰店</view> 
           </view>
           <view class="cupon_use">
             <button class="cu-btn bg-red round sm" bindtap="cupon_use" data-total="{{item.total}}"
@@ -33,6 +35,7 @@
             data-usetime="{{item.usetime}}"
             >立即使用</button>
           </view>
+        </view>
         </view>
       </view>
     </scroll-view>
@@ -54,43 +57,18 @@
             </view>
           </view>
           </view>
+          <view class="Info">
           <view class="cuponInfo">
             <view style="font-size:15px;margin-bottom:10px;">满200立减10元</view>
-            <view style="font-size:8px;margin-bottom:10px;">2019.08.26-2019.09.01</view> 
+            <view style="font-size:8px;margin-bottom:10px;">适用时间：2019.08.26-2019.09.01</view> 
+            <view style="font-size:8px;margin-bottom:10px;">适用门店：华为旗舰店，小米旗舰店</view> 
           </view>
           <view class="cupon_use">
-            <button class="cu-btn bg-grey round sm" >已使用</button>
+            <button class="cu-btn bg-grey round sm" >即将过期</button>
           </view>
         </view>
       </view>
-    </scroll-view>
-  </swiper-item>
-  <!-- 已过期 -->
-  <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
-      <view class="search_no" wx:if="{{!allOrder.length}}">
-        <view class="font_14"><image class="scimg" src="/images/person/search_no.png"></image></view>
-        <text>没有可用优惠券/(ㄒoㄒ)/~~</text>
-      </view>
-       <view  class="cuponDetails" wx:for="{{allOrder}}" wx:key=" ">
-        <view class="cuponListDetails">
-          <view class="cupon_view">
-          <view>
-            <text class="cupon_money">10</text><text style="color:red">元</text>
-            <view>
-            <text>满200元使用</text>
-            </view>
-          </view>
-          </view>
-          <view class="cuponInfo">
-            <view style="font-size:15px;margin-bottom:10px;">满200立减10元</view>
-            <view style="font-size:8px;margin-bottom:10px;">2019.08.26-2019.09.01</view> 
-          </view>
-          <view class="cupon_use">
-            <button class="cu-btn bg-grey round sm" >已过期</button>
-          </view>
-        </view>
-      </view>
+       </view>
     </scroll-view>
   </swiper-item>
 </swiper>

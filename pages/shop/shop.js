@@ -3,7 +3,25 @@ Page({
   data: {
     shopName:'',
     currentInt:'',
-    shopData: []
+    shopData: [],
+    orderList: [{
+      name: '综合',
+      index: 0
+    }, {
+      name: '销量',
+      index: 1
+    }, {
+      name: '价格',
+      index: 2
+    }],
+    TabCur: 0,
+    scrollLeft: 0
+  },
+  tabSelect(e) {
+    this.setData({
+      TabCur: e.currentTarget.dataset.index,
+      scrollLeft: (e.currentTarget.dataset.index - 1) * 60
+    })
   },
   //点击商品跳转到详情页
   spClik: function(e){

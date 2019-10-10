@@ -1,10 +1,44 @@
+<view class=" bg-gradual-pink userInfo" hidden="{{flag1}}">
+  <view class='header'>
+      <view class="userinfo-avatar">
+      <open-data  type="userAvatarUrl"></open-data>
+      </view> 
+  </view>
+    <view >
+    <text class="text-bold" style="font-size:40rpx;margin-left:30rpx">{{nickName}}</text>
+    <view>
+    <view catchtap="memberMessage" style="margin-left:30rpx" class="cuIcon-vip">注册会员<text class="cuIcon-right"></text></view>
+    </view>
+  </view>
+</view>
+
+<view class="userInfo" style="justify-content: center" hidden="{{flag}}">
+  <view class='header'>
+    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+      微信授权登录
+      </button>
+  </view>
+</view>
 <view class="container">
   <view class="navs">
-    <block wx:for-items="{{headItems}}" wx:key="name">
-      <view class="nav-item" catchtap="toMyAccount" data-name="{{item.name}}" data-id="{{item.id}}">
-        <text style="color:red;font-size:35rpx;font-weight:3600">{{item.number}}</text>
-        <text>{{item.name}}</text>
+    <block >
+      <view class="nav-item" bindtap="toMyAccount" data-id="{{1}}">
+        <text style="color:red;font-size:35rpx;font-weight:3600">3423.00</text>
+        <text>余额</text>
       </view>
+      <view class="nav-item" bindtap="toMyAccount" data-id="{{2}}">
+        <text style="color:red;font-size:35rpx;font-weight:3600">3423</text>
+        <text>积分</text>
+      </view>
+      <view class="nav-item" bindtap="toMyAccount" data-id="{{3}}">
+        <text style="color:red;font-size:35rpx;font-weight:3600">0</text>
+        <text>卡</text>
+      </view>
+      <view class="nav-item" bindtap="toMyAccount" data-id="{{4}}">
+        <text style="color:red;font-size:35rpx;font-weight:3600">4</text>
+        <text>券</text>
+      </view>
+
     </block>
   </view>
   <view class="order" >
@@ -12,13 +46,15 @@
     <text class="myorderlook-text" catchtap="toOrder" data-typeid="{{0}}">查看全部订单 </text>
     <view style="margin-right:10px" class="{{'cuIcon-right text-gray'}}"></view>    
   </view>
-  <view class="navs">
+  <view class="navs1">
     <block wx:for-items="{{orderItems}}" wx:key="name">
       <view class="nav-item" catchtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
-        <image src="{{item.imageurl}}" class="nav-image" />
-        <!-- <view class="nav-image cuIcon-{{item.icon}} "></view> -->
-        
-        <text>{{item.name}}</text>
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+        <!-- <view class="cu-tag badge" wx:if="{{item.badge!=0}}"> -->
+          <!-- <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block> -->
+        <!-- </view> -->
+      </view>
+      <text>{{item.name}}</text>
       </view>
     </block>
   </view>
@@ -35,18 +71,10 @@
       <text class="item-text">个人信息</text>
       <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
     </view>
-           <!-- 个人设置 -->
-    <view class="list-item" bindtap="userMessage">
-      <view class="{{'cuIcon-friend text-gray'}}" style="margin-left:5px"></view>
-      <text class="item-text">会员信息</text>
-      <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
-    </view>
       <!-- 账户安全 -->
     <view class="list-item" bindtap="accountSecurity">
       <view class="{{'cuIcon-safe text-gray'}}" style="margin-left:5px"></view>
       <text class="item-text">账户安全</text>
       <view class="{{'cuIcon-right text-gray'}}" style="margin-left:530rpx"></view>
     </view>
-
-
 </view>

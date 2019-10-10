@@ -1,4 +1,28 @@
+@import "/colorui/main.wxss";
+@import "/colorui/icon.wxss";
+.userInfo{
+  height:300rpx;
+  width:100%;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+.header {
+  width: auto;
+  height: 300rpx;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.userinfo-avatar {
+  overflow:hidden;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-left:20rpx;
 
+}
 .order-head{
   display: flex;
   height:60px; 
@@ -50,6 +74,13 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: #fff;
+  margin: 0px 10px 0px 10px
+}
+.navs1 {
+  display: flex;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #fff;
    margin: 0px 10px 0px 10px
 }
 .nav-item {
@@ -58,11 +89,6 @@
   align-items: center;
   flex-direction: column;
   padding: 20rpx;
-}
-.nav-item .nav-image {
-  width: 40rpx;
-  height: 40rpx;
-  margin: 5rpx;
 }
 .nav-item text {
   margin-top: 20rpx;

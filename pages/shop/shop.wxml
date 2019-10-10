@@ -3,10 +3,30 @@
 
 <!-- 头部：显示全选以及管理 -->
 <!-- 头部高度90rpx -->
-  <view style="line-height:100rpx;background:pink;height:100rpx">
-    <text style="padding-left:20rpx;font-size:30rpx">{{shopName}}</text>
+  <view class="shopback">
+    <text class="text-bold" style="padding-left:20rpx;font-size:35rpx">{{shopName}}</text>
+    <button style="margin-left:20rpx" class="cu-btn line round sm">收藏</button>
   </view>
-
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索店铺内的宝贝" confirm-type="search"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow-blur round">搜索</button>
+    </view>
+  </view>
+   <view class="cu-bar search bg-white cu-form-group">
+    <scroll-view scroll-x class="bg-white nav">
+      <view class="flex text-center">
+        <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{orderList}}" wx:key bindtap="tabSelect" data-index="{{index}}">
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+    <text class="cuIcon-cascades text-orange" ></text>  
+    <text class="cuIcon-list text-orange" hidden="true"></text>  
+  </view>
   <!-- 中部滑动：显示兑换商品列表 -->
   <scroll-view  scroll-y  style="height:calc(100vh - 100rpx);"> 
     <view style="background:#f1f1f1" class="cu-list grid col-2">

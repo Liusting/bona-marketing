@@ -1,31 +1,44 @@
-<view class="integral">
-
+<scroll-view style="height:100vh" scroll-y="true">
 <view class="head">
-<text class="head-name">我的积分</text>
+<text class="head-name">可用积分</text>
 <view>
 <text class="head-number">7849</text>
 </view>
 </view>
 
-<view class="integral-detail">
-<text class="myorder-text">积分明细</text>
-<text class="myorderlook-text" 
-    bindtap="more">更多</text>
-    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
-</view>
-
-  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
-<swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{4}}" wx:key>
-    <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
-  </swiper-item>
-</swiper>
-<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+  <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
     <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*1}}" >
-      <view class="cuIcon-{{item.icon}} text-{{item.color}}" data-index="{{item.index}}" bindtap="useintegral">
-      </view>
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}" data-index="{{item.index}}" bindtap="useintegral"></view>
       <text>{{item.name}}</text>
     </view>
   </view>
-</view>
+
+  <view class="integral-detail">
+    <text class="myorder-text">—— 积分明细 ——</text>
+  </view>
+  <view style="background:#fff;height:60px;display:flex;margin-bottom:20rpx">
+    <view class="inte">
+      <view style="margin-left:20rpx">
+        <text class="text-bold">消费积分</text>
+        <view class="text-sm">2019-09-12 12:01:23</view>
+      </view>
+    </view>
+    <view class="integralList" >
+      <text class="myorderlook-text">+10</text>
+    </view>
+  </view>
+
+  <view style="background:#fff;height:60px;display:flex;">
+    <view class="inte">
+      <view style="margin-left:20rpx">
+        <text class="text-bold">消费抵扣</text>
+        <view class="text-sm">2019-09-12 12:01:23</view>
+      </view>
+    </view>
+    <view class="integralList" >
+      <text class="myorderlook-text">-10</text>
+    </view>
+  </view>
+</scroll-view>
+
 

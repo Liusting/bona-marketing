@@ -5,6 +5,7 @@
     "pages/item_type/itemType",
     "pages/cart/cart",
     "pages/me/me",
+    "pages/me/memberMessage",
     "pages/sp_item_list/spItemList",
     "pages/sp_item/spItem",
     "pages/cesi/cesi",
@@ -26,7 +27,6 @@
     "pages/integral/integralSeckill",
     
 
-    "pages/integralDetail/integralDetail",
     "pages/appraise/appraise",
     "pages/shop/shop"
   ],

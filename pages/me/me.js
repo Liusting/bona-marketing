@@ -1,7 +1,12 @@
 // pages/mine/mine.js
 var app = getApp()
-Page({
+Component({
   data: {
+      // canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    avatarUrl: "",//用户头像
+    nickName: "",//用户昵称
+    flag:false,
+    flag1: true,
     //headItems
     headItems: [
       {
@@ -31,39 +36,64 @@ Page({
         typeId: 1,
         icon:'pay',
         name: '待付款',
-        url: 'bill',
-        imageurl: '../../images/person/personal_pay.png',
+        badge: 120
       },
       {
         typeId: 2,
         icon:'send',
         name: '待发货',
-        url: 'bill',
-        imageurl: '../../images/person/personal_shipped.png',
+        badge: 120
       },
       {
         typeId: 3,
         icon:'deliver',
         name: '已发货',
-        url: 'bill',
-        imageurl: '../../images/person/personal_receipt.png'
+        badge: 120
       },
       {
         typeId: 4,
         icon:'edit',
         name: '待评价',
-        url: 'bill',
-        imageurl: '../../images/person/personal_comment.png'
+        badge: 120
       },
       {
         typeId: 5,
-        icon: 'edit',
+        icon: 'refund',
         name: '退货维权',
-        url: 'bill',
-        imageurl: '../../images/person/personal_comment.png'
+        badge: 120,
       }
     ],
   },
+  // tab切换的时候马上响应数据
+  ready: function () {
+    this.bindGetUserInfo();
+  },
+  methods:{
+  bindGetUserInfo: function (e) {
+    var that = this;
+    // 判断是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              var userInfo = res.userInfo
+              var nickName = userInfo.nickName;//获取微信用户昵称
+              var avatarUrl = userInfo.avatarUrl; //获取微信用户头像存放的Url 
+              that.setData({
+                avatarUrl: avatarUrl,
+                nickName: nickName,
+                flag: true,
+                flag1: false
+              })
+            }
+          })
+        }
+      }
+    })
+  }
+,
   toMyAccount:function(e){
     let id = e.currentTarget.dataset.id;
     switch(id){
@@ -125,6 +155,12 @@ Page({
       url: '../addressList/addressList?type=' + 3
     });
   },
+  memberMessage: function(){
+    let url = "../me/memberMessage";
+    wx.navigateTo({
+      url: url
+    });
+  },
   // 个人信息
   userMessage: function () {
     let url = "../userMessage/userMessage";
@@ -133,6 +169,10 @@ Page({
     });
   },
   onLoad: function () {
+    console.log(222)
   },
-
+  onShow:function(){
+console.log(1);
+  }
+  }
 })

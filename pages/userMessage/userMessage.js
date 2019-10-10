@@ -7,11 +7,11 @@ Page({
   data: {
     nameShow:'',
     nameShow1: '',
-    name:'刘桂廷',
-    array: ['男', '女'],//性别选择
-    date: '2019-08-10',//生日默认时间
+    name:'请填写',
+    array: ['请选择','男', '女'],//性别选择
+    date: '完成设置生日当天独享特惠',//生日默认时间
     index : 0,//性别默认男
-    phoneNumber:'18648840747'
+    phoneNumber:'请填写'
 
   },
  showModal(e) {

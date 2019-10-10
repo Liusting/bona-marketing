@@ -1,23 +1,8 @@
-<view  style="background:#fff;margin-bottom:20rpx">
-  <view class="list-item1">
-    <view class="userInfo">
-    <text class="text-bold item-text">头像</text>
-    </view>
-    <view style="margin-right:14px">
-    <view class="userinfo-avatar">
-      <open-data  type="userAvatarUrl"></open-data>
-      </view>
-    </view> 
-  </view>
-  <view class="list-item">
-    <text class="text-bold item-text">微信昵称</text>
-    <text style="margin-right:14px" class="myorderlook-text">Liusting</text>
-  </view>
-</view>
+
 <view class="container">
   <!-- 姓名 -->
   <view class="list-item">
-    <text class="text-bold item-text">真实姓名</text>
+    <text class="text-bold item-text">积分政策</text>
     <text class="myorderlook-text"
     bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">{{name}}</text>
     <text class="{{'cuIcon-right text-gray'}}" ></text>
@@ -25,13 +10,13 @@
   
 <!-- 手机号 -->
   <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">手机</text>
+    <text class="text-bold item-text">折扣政策</text>
     <text class="myorderlook-text" bindtap="showModal" data-target="phonenumberModal" data-typeid="{{0}}">{{phoneNumber}}</text>
     <text class="{{'cuIcon-right text-gray'}}" ></text>
   </view>
   <!-- 性别 -->
   <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">性别</text>
+    <text class="text-bold item-text">生日优惠</text>
     <picker class="myorderlook-text" mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
     <view >
       {{array[index]}}<text class="{{'cuIcon-right text-gray'}}"></text>
@@ -42,19 +27,6 @@
   <view>
 </view>
 
-<view class="text-grey" style="margin:10rpx 0rpx 10rpx 20rpx">
-生日信息只能修改一次
-</view>
-<view style="background:#fff;margin-top:20rpx">
-<view class="list-item">
- <text class="text-bold item-text">生日</text>
- <picker class="myorderlook-text" mode="date" value="{{date}}" bindchange="changeDate">
- <view class="picker-date">
-  {{date}}<text class="{{'cuIcon-right text-gray'}}" ></text>
- </view>
- </picker>
-</view>
-</view>
 <!-- 点击姓名时出现弹框 -->
 		<view class="cu-modal {{modalName=='nameModal'?'show':''}}">
 			<form class="cu-dialog" bindsubmit="formSubmit" bindreset="formReset">
