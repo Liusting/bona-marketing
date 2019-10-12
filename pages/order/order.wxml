@@ -1,15 +1,15 @@
-<view class="Receiving_address" bindtap="bindaddress" hidden="{{flag}}">
-    <view>
-        <view class="reviver" style="font-size:32rpx;font-weight:900">
-        <text class="{{'cuIcon-location text-gray'}}"></text>收货人：
-        <text >{{address_info.name}}</text>
-        <text style="margin-left:45px">{{address_info.phone}}</text>
-       </view> 
-        <view style="margin-top:8px">收货地址：
-        <text>{{address_info.address}}</text>
-        </view> 
-    </view>
-    <view class="{{'cuIcon-right text-gray'}}" ></view>
+<view class=" Receiving_address" bindtap="bindaddress" hidden="{{flag}}">
+  <view class="cuIcon-locationfill text-orange" ></view>
+  <view>
+    <view class="reviver" style="font-size:32rpx;font-weight:900">收货人：
+      <text >{{address_info.name}}</text>
+      <text style="margin-left:45px">{{address_info.phone}}</text>
+    </view> 
+    <view style="margin-top:8px">收货地址：
+      <text>{{address_info.address}}</text>
+    </view> 
+  </view>
+  <view class="{{'cuIcon-right text-gray'}}" ></view>
 </view>
 
 <view class="Receiving_address" hidden="{{flag1}}">
@@ -26,53 +26,57 @@
 </view>
 
 
- <scroll-view scroll-y style="height:430px;">
-<view class="shop">
-      <view class="orderListTitle" >
+<scroll-view scroll-y style="height:430px;">
+  <view class="shop">
+    <view class="orderListTitle" >
       <view style="height:100%;width:100%;">
+        <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
         <text class="userName" >小米旗舰店</text>
+      </view>
+    </view>
+    <view class="orderListDetails">
+      <view class="cartnull">
+        <image class="scimg" src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+      </view>
+      <view class="goods_content">
+        <text class='shop_name' >小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>        
+        <text style="margin-top:10rpx;" class='shop_type'>规格：天蓝色，8G，16G，顺丰配送</text>  
+        <view style="margin-top:20rpx;">
+          <text class="iconfont icon-arrowright text-red text-lg" style="margin-right:10px">￥1699.89</text>
+          <text class="text-sm" style="text-decoration:line-through" >￥1799.00</text>
+          <text style="float:right;margin-right:10rpx">共2件</text>
         </view>
-      </view>
-      <view class="orderListDetails">
-          <view class="goods_img">
-    <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+     </view>
     </view>
-    <view class="goods_content">
-      <text class='shop_name' >小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>        
-      <text style="margin-top:10rpx;" class='shop_type'>天蓝色，8G，16G，顺丰配送</text>  
-      <view style="margin-top:20rpx;">
-      <text class="iconfont icon-arrowright" style="color:red;margin-right:90px">￥{{1699.00}}</text>
-      <text class="iconfont icon-arrowright">共2件</text>
-      </view>
-     </view>
-     </view>
-</view>
+  </view>
 
-<view class="msg_list" bindtap="preferential">
-    <view class="msg_item">
-        <view>商品优惠</view>
-        <view >满{{preferential_info.total}}减{{preferential_info.reduce}}<text class="{{'cuIcon-right text-gray'}}"></text></view> 
-        <!-- <view >使用优惠券<text class="{{'cuIcon-right text-gray'}}"></text></view>  -->
+  <!-- 配送方式 -->
+  <view class="msg_list" >
+    <view class="msg_item" bindtap="showModal" data-target="RadioModal">
+      <view>配送方式</view>
+      <view >{{modeName}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
     </view>   
-</view>
+    <view class="msg_item" bindtap="showModal" data-target="timeModal">
+      <view>自提时间</view>
+      <view >{{modeName}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
+    </view> 
+  </view>
  
-<view class="msg_list">
-    <view class="msg_item">
-        <view>商品金额</view>
-        <view>￥1699.00</view>
+ <!-- 商品优惠 -->
+  <view class="msg_list">
+    <view class="msg_item" bindtap="preferential">
+      <view>商品优惠</view>
+      <view >满{{preferential_info.total}}减{{preferential_info.reduce}}<text class="{{'cuIcon-right text-gray'}}"></text></view> 
     </view>
-    <view class="msg_item">
-        <view>配送方式</view>
-        <view bindtap="showModal" data-target="RadioModal">{{modeName}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view>
-    <!-- 留言模块 -->
+
+      <!-- 留言模块 -->
     <view class="message">
-        <view style="width:18%;">买家留言</view>
-        <input style="width:82%;" placeholder="留言建议提前协商"/>
+      <view style="width:18%;">订单备注</view>
+      <input style="width:82%;" placeholder="其他要求"/>
     </view>
-    <view class="Total">
-       合计 <text class="Total_price">￥3398.00</text>
-    </view>
+    <view class="Total"> 合计 
+      <text class="Total_price">￥3398.00</text>
+  </view>
 </view>
 </scroll-view>
 <view class="order_pay">
@@ -92,18 +96,34 @@
        </view>
         </view>
 
-<!-- 配送方式选择 -->
-<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
-  <view class="cu-dialog" catchtap>
-    <radio-group class="block">
-      <view class="cu-list menu text-left">
-        <view class="cu-item" wx:for="{{mode}}" wx:key>
-          <label class="flex justify-between align-center flex-sub" bindtap="radioselect" data-item="{{item}}">
-            <view class="flex-sub">{{item.name}}</view>
-            <radio  bindtap="hideModal" checked="{{item.checked}}" class="round"></radio>
-          </label>
+  <!-- 配送方式选择 -->
+  <view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" >
+      <radio-group class="block">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{mode}}" wx:key>
+            <label class="flex justify-between align-center flex-sub" bindtap="radioselect" data-item="{{item}}">
+              <view class="flex-sub">{{item.name}}</view>
+              <radio  bindtap="hideModal" checked="{{item.checked}}" class="round"></radio>
+            </label>
+          </view>
         </view>
-      </view>
-    </radio-group>
+      </radio-group>
+    </view>
   </view>
-</view>
+
+    <!-- 自提时间选择 -->
+  <view class="cu-modal {{modalName=='timeModal'?'show':''}}" >
+    <view class="cu-dialog" >
+            <view class="left">
+              <view wx:key="lists" wx:for="{{lists}}">
+                <view class='text-style' bindtap='jumpIndex' data-menuindex='{{index}}'>
+                  <view class="{{indexId==index?'active1':''}}">{{item}}</view>
+                  
+                </view>
+  
+              </view>
+
+          </view>
+    </view>
+  </view>

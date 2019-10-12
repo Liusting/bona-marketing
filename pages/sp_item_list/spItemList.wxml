@@ -66,10 +66,10 @@
         <view class='height15'></view>
       </view>
       <view class="content">
-        <image bindtap='spClick' data-id='{{item.id}}' src="http://img5.imgtn.bdimg.com/it/u=3300305952,1328708913&fm=26&gp=0.jpg" ></image>
+        <image bindtap='spClick' data-id='{{item.id}}' data-shopId='{{item.shopId}}' data-shopName='{{item.shopName}}' src="http://img5.imgtn.bdimg.com/it/u=3300305952,1328708913&fm=26&gp=0.jpg" ></image>
         <view class="desc">
-          <view bindtap='spClick' data-id='{{item.id}}' class="name"> {{item.name}}</view>
-          <view bindtap='spClick' data-id='{{item.id}}' class="text-gray text-sm">
+          <view bindtap='spClick' data-id='{{item.id}}' data-shopId='{{item.shopId}}' data-shopName='{{item.shopName}}'  class="name"> {{item.name}}</view>
+          <view bindtap='spClick' data-id='{{item.id}}' data-shopId='{{item.shopId}}' data-shopName='{{item.shopName}}'  class="text-gray text-sm">
             <text class="text-xl text-price text-red">{{item.money}}</text>
             <text class="margin-lr-xs"></text> {{item.total}}人付款
             <text class="margin-lr-xs"></text> {{item.place}}

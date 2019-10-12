@@ -5,7 +5,7 @@
 <!-- 头部高度90rpx -->
   <view class="shopback">
     <text class="text-bold" style="padding-left:20rpx;font-size:35rpx">{{shopName}}</text>
-    <button style="margin-left:20rpx" class="cu-btn line round sm">收藏</button>
+    <button style="margin-left:20rpx" class="cu-btn line round sm"><text class="cuIcon-we" style="margin-right:5rpx"></text>收藏</button>
   </view>
   <view class="cu-bar search bg-white">
     <view class="search-form round">
@@ -30,7 +30,7 @@
   <!-- 中部滑动：显示兑换商品列表 -->
   <scroll-view  scroll-y  style="height:calc(100vh - 100rpx);"> 
     <view style="background:#f1f1f1" class="cu-list grid col-2">
-      <view style="padding:10rpx 10rpx 10rpx 10rpx" wx:for="{{shopData}}">
+      <view style="padding:10rpx 10rpx 10rpx 10rpx" wx:for="{{shopData}}" wx:key>
           <view style="background:#fff;"  class="radius" data-id="{{item.id}}" bindtap="spClik">
           <view style="width:100%;height:500rpx">
             <image style="padding:5rpx 3rpx 3rpx 3rpx" src="{{item.imageUrl}}"  mode='aspectFill' ></image>

@@ -39,6 +39,8 @@ Page({
     spObjectList: [],
     spTypeList: [],
     itemId: 0,
+    shopId:'',
+    shopName:'',
 
     // 参数view打开还是关闭状态
     groupViewOpen: false,
@@ -51,8 +53,15 @@ Page({
   /**
     * 生命周期函数--监听页面显示
     */
-  onLoad: function (e) {;
+  onLoad: function (e) {
+    console.log(e);
     let itemId = e.itemId;
+    let shopId = e.shopId;
+    let shopName = e.shopName;
+    this.setData({
+      shopId: shopId,
+      shopName: shopName
+    })
     let that = this;
     wx.request({
       url: app.ipAndPort + '/spCart/getCartDetail',
@@ -454,13 +463,15 @@ Page({
   },
   // 首页
   home() {
-    wx.reLaunch({
-      url: '../index/index'
+    let shopId = this.data.shopId;
+    let shopName = this.data.shopName;
+    wx.navigateTo({
+      url: '../shop/shop?shopId=' + shopId + '&shopName=' + shopName
     })
   },
   // 加入购物车点击方法
   jrgwcClick: function () {
-   
+
     let spTypeList = this.data.spTypeList;
     let spTypeObjList = this.data.spTypeObjList;
     let spClickMap = this.data.spClickMap;

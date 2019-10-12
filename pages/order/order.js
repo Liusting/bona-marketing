@@ -5,6 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    lists: [
+      "今天", "明天", "后天"],
+    indexId: 0,
+    currentTab: 0,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+    TabCur: 0,
+    MainCur: 0,
+    VerticalNavTop: 0,
+    list: [{ name: "今天" }, { name: "明天" }, { name: "后天"}],
+    load: true,
     address_info: {}, //地址信息
     preferential_info: {},//商品优惠信息
     goods_info: [], //商品信息
@@ -14,8 +26,8 @@ Page({
     total_price: '', //合计价格
     modeName:'快递',
     mode: [
-      { type: '0', name: '快递', checked:'true' },
-     { type: '1', name: '门店取货' }, 
+     { type: '0', name: '快递', checked:'true' },
+     { type: '1', name: '门店自提' }, 
      { type: '2', name: '商家配送' }, 
      { type: '3', name: '系统配送'}
      ],
@@ -208,6 +220,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    });
+    // let list = [{}];
+    // for (let i = 0; i < 26; i++) {
+    //   list[i] = {};
+    //   list[i].name = String.fromCharCode(65 + i);
+    //   list[i].id = i;
+    // }
+    // this.setData({
+      // list: list,
+      // listCur: list[0]
+    // })
     // var model = JSON.parse(options.model);
     // console.log(this.data.preferential_info)
     // this.setData({
@@ -387,4 +413,68 @@ Page({
   // onShareAppMessage: function () {
 
   // }
+  onReady() {
+    wx.hideLoading()
+  },
+  tabSelect(e) {
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      MainCur: e.currentTarget.dataset.id,
+      VerticalNavTop: (e.currentTarget.dataset.id - 1) * 50
+    })
+  },
+  VerticalMain(e) {
+    let that = this;
+    let list = this.data.list;
+    let tabHeight = 0;
+    if (this.data.load) {
+      for (let i = 0; i < list.length; i++) {
+        let view = wx.createSelectorQuery().select("#main-" + list[i].id);
+        view.fields({
+          size: true
+        }, data => {
+          list[i].top = tabHeight;
+          tabHeight = tabHeight + data.height;
+          list[i].bottom = tabHeight;
+        }).exec();
+      }
+      that.setData({
+        load: false,
+        list: list
+      })
+    }
+    let scrollTop = e.detail.scrollTop + 20;
+    for (let i = 0; i < list.length; i++) {
+      if (scrollTop > list[i].top && scrollTop < list[i].bottom) {
+        that.setData({
+          VerticalNavTop: (list[i].id - 1) * 50,
+          TabCur: list[i].id
+        })
+        return false
+      }
+    }
+  },
+  //点击切换 
+  clickTab: function (e) {
+    console.log(e);
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+
+  // 左侧点击事件
+  jumpIndex(e) {
+    console.log(e.currentTarget.dataset.menuindex);
+    let index = e.currentTarget.dataset.menuindex
+    let that = this
+    that.setData({
+      indexId: index
+    })
+  }
+
 })

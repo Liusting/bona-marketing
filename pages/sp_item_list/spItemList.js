@@ -295,8 +295,10 @@ Page({
   spClick:function(e){
     var that = this;
     var itemId = e.currentTarget.dataset.id;//获取商品的id值
+    var shopId = e.currentTarget.dataset.id
+    var shopname = e.currentTarget.dataset.shopname
     wx.navigateTo({
-      url: '../sp_item/spItem?itemId=' + itemId
+      url: '../sp_item/spItem?itemId=' + itemId + '&shopId=' + shopId + '&shopName=' + shopname
     });
   },
 

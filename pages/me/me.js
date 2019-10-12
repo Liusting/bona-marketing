@@ -81,6 +81,7 @@ Component({
               var userInfo = res.userInfo
               var nickName = userInfo.nickName;//获取微信用户昵称
               var avatarUrl = userInfo.avatarUrl; //获取微信用户头像存放的Url 
+              console.log(avatarUrl);
               that.setData({
                 avatarUrl: avatarUrl,
                 nickName: nickName,

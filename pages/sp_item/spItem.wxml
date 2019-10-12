@@ -170,13 +170,13 @@
 
   <view class="cu-bar tabbar bg-white shadow foot bottom_view_height2">
     <view class="action" open-type="contact">
-      <view class="cuIcon-service">
+      <view class="cuIcon-service text-blue">
         <!-- <view class="cu-tag badge"></view> -->
       </view>
       客服
     </view>
     <view class="action" bindtap="home">
-      <view class="cuIcon-home"></view> 首页
+      <view class="cuIcon-shop text-red"></view> 店铺
     </view>
     <view class="action">
       <view class="cuIcon-cart" bindtap="cart">

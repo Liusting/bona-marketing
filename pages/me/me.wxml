@@ -3,6 +3,7 @@
       <view class="userinfo-avatar">
       <open-data  type="userAvatarUrl"></open-data>
       </view> 
+      <!-- <view class="cu-avatar xl round margin-left" style="background-image:url(https://wx.qlogo.cn/mmopen/vi_32/BwiacHibydfHib4eu1PRniaL5ULnIjs0FdibKm4wXOTfCV0K6ib7bfwTcLW1PRggNOXpaklmlVkdNl80WVD2AHT93rJQ/132);"></view> -->
   </view>
     <view >
     <text class="text-bold" style="font-size:40rpx;margin-left:30rpx">{{nickName}}</text>
@@ -20,7 +21,7 @@
   </view>
 </view>
 <view class="container">
-  <view class="navs">
+  <view class="navs" style="margin-top:-40rpx;  border-top-left-radius: 10px;border-top-right-radius: 10px;">
     <block >
       <view class="nav-item" bindtap="toMyAccount" data-id="{{1}}">
         <text style="color:red;font-size:35rpx;font-weight:3600">3423.00</text>
