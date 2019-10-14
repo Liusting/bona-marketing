@@ -16,22 +16,3 @@
   color: #ffffff;
   text-align: right;
 }
-.money{
-  margin-left: 30px
-}
-.money-input{
-  border: 1px solid #db6f6f;
-  width: 100px;
-  margin-left: 30px;
-  height: 30px;
-}
-.recharge-btn{
-  font-size: 30rpx;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
-  background-color: rgba(255, 0, 0, 0.671);
-  width: 260px;
-  color: #ffffff;
-  border-radius: 50px
-}

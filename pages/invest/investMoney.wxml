@@ -1,0 +1,24 @@
+  <view class="invest-cart padding-sm">
+    <view class="cu-avatar round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
+    <text class="cart-head">新领客储值卡</text>
+    <view class="cu-bar" style="margin-top:180rpx">
+    <text class="cart-money">￥899.00</text>
+    <text class="text-white">储值享好礼，支付更方便</text>
+    </view>
+  </view>
+
+<view class="bg-white">
+<view class="padding-sm">
+<button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="1">20元</button>
+<button style="background:{{backgoroundColor}};color:{{color}}" class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="2">50元</button>
+<button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="3">100元</button>
+<button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="4">200元</button>
+<button class="margin-sm cu-btn round line-blue">自定义金额</button>
+<button hidden="true" class="margin-sm cu-btn line-blue"><input placeholder="自定义金额"></input></button>
+</view>
+<view class="text-center ">
+<button class="cu-btn bg-red round margin-tb-sm lg">立即充值</button>
+</view>
+</view>
+
+

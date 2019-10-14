@@ -1,17 +1,13 @@
-
+// pages/invest/investNotice.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
-  investMoney:function(){
-    wx.navigateTo({
-      url: '../invest/investMoney',
-    })
-},
   /**
    * 生命周期函数--监听页面加载
    */

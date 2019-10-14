@@ -17,18 +17,17 @@
     "pages/addressList/addressList",
     "pages/accountSecurity/accountSecurity",
     "pages/sp_order_list/spOrderList",
-
-
+    "pages/invest/invest",
+    "pages/invest/investMoney",
+    "pages/invest/investRecord",
+    "pages/invest/investNotice",
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
-    "pages/invest/invest",
     "pages/order/order",
     "pages/order/orderDetail",
     "pages/integral/integral",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",
-    
-
     "pages/appraise/appraise",
     "pages/shop/shop"
   ],

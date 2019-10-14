@@ -1,64 +1,12 @@
-
-<view class="container">
-  <!-- 姓名 -->
-  <view class="list-item">
-    <text class="text-bold item-text">积分政策</text>
-    <text class="myorderlook-text"
-    bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">{{name}}</text>
-    <text class="{{'cuIcon-right text-gray'}}" ></text>
-  </view>
-  
-<!-- 手机号 -->
-  <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">折扣政策</text>
-    <text class="myorderlook-text" bindtap="showModal" data-target="phonenumberModal" data-typeid="{{0}}">{{phoneNumber}}</text>
-    <text class="{{'cuIcon-right text-gray'}}" ></text>
-  </view>
-  <!-- 性别 -->
-  <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">生日优惠</text>
-    <picker class="myorderlook-text" mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
-    <view >
-      {{array[index]}}<text class="{{'cuIcon-right text-gray'}}"></text>
-    </view>
-    </picker>
-  </view>
-  </view>
-  <view>
+<view class="bg-white padding-xs">
+  <text>当前会员等级：注册会员</text>
 </view>
 
-<!-- 点击姓名时出现弹框 -->
-		<view class="cu-modal {{modalName=='nameModal'?'show':''}}">
-			<form class="cu-dialog" bindsubmit="formSubmit" bindreset="formReset">
-				<view class="cu-bar bg-white justify-end">
-					<view class="content">修改姓名</view>
-				</view>
-				<view style="background-color:white">
-					 <input class="name-input" maxlength="10" name='userName' value='{{name}}' type="text" placeholder="请输入真实姓名" />
-				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green text-green" form-type="reset" bindtap="hideModal">取消</button>
-						<button class="cu-btn bg-green margin-left" form-type="submit" bindtap="hideModal">确定</button>
-					</view>
-				</view>
-			</form>
-		</view>
-   
-      <!-- 点击修改手机号码时出现弹框 -->
-		<view class="cu-modal {{modalName=='phonenumberModal'?'show':''}}">
-						<form class="cu-dialog" bindsubmit="phoneNumberSubmit" bindreset="formReset">
-				<view class="cu-bar bg-white justify-end">
-					<view class="content">修改手机号码</view>
-				</view>
-				<view style="background-color:white">
-					 <input class="name-input" maxlength="11" name='phoneNumber' value='{{phoneNumber}}' type="text" placeholder="请输入手机号码" />
-				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green text-green" form-type="reset" bindtap="hideModal">取消</button>
-						<button class="cu-btn bg-green margin-left" form-type="submit" bindtap="hideModal">确定</button>
-					</view>
-				</view>
-			</form>
-		</view>
+<view class="bg-white" style="margin-top:10rpx">
+<view class="padding-xs">注册会员尊享4大特权</view>
+<view>
+<block>
+
+</block>
+</view>
+</view>

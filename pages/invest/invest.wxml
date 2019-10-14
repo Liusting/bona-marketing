@@ -1,16 +1,23 @@
-<view class="invest">
-  <view class="invest-cart">
-    <text class="cart-head">储值卡</text>
+  <view class="invest-cart padding-sm">
+    <view class="cu-avatar round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
+    <text class="cart-head">新领客储值卡</text>
+    <view class="cu-bar" style="margin-top:180rpx">
     <text class="cart-money">￥899.00</text>
-    <text class="cart-desc">储值享好礼，支付更方便</text>
+    <text class="text-white">储值享好礼，支付更方便</text>
+    </view>
+  </view>
+  <view class="bg-white padding-sm">
+    <view class="padding-sm cu-bar" style="border-bottom: 1px solid #f1f1f1" bindtap="investMoney">立即充值
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="padding-sm cu-bar" style="border-bottom: 1px solid #f1f1f1" bindtap="investRecord">交易记录
+      <text class="cuIcon-right"></text>
+    </view>
+    <view class="padding-sm cu-bar" style="border-bottom: 1px solid #f1f1f1">卡号
+      <text>33324354364534</text>
+    </view>
+    <view class="padding-sm cu-bar" bindtap="investNotice">使用须知
+      <text class="cuIcon-right"></text>
+    </view>
   </view>
 
-  <view>
-    <text class="money">充值金额</text>
-    <input placeholder="自定义金额" class="money-input"></input>
-  </view>
-
-  <view>
-    <button class="recharge-btn">立即充值</button>
-  </view>
-</view>
