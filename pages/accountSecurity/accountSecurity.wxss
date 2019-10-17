@@ -29,7 +29,6 @@
   flex-direction: row;
   align-items: center;
   height: 80rpx;
-  border-bottom:1px solid lightgray;
 }
 .list-item1 {
   margin-left: 20rpx;

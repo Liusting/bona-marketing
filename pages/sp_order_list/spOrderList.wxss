@@ -71,12 +71,6 @@
   line-height: 70rpx;
 }
  
-.orderListTitle .userName {
-  padding-right: 10rpx;
-  margin-left:20rpx;
-  font-weight: bolder;
-    font-size:30rpx;
-}
  
 .orderListTitle .orderStatus {
   float: right;

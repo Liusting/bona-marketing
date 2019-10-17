@@ -1,14 +1,15 @@
 {
   "pages": [
-
+    "pages/me/memberMessage",
     "pages/index/index",
     "pages/home/home",
     "pages/item_type/itemType",
     "pages/cart/cart",
     "pages/me/me",
-    "pages/me/memberMessage",
+
     "pages/sp_item_list/spItemList",
     "pages/sp_item/spItem",
+    "pages/sp_item/coupon",
     "pages/cesi/cesi",
     "pages/cesi2/cesi2",
     "pages/logs/logs",
@@ -17,6 +18,7 @@
     "pages/addressList/addressList",
     "pages/accountSecurity/accountSecurity",
     "pages/sp_order_list/spOrderList",
+    "pages/sp_order_list/orderDetail",
     "pages/invest/invest",
     "pages/invest/investMoney",
     "pages/invest/investRecord",
@@ -24,7 +26,7 @@
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
     "pages/order/order",
-    "pages/order/orderDetail",
+
     "pages/integral/integral",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",

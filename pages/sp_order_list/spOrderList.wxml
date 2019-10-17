@@ -3,9 +3,8 @@
     <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
   </block>
 </view>
-  <view style="height: 20rpx;"></view>
 
-<view>
+<view class="margin-top">
 <swiper  current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
   <!-- 全部 -->
   <swiper-item>
@@ -22,8 +21,7 @@
       <view  class="cu-item shadow" wx:for="{{allOrder}}" wx:key=" ">
         <view class="orderListTitle">
         <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-          <text class="userName">{{item.name}}</text>
-          <text class="{{'cuIcon-right text-gray'}}" ></text>
+<text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
           <text class="orderStatus">{{item.state}}</text>
         </view>
         <view class="orderListDetails">
@@ -64,12 +62,11 @@
        <view class="cu-card article">
         <view class="cu-item shadow" wx:for="{{orderList}}" wx:key=" " >
           <view class="orderListTitle">
-          <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-            <text class="userName">{{item.shop_name}}</text>
-            <text class="{{'cuIcon-right text-gray'}}" ></text>
+            <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+            <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'等待买家付款':''}}</text>
           </view>
-          <view class="orderListDetails">
+          <view class="orderListDetails" bindtap="orderDetail">
             <view class="productImg">
               <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
             </view>
@@ -79,12 +76,12 @@
             </view>
             <view style="height:100%;width:150rpx;margin-top:5rpx">
               <text style="float:right;margin-right:20rpx;">￥1399.86</text>
-              <text style="float:right;margin-right:20rpx;color:gray;font-size:20rpx;">x{{item.number}}                </text>
+              <text style="float:right;margin-right:20rpx;color:gray;font-size:20rpx;">x{{item.number}}</text>
             </view>
           </view>
           <view class="productCount">
-             <text style="float:right;margin-right:20rpx;">合计:￥1399.86</text>
-             <text style="float:right;margin-right:20rpx;">共{{item.number}}件商品</text>
+             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" class="cu-btn line-red round">付款</button>
@@ -110,8 +107,7 @@
         <view class="cu-item shadow" wx:for="{{orderList}}" wx:key=" " >
           <view class="orderListTitle">
           <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-            <text class="userName">{{item.shop_name}}</text>
-            <text class="{{'cuIcon-right text-gray'}}" ></text>
+            <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'买家已付款':''}}</text>
           </view>
           <view class="orderListDetails">
@@ -128,8 +124,8 @@
             </view>
           </view>
           <view class="productCount">
-             <text style="float:right;margin-right:20rpx;">合计:￥1399.86</text>
-             <text style="float:right;margin-right:20rpx;">共{{item.number}}件商品</text>
+             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" class="cu-btn line-red round">查看物流</button>
@@ -155,8 +151,7 @@
         <view class="cu-item shadow" wx:for="{{orderList}}" wx:key=" " >
           <view class="orderListTitle">
           <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-            <text class="userName">{{item.shop_name}}</text>
-            <text class="{{'cuIcon-right text-gray'}}" ></text>
+            <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'卖家已发货':''}}</text>
           </view>
           <view class="orderListDetails">
@@ -173,8 +168,8 @@
             </view>
           </view>
           <view class="productCount">
-             <text style="float:right;margin-right:20rpx;">合计:￥1399.86</text>
-             <text style="float:right;margin-right:20rpx;">共{{item.number}}件商品</text>
+             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" bindtap="confirmGet" data-id="{{item.id}}" class="cu-btn line-red round">确认收货</button>
@@ -199,9 +194,8 @@
        <view class="cu-card article">
         <view class="cu-item shadow" wx:for="{{orderList}}" wx:key=" " >
           <view class="orderListTitle">
-          <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-            <text class="userName">{{item.shop_name}}</text>
-            <text class="{{'cuIcon-right text-gray'}}" ></text>
+            <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+            <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'交易成功':''}}</text>
           </view>
           <view class="orderListDetails">
@@ -218,8 +212,8 @@
             </view>
           </view>
           <view class="productCount">
-             <text style="float:right;margin-right:20rpx;">合计:￥1399.86</text>
-             <text style="float:right;margin-right:20rpx;">共{{item.number}}件商品</text>
+             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" bindtap="appraise" data-id="{{item.id}}" class="cu-btn line-red round">评价</button>

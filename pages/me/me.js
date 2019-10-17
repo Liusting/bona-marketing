@@ -36,30 +36,30 @@ Component({
         typeId: 1,
         icon:'pay',
         name: '待付款',
-        badge: 120
+        badge: 7
       },
       {
         typeId: 2,
         icon:'send',
         name: '待发货',
-        badge: 120
+        badge: 0
       },
       {
         typeId: 3,
         icon:'deliver',
-        name: '已发货',
+        name: '待收货',
         badge: 120
       },
       {
         typeId: 4,
         icon:'edit',
         name: '待评价',
-        badge: 120
+        badge: 2
       },
       {
         typeId: 5,
         icon: 'refund',
-        name: '退货维权',
+        name: '退货/售后',
         badge: 120,
       }
     ],
@@ -124,9 +124,31 @@ Component({
   //事件处理函数
   toOrder: function (e) {
     let typeId = e.currentTarget.dataset.typeid;//取遍历的id值
-    wx.navigateTo({
-      url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-    })
+    switch (typeId){
+      case 0:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        })
+      case 1:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        })
+      case 2:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        })
+      case 3:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        })
+      case 4:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        })
+      case 5: wx.navigateTo({
+        url: '../address/address',
+      })
+    }
   },
   // 我的优惠
   preferential: function () {

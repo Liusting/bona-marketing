@@ -36,6 +36,12 @@ Page({
     this.getDeviceInfo()
   },
 
+  // 订单详情页
+  orderDetail:function(){
+    wx.navigateTo({
+      url: '../sp_order_list/orderDetail',
+    })
+  },
   getDeviceInfo: function () {
     let that = this
     wx.getSystemInfo({

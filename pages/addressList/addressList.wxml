@@ -1,10 +1,6 @@
-<view class="head">
-  <view bindtap="getWeixinAddress" >
-    <text style="margin-left:10px" class="{{'cuIcon-weixin text-green'}}"></text>
-    <text>获取微信收货地址</text>
-        <text class="{{'cuIcon-right text-gray'}}" style="margin-left:440rpx"></text>
-   </view>
-
+<view class="bg-white text-lg align-center cu-bar" bindtap="getWeixinAddress">
+  <text><text  class="margin-left {{'cuIcon-weixin text-green'}}"></text>获取微信收货地址</text>
+  <text class="{{'cuIcon-right text-gray'}}"></text>
 </view>
 <scroll-view class="scroll" scroll-y="true" style="margin-top:5px">
   <view  wx:for="{{addressList}}"  wx:key bindtap='addClick' 
@@ -13,17 +9,17 @@
   data-address='{{item.address}}'
   data-phone='{{item.phoneNumber}}'
   >
-    <view class="product-name-wrap" >    
-      <view class="ui-list-item-info" >{{item.addresseeName}}
+    <view class="bg-white padding-sm " style="  border-bottom: 1px solid #f1f1f1">    
+      <view class="text-bold" >{{item.addresseeName}}
         <text decode="{{true}}" space="{{true}}">,&nbsp;</text> {{item.phoneNumber}}
-        <p style="color:gray;margin-right:30rpx" class="cuIcon-delete ui-list-item-del" data-id="{{item.id}}" bindtap="delAddress"></p>
+        <text style="float: right;line-height:60rpx"  class="cuIcon-delete" data-id="{{item.id}}" bindtap="delAddress"></text>
       </view>
-      <view class="ui-list-item-address" >
+      <view class="text-cut" >
        收货地址： {{item.address}} 
       </view>
     </view>
   </view>
 </scroll-view>
 <view class="add-address"  bindtap="addAddress">
-  <text style="color:white">新增收货地址</text>
+  <text>新增收货地址</text>
 </view>

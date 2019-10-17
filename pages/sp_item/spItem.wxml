@@ -21,8 +21,10 @@
     <view class="spItem-form-group">
       <view class="title text-red">
         <view class="cu-tag round sm">满200减10劵</view>
+        <view class="cu-tag round sm">满400减50劵</view>
+        <view class="cu-tag round sm">满500减100劵</view>
       </view>
-      <view class='text-grey'>
+      <view class='text-grey' bindtap="coupon">
         领劵
         <text class="cuIcon-right text-grat"></text>
       </view>
@@ -32,7 +34,7 @@
     <view class="spItem-form-group1" >
       <text class='text-bold'>{{goodsDetailList[0].name}}</text>
       <view style="height:100%;width:30%;margin-left:5rpx;float:right">
-      <text class="cuIcon-share text-grey" style="font-size:25rpx;background:#f1f1f1;padding:10rpx">分享</text>
+        <text open-type="share" class="padding-xs cuIcon-share bg-orange  round" style="font-size:25rpx;">分享</text>
       </view>
     </view>
 

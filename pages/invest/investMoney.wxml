@@ -14,7 +14,7 @@
 <button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="3">100元</button>
 <button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="4">200元</button>
 <button class="margin-sm cu-btn round line-blue">自定义金额</button>
-<button hidden="true" class="margin-sm cu-btn line-blue"><input placeholder="自定义金额"></input></button>
+<button  class="margin-sm cu-btn line-blue"><input placeholder="自定义金额"></input></button>
 </view>
 <view class="text-center ">
 <button class="cu-btn bg-red round margin-tb-sm lg">立即充值</button>

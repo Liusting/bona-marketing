@@ -1,45 +1,30 @@
 <form bindsubmit="saveAddress">
-<view class=" bg-white">
-  
-  <view class="secetion">
-    <view class="secetion-hd">
-      <text>姓名</text>
+  <view class="bg-white  ">
+    <view class="padding flex align-center" style="border-bottom: 1px solid #f1f1f1">
+      <text style="width:150rpx">姓名</text>
+      <input  style="width:500rpx" name="addresseeName" placeholder="收货人姓名"/>
     </view>
-    <view class="secetion-input">
-      <input clearable name="addresseeName" placeholder="收货人姓名"/>
+    <view class="padding flex align-center" style="border-bottom: 1px solid #f1f1f1">
+      <text style="width:150rpx">电话</text>
+      <input maxlength="11"  style="width:500rpx" name="phoneNumber" placeholder="收货人手机号"/>
     </view>
-  </view>
-
-  <view class="secetion">
-    <view class="secetion-hd">
-      <text>电话</text>
-    </view>
-    <view class="secetion-input">
-      <input maxlength="11" name="phoneNumber" placeholder="收货人手机号"/>
-    </view>
-  </view>
-
-  <view class="secetion">
-    <view class="secetion-hd">
-      <text>地区</text>
-    </view>
-    <view class="secetion-input">
+    <view class="padding flex align-center" style="border-bottom: 1px solid #f1f1f1">
+      <text style="width:150rpx">地区</text>
       <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
-      <view class="picker" >
+        <view class="text-cut" style="width:500rpx">
         {{region[0]}}/{{region[1]}}/{{region[2]}}
-      </view>
+        </view>
       </picker>
     </view>
+
+    <view class="padding flex align-center">
+      <text style="width:150rpx">详细地址</text>
+      <input name="addressdetail" style="width:500rpx" placeholder="街道门牌、楼层房间号等信息"/>
+    </view>
   </view>
 
-  <view class="secetion">
-    <view class="secetion-hd">
-      <text>详细地址</text>
-    </view>
-    <view class="secetion-input">
-      <input name="addressdetail" placeholder="街道门牌、楼层房间号等信息"/>
-    </view>
+  <view class="padding flex flex-direction">
+    <button type="primary" form-type="submit"  class="cu-btn bg-green lg">保存并使用</button>
   </view>
-</view>
-<button class="weui-btn" type="primary" form-type="submit">保存并使用</button>
+
 </form>

@@ -314,7 +314,14 @@ Page({
     // 刷新提示显示
     this.showTipsTitle();
   },
-
+  //领券
+  coupon:function(){
+    let shopId = this.data.shopId;
+    let shopName = this.data.shopName;
+    wx.navigateTo({
+      url: '../sp_item/coupon?shopId=' + shopId + '&shopName=' + shopName,
+    })
+  },
   // showModal和hideModal 是显示和隐藏的方法
   //选择弹框
   showModal(e) {

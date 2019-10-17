@@ -1,38 +1,37 @@
 <view  style="background:#fff;margin-bottom:20rpx">
   <view class="list-item1">
     <view class="userInfo">
-    <text class="text-bold item-text">头像</text>
+    <text class="text-bold margin-left">头像</text>
     </view>
-    <view style="margin-right:14px">
+    <view class="margin-right">
     <view class="userinfo-avatar">
       <open-data  type="userAvatarUrl"></open-data>
       </view>
     </view> 
   </view>
-  <view class="list-item">
-    <text class="text-bold item-text">微信昵称</text>
-    <text style="margin-right:14px" class="myorderlook-text">Liusting</text>
+  <view class="cu-bar">
+    <text class="text-bold margin-left">微信昵称</text>
+    <text class="margin-right">Liusting</text>
   </view>
 </view>
 <view class="container">
   <!-- 姓名 -->
-  <view class="list-item">
-    <text class="text-bold item-text">真实姓名</text>
-    <text class="myorderlook-text"
-    bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">{{name}}</text>
-    <text class="{{'cuIcon-right text-gray'}}" ></text>
+  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1">
+    <text class="text-bold margin-left">真实姓名</text>
+    <text 
+    bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">{{name}}    <text class="{{'cuIcon-right text-gray'}}" ></text></text>
   </view>
   
 <!-- 手机号 -->
-  <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">手机</text>
-    <text class="myorderlook-text" bindtap="showModal" data-target="phonenumberModal" data-typeid="{{0}}">{{phoneNumber}}</text>
-    <text class="{{'cuIcon-right text-gray'}}" ></text>
+  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1">
+    <text class="text-bold margin-left">手机</text>
+    <text  bindtap="showModal" data-target="phonenumberModal" data-typeid="{{0}}">{{phoneNumber}}    <text class="{{'cuIcon-right text-gray'}}" ></text></text>
+
   </view>
   <!-- 性别 -->
-  <view class="list-item" bindtap="preferential">
-    <text class="text-bold item-text">性别</text>
-    <picker class="myorderlook-text" mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
+  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1" >
+    <text class="text-bold margin-left">性别</text>
+    <picker  mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
     <view >
       {{array[index]}}<text class="{{'cuIcon-right text-gray'}}"></text>
     </view>
@@ -42,13 +41,13 @@
   <view>
 </view>
 
-<view class="text-grey" style="margin:10rpx 0rpx 10rpx 20rpx">
+<view class="text-grey cu-bar margin-left" >
 生日信息只能修改一次
 </view>
-<view style="background:#fff;margin-top:20rpx">
-<view class="list-item">
- <text class="text-bold item-text">生日</text>
- <picker class="myorderlook-text" mode="date" value="{{date}}" bindchange="changeDate">
+<view class="bg-white">
+<view class="cu-bar">
+ <text class="text-bold margin-left">生日</text>
+ <picker  mode="date" value="{{date}}" bindchange="changeDate">
  <view class="picker-date">
   {{date}}<text class="{{'cuIcon-right text-gray'}}" ></text>
  </view>

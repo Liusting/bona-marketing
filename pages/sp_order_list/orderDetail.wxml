@@ -1,0 +1,93 @@
+
+  <view class="padding flex bg-white ">
+    <view class="text-xxl align-center text-center justify-center round flex bg-orange " style="width:38px;height:38px">
+      <text class="  cuIcon-locationfill text-white"></text>
+    </view>
+    <view class="margin-left">
+      <text class="text-black">刘南</text><text class="margin-left">13047838940</text>
+      <view>
+        <text class="text-black">广东省佛山市禅城区石湾</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="margin-top bg-white padding-sm">
+    <view class="padding-xs" bindtap="shop">
+      <view class="cu-avatar sm round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <text class="margin-left">小米旗舰店</text>
+      <text class="margin-left {{'cuIcon-right text-gray'}}" ></text>
+    </view>
+    <view class="bg-white flex" wx:for="{{3}}" wx:key>
+      <view style="height:200rpx;width:200rpx;">
+        <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+      </view>
+      <view class="padding-xs ">
+        <view class="productTitle">小米小爱音箱play小爱同学智能音箱蓝牙ai智能机器人</view>
+        <text class="text-gray">官方标配；白色</text>
+        <view class="cu-bar">
+          <text class="text-price text-red" >99.00</text>
+          <text >x1</text>
+        </view>   
+      </view>
+    </view>
+  </view>
+
+  <view class=" bg-white">
+    <view class="padding-xs">
+      <text class="text-sm text-gray">商品总价</text>
+      <text class="text-sm text-gray text-price" style="float:right">26.00</text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">运费(快递)</text>
+      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">店铺优惠</text>
+      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">会员折扣</text>
+      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+    </view>
+    <view class="padding-xs" style="  border-bottom: 1px solid #f1f1f1;">
+      <text>订单总价</text>
+      <text class="text-price" style="float:right">26.00</text>
+    </view>
+    <view class="padding-xs">
+      <text>需付款</text>
+      <text class="text-price text-red" style="float:right">26.00</text>
+    </view>
+  </view>
+
+  <view class="margin-top bg-white">
+    <view class="padding-sm">
+      <text><text class=" cuIcon-titles text-orange"></text>订单信息</text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">商城积分：</text>
+      <text class="text-sm text-gray margin-left" >获得100积分</text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">订单编号：</text>
+      <text class="text-sm text-gray margin-left" >3463867637862764322</text>
+    </view>        
+    <view class="padding-xs"  style="border-bottom: 1px solid #f1f1f1">
+      <text class="text-sm text-gray">创建时间：</text>
+      <text class="text-sm text-gray margin-left" >2019-10-16 09:52:44</text>
+    </view>
+    <view class="grid col-2 text-center  padding-sm ">
+      <text style="flex:1;border-right: 1px solid #f1f1f1"><text class=" cuIcon-service text-blue"></text>联系卖家</text>
+      <text style="flex:1"><text class=" cuIcon-phone text-blue"></text>拨打电话</text>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white padding-xs" style="border-top: 1px solid #f1f1f1">
+    <view>
+      <text class="cuIcon-more"></text>
+    </view>
+    <view class="btn-group" >
+      <button bindtap="closeOrder" class="cu-btn line-grey round margin-right">取消订单</button>
+      <button class="cu-btn line-red round ">付款</button>
+    </view>
+  </view>
+

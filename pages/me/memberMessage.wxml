@@ -1,12 +1,47 @@
-<view class="bg-white padding-xs">
-  <text>当前会员等级：注册会员</text>
+<view class="bg-white padding-xs" style="flex-direction: row">
+
+  <view class="cu-avatar lg round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big25002.jpg);"></view>
+  <text class="margin-left" style="font-size:35rpx">蓝色的夕阳</text>
+
+  <text class="cuIcon-favor  bg-orange round" ></text>
+  <text class="bg-orange" style="font-size:16rpx">注册会员</text>
+
 </view>
 
-<view class="bg-white" style="margin-top:10rpx">
-<view class="padding-xs">注册会员尊享4大特权</view>
-<view>
-<block>
+  <view class="bg-black margin-top">
+    <view class="padding-xs cu-bar" style="border-bottom:1px solid yellow">
+      <text class="text-yellow">会员权益</text>
+      <text class="text-yellow">查看更多权益<text class="cuIcon-right"></text></text>
+    </view>
+    <view class="padding-xs cu-bar" >
+      <text  style="font-size:24rpx">升级VIP会员，尊享所有会员权益，消费省更多~</text>
+        <button class="cu-btn bg-yellow round sm">立即升级<text class="cuIcon-playfill"></text></button>
+    </view>
+      <view  class="cu-list grid col-5 no-border" >
+        <view class="cu-item" wx:for="{{iconList}}" wx:key>
+          <view class="cuIcon-{{item.icon}} text-{{item.color}}"></view>
+          <text style="color:{{item.color}}">{{item.name}}</text>
+        </view>
+      </view>
+    <view>
+    </view>
+  </view>
 
-</block>
-</view>
+<view class="padding bg-white margin-top">
+  <view>
+    <text>会员等级说明</text>
+  </view>
+  <view class=" margin-top">
+    <view class="cu-progress round xs">
+      <view class="bg-green" style="width:{{loading?'30%':''}};"></view>
+    </view>
+  </view>
+  <view class="bg-white margin-top">
+    <view class="grid col-4 ">
+      <view>注册会员</view>
+      <view>白银会员</view>
+      <view>黄金会员</view>
+      <view>白金会员</view>
+    </view>
+  </view>
 </view>

@@ -3,8 +3,8 @@
  <image style="height:90px"  src='../../images/head.png'></image>  
 </view>
   <view style="height: 10rpx; background-color:#f1f1f1;"></view>
-<view style="background:#f1f1f1" class=" text-center">
- <view style="margin:0rpx 20rpx 0rpx 20rpx" class=" radius shadow bg-white">
+<view >
+ <view  class="bg-white">
 <!-- 姓名 -->
   <view class="list-item">
     <text class="item-text">修改登录密码</text>
