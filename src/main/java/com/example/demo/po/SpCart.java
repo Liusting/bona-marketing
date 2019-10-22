@@ -6,6 +6,8 @@ public class SpCart {
     private String itemId;//购物车商品id
     private String userId;//用户id
     private String typeId;//商品类型id
+    private String shopId;
+    private String shopName;
 
     public String getId() {
         return id;
@@ -45,5 +47,21 @@ public class SpCart {
 
     public void setTypeId(String typeId) {
         this.typeId = typeId;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }

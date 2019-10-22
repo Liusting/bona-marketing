@@ -8,17 +8,33 @@
         <id column="ID" property="id" />
         <id column="ADDRESSWWNAME" property="addresseeName" />
         <id column="PHONENUMBER" property="phoneNumber" />
-        <id column="ADDRESS" property="address" />
+        <id column="PROVINCENAME" property="provinceName" />
+        <id column="CITYNAME" property="cityName" />
+        <id column="COUNTYNAME" property="countyName" />
+        <id column="ADDRESSDETAIL" property="addressdetail" />
         <id column="USERID" property="userId" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        ID AS id, ADDRESSWWNAME AS addresseeName, PHONENUMBER AS phoneNumber, ADDRESS AS address,USERID AS userId
+        ID AS id, ADDRESSWWNAME AS addresseeName, PHONENUMBER AS phoneNumber, PROVINCENAME AS provinceName
+        CITYNAME AS cityName,COUNTYNAME AS countyName,ADDRESSDETAIL AS addressdetail,USERID AS userId
     </sql>
+
+<!--    收货地址修改-->
+    <update id="updateInsert">
+        UPDATE sp_address set
+        addresseeName = #{spAddress.addresseeName,jdbcType = VARCHAR},
+        phoneNumber = #{spAddress.phoneNumber,jdbcType = VARCHAR},
+        provinceName = #{spAddress.provinceName,jdbcType = VARCHAR},
+        cityName = #{spAddress.cityName,jdbcType = VARCHAR},
+        countyName = #{spAddress.countyName,jdbcType = VARCHAR},
+        addressdetail = #{spAddress.addressdetail,jdbcType = VARCHAR}
+        where id = #{spAddress.id} and user_id = #{spAddress.userId}
+    </update>
 
     <!--收货地址查询-->
     <select id="getAddressList" resultType="com.example.demo.po.SpAddress">
-        SELECT id,addresseeName, phoneNumber, address FROM sp_address
+        SELECT id,addresseeName, phoneNumber, provinceName,cityName,countyName,addressdetail FROM sp_address
         WHERE user_id = #{userId}
     </select>
 
@@ -27,12 +43,15 @@
     </delete>
     <insert id="addressInsert">
         INSERT INTO sp_address
-        (id,addresseeName,phoneNumber,address,user_id)
+        (id,addresseeName,phoneNumber,provinceName,cityName,countyName,addressdetail,user_id)
         VALUES (
         #{spAddress.id,jdbcType = VARCHAR},
         #{spAddress.addresseeName,jdbcType = VARCHAR},
         #{spAddress.phoneNumber,jdbcType = VARCHAR},
-        #{spAddress.address,jdbcType = VARCHAR},
+        #{spAddress.provinceName,jdbcType = VARCHAR},
+        #{spAddress.cityName,jdbcType = VARCHAR},
+        #{spAddress.countyName,jdbcType = VARCHAR},
+        #{spAddress.addressdetail,jdbcType = VARCHAR},
         #{spAddress.userId,jdbcType = VARCHAR}
         )
     </insert>

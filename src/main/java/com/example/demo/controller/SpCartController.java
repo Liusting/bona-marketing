@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.mapper.SpCartMapper;
 import com.example.demo.po.SpCart;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +21,33 @@ public class SpCartController {
     @RequestMapping(value = { "/getCartDetail" } , method = { RequestMethod.POST} )
     @ResponseBody
     public Object CartObject(){
-        List<Map<String,Object>> CartDetailList = spCartMapper.getCartDetail();
-        Map map = new HashMap();
-        map.put("CartDetailList",CartDetailList);
-        return map;
+        List<Map<String,Object>> ShopList = spCartMapper.getCartDetail();//店铺列表
+        List<Map<String,Object>> ItemList = spCartMapper.getCartItemList();//商品列表'
+        List<Map<String,Object>> resList = new ArrayList<>();//存放所有数据
+        for(int i = 0;i < ShopList.size();i++){
+            List<Map<String,Object>> resList2 = new ArrayList<>();
+            Map<String,Object> resMap = new HashMap<>();//存放店铺数据
+            resMap.put("check",false);
+            resMap.put("shopId",ShopList.get(i).get("shop_id"));
+            resMap.put("shopName",ShopList.get(i).get("shopName"));
+            for(int j = 0;j < ItemList.size(); j++){
+                if(ShopList.get(i).get("shop_id").equals(ItemList.get(j).get("shop_id"))){
+                    Map<String,Object> resMap2 = new HashMap<>();//每次循环都创建新的resMap
+                    resMap2.put("id",ItemList.get(j).get("id"));
+                    resMap2.put("type_id",ItemList.get(j).get("type_id"));
+                    resMap2.put("name",ItemList.get(j).get("name"));
+                    resMap2.put("item_id",ItemList.get(j).get("item_id"));
+                    resMap2.put("number",ItemList.get(j).get("number"));
+                    resMap2.put("money",ItemList.get(j).get("money"));
+                    resMap2.put("user_id",ItemList.get(j).get("user_id"));
+                    resMap2.put("check",false);
+                    resList2.add(resMap2);
+                }
+            }
+            resMap.put("itemdata",resList2);
+            resList.add(resMap);
+        }
+        return resList;
     }
 //    /**加入购物车*/
     @RequestMapping(value = {"/insertCart"} , method = {RequestMethod.POST})
