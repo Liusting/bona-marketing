@@ -96,6 +96,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let orderList = res.data.orderList
+        console.log(orderList)
         that.setData({
           orderList: orderList
         })

@@ -19,11 +19,11 @@ Component({
         name: '积分',
         number:7840
       },
-      {
-        id: 3,
-        name: '卡',
-        number:0
-      },
+      // {
+      //   id: 3,
+      //   name: '卡',
+      //   number:0
+      // },
       {
         id: 4,
         name: '券',
@@ -81,7 +81,6 @@ Component({
               var userInfo = res.userInfo
               var nickName = userInfo.nickName;//获取微信用户昵称
               var avatarUrl = userInfo.avatarUrl; //获取微信用户头像存放的Url 
-              console.log(avatarUrl);
               that.setData({
                 avatarUrl: avatarUrl,
                 nickName: nickName,
@@ -128,26 +127,32 @@ Component({
       case 0:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-        })
+        });
+        break;
       case 1:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-        })
+        });
+        break;
       case 2:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-        })
+        });
+        break;
       case 3:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-        })
+        });
+        break;
       case 4:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
-        })
+        });
+        break;
       case 5: wx.navigateTo({
-        url: '../address/address',
-      })
+        url: '../me/refund',
+      });
+      break;
     }
   },
   // 我的优惠
@@ -192,10 +197,10 @@ Component({
     });
   },
   onLoad: function () {
-    console.log(222)
+
   },
   onShow:function(){
-console.log(1);
+
   }
   }
 })

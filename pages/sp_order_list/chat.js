@@ -1,20 +1,20 @@
-
+// pages/sp_order_list/chat.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    InputBottom: 0
   },
-
-  investMoney:function(){
-    wx.navigateTo({
-      url: '../invest/investMoney',
+  InputFocus(e) {
+    this.setData({
+      InputBottom: e.detail.height
     })
-},
-  investRecord: function () {
-    wx.navigateTo({
-      url: '../invest/investRecord',
+  },
+  InputBlur(e) {
+    this.setData({
+      InputBottom: 0
     })
   },
   /**

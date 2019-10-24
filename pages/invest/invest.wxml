@@ -6,7 +6,7 @@
     <text class="text-white">储值享好礼，支付更方便</text>
     </view>
   </view>
-  <view class="bg-white padding-sm">
+  <view class="bg-white">
     <view class="padding-sm cu-bar" style="border-bottom: 1px solid #f1f1f1" bindtap="investMoney">立即充值
       <text class="cuIcon-right"></text>
     </view>

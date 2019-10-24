@@ -5,16 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: ['广东省', '广州市', '海珠区'],
-    provinceName: '广东省',//省份
-    cityName: '广州市',//市
-    countyName: '海珠区',//区
+    region: [],
+    provinceName: '',//省份
+    cityName: '',//市
+    countyName: '',//区
+    addressdetail:'',
+    addresseeName:'',
+    phoneNumber:'',
+    id:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-// console.log(this.data.region.length)
+    let region =  [];
+    region.push(options.provinceName);
+    region.push(options.cityName);
+    region.push(options.countyName);
+  
+    this.setData({
+      provinceName: options.provinceName,
+      cityName: options.cityName,
+      countyName: options.countyName,
+      addresseeName: options.name,
+      phoneNumber: options.phone,
+      addressdetail: options.addressdetail,
+      region: region,
+      id:options.id
+    })
   },
 
   /**
@@ -30,9 +48,26 @@ Page({
       countyName: e.detail.value[2],//区
     })
   },
-//点击保存
+  //  删除地址
+  delAddress: function (e) {
+    var that = this;
+    wx.request({
+      url: app.ipAndPort + '/spAddress/deleteAddress',
+      method: 'POST',
+      data: {
+        id: this.data.id
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    })
+
+  },
+  //点击保存
   saveAddress: function (e) {
-    // debugger;
     var warn = "";
     var that = this;
     var flag = false;//控制弹窗关闭
@@ -42,8 +77,8 @@ Page({
     var cityName = this.data.cityName;//收货人城市
     var countyName = this.data.countyName;//收货人县级市
     var addressdetail = e.detail.value.addressdetail;//收货人具体地址
-    // console.log(provinceName + '-' + cityName + '-' + countyName + '-' + addressdetail)
-// 校验
+
+    // 校验
     if (e.detail.value.addresseeName == "") {
       warn = "请填写您的姓名！";
     } else if (e.detail.value.phoneNumber == "") {
@@ -55,23 +90,24 @@ Page({
     } else {
       flag = true;
       wx.request({
-        url: app.ipAndPort + '/spAddress/insertAddress',
+        url: app.ipAndPort + '/spAddress/updateAddress',
         method: 'POST',
         data: {
+          id:this.data.id,
           addresseeName: addresseeName,
           phoneNumber: phoneNumber,
           provinceName: provinceName,
           cityName: cityName,
           countyName: countyName,
           addressdetail: addressdetail,
-          userId:3
+          userId: 3
         },
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         success: function (res) {
           let resData = res.data;
-          if(resData.code == '1'){
+          if (resData.code == '1') {
             wx.navigateBack({
-              
+
             })
           }
         }

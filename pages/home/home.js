@@ -32,6 +32,32 @@ Component({
     countDownMinute: 0, //倒计时 -分
     countDownSecond: 0, //倒计时-秒
     clock: '',
+    shopData: [{
+      imageUrl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg',
+      name: '苹果手机',
+      number: '12',
+      integral: '14000',
+    }, {
+        imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      name: '华为手机',
+      number: '12',
+      integral: '14000',
+    }, {
+      imageUrl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg',
+      name: '小米手机',
+      number: '12',
+      integral: '14000',
+    }, {
+      imageUrl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg',
+      name: '小米手机',
+      number: '12',
+      integral: '14000',
+    }, {
+        imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      name: '小米手机',
+      number: '12',
+      integral: '14000',
+    }],
     iconList: [{
       icon: 'cardboardfill',
       color: 'red',
@@ -133,7 +159,16 @@ onLoad:function(){
   
 },
   methods: {
-    // 这里是一个自定义方法
+    // 点击分类
+    gotoClassify:function(e){
+
+    },
+    //更多疯抢
+    moreDiscount:function(e){
+      wx.navigateTo({
+        url: '../home/moreDiscount',
+      })
+    },
     customMethod: function () { },
     onLoad: function(){
       

@@ -97,7 +97,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let data = res.data;
-        // console.log(data);
+        console.log(data);
         if(data.length > 0){
           that.setData({
             spList: data

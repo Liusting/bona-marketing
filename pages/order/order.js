@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lists: [
-      "今天", "明天", "后天"],
-    indexId: 0,
+    flag2: 0,
     currentTab: 0,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
@@ -15,7 +13,6 @@ Page({
     TabCur: 0,
     MainCur: 0,
     VerticalNavTop: 0,
-    list: [{ name: "今天" }, { name: "明天" }, { name: "后天"}],
     load: true,
     address_info: {}, //地址信息
     preferential_info: {},//商品优惠信息
@@ -25,6 +22,7 @@ Page({
     goods_price: '', //商品价格
     total_price: '', //合计价格
     modeName:'快递',
+    typeList:'',
     mode: [
      { type: '0', name: '快递', checked:'true' },
      { type: '1', name: '门店自提' }, 
@@ -45,10 +43,73 @@ Page({
     addressId: '',
     show:true,
     flag:false,
-    flag1:true
+    flag1:true,
+    timeList:[{
+      id:'0',
+      time:'09:00-10:00'
+    }, {
+      id: '1',
+      time: '10:00-11:00'
+      }, {
+      id: '2',
+      time: '11:00-12:00'
+      }, {
+      id: '3',
+      time: '12:00-13:00'
+      }, {
+      id: '4',
+      time: '13:00-14:00'
+      }, {
+      id: '0',
+      time: '14:00-15:00'
+      }, {
+      id: '0',
+      time: '15:00-16:00'
+      }, {
+        id: '0',
+        time: '16:00-17:00'
+      }, {
+        id: '0',
+        time: '17:00-18:00'
+      }, {
+        id: '0',
+        time: '18:00-19:00'
+      }, {
+        id: '0',
+        time: '19:00-20:00'
+      }, {
+        id: '0',
+        time: '20:00-21:00'
+      }, {
+        id: '0',
+        time: '21:00-22:00'
+      }]
   },
+  //choose time by myself
+  selectTime: function(e){
+    console.log(e);
+  },
+  //选择支付方式
+  selectPay: function(e){
+    console.log(e);
+  },
+  //选择今天/明天/后天
+  switchNav: function (e) {
+    var page = this;
+    var id = e.target.id;
+    if (this.data.currentTab == id) {
+      return false;
+    } else {
+      page.setData({
+        currentTab: id
+      });
+    }
+    page.setData({
+      flag2: id
+    });
+  },
+//配送方式选择
   radioselect: function(e){
-      console.log(e.currentTarget.dataset.item.name);
     if (e.currentTarget.dataset.item.type == 1){
       this.setData({
         flag:true,
@@ -66,18 +127,17 @@ Page({
   },
   //选择地址
   bindaddress: function () {
-    // console.log(this.data.type)
       wx.navigateTo({
         url: '../addressList/addressList?type=' + 2
       })
   },
   // 留言
   bindwaitMsg: function (event) {
-    console.log(event.detail.value);
     this.setData({
       order_message: event.detail.value, // 订单留言
     })
   },
+  //优惠券
   preferential:function(){
     wx.navigateTo({
       url: '../preferential/preferential'
@@ -224,35 +284,19 @@ Page({
       title: '加载中...',
       mask: true
     });
-    // let list = [{}];
-    // for (let i = 0; i < 26; i++) {
-    //   list[i] = {};
-    //   list[i].name = String.fromCharCode(65 + i);
-    //   list[i].id = i;
+    // var model = JSON.parse(options.spClickMap);
+    // for(let i = 0; i< model.length; i++){
+    //   console.log(model[i]);
     // }
-    // this.setData({
-      // list: list,
-      // listCur: list[0]
-    // })
-    // var model = JSON.parse(options.model);
-    // console.log(this.data.preferential_info)
-    // this.setData({
-    //   goods_count: options.GMSL,
-    //   goods_price: options.money
-
-    // })
-    // // total_price = goods_count * goods_price;
-    // // console.log(goods_count * goods_price);
-    // console.log(model)
+    console.log(options);
     var that = this;
     var type = options.type;//用来判断是购物车下单还是详情页下单
-
     // if (type == 1) {
       that.setData({
-    //     goods_id: options.itemId,//商品id
-    //     goods_num: options.GMSL,//商品数量
-        // type: options.type,
-        // goods_info: model
+        goods_price: options.money,
+        goods_count: options.GMSL,
+        typeList: options.spClickMap
+
       })
       // console.log(this.data.goods_info)
     //   // 立即购买
@@ -317,12 +361,12 @@ Page({
     // }
   },
 
-  // /**
-  //  * 生命周期函数--监听页面初次渲染完成
-  //  */
-  // onReady: function () {
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
-  // },
+  },
 
   // /**
   //  * 生命周期函数--监听页面显示
@@ -416,65 +460,4 @@ Page({
   onReady() {
     wx.hideLoading()
   },
-  tabSelect(e) {
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      MainCur: e.currentTarget.dataset.id,
-      VerticalNavTop: (e.currentTarget.dataset.id - 1) * 50
-    })
-  },
-  VerticalMain(e) {
-    let that = this;
-    let list = this.data.list;
-    let tabHeight = 0;
-    if (this.data.load) {
-      for (let i = 0; i < list.length; i++) {
-        let view = wx.createSelectorQuery().select("#main-" + list[i].id);
-        view.fields({
-          size: true
-        }, data => {
-          list[i].top = tabHeight;
-          tabHeight = tabHeight + data.height;
-          list[i].bottom = tabHeight;
-        }).exec();
-      }
-      that.setData({
-        load: false,
-        list: list
-      })
-    }
-    let scrollTop = e.detail.scrollTop + 20;
-    for (let i = 0; i < list.length; i++) {
-      if (scrollTop > list[i].top && scrollTop < list[i].bottom) {
-        that.setData({
-          VerticalNavTop: (list[i].id - 1) * 50,
-          TabCur: list[i].id
-        })
-        return false
-      }
-    }
-  },
-  //点击切换 
-  clickTab: function (e) {
-    console.log(e);
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
-  },
-
-  // 左侧点击事件
-  jumpIndex(e) {
-    console.log(e.currentTarget.dataset.menuindex);
-    let index = e.currentTarget.dataset.menuindex
-    let that = this
-    that.setData({
-      indexId: index
-    })
-  }
-
 })

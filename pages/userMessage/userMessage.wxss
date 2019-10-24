@@ -1,7 +1,4 @@
 
-.container{
-  background-color: #FFFFFF
-}
 .basic-info{
   font-size: 12px;
   height: 60rpx;
@@ -70,8 +67,8 @@
   margin: 5rpx;
 }
 .name-input{
-  margin-left: 50px;
-  background-color: white;
-  width: 200px;
-  border: 1px solid gray;
+  width: 300px;
+  height: 80rx;
+  min-height: 80rpx;
+  border: 1px solid #f1f1f1;
 }

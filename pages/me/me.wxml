@@ -47,7 +47,6 @@
     <text catchtap="toOrder" data-typeid="{{0}}">查看全部订单 <text class="{{'cuIcon-right text-gray'}}"></text>  </text>
   </view>
 
-  
       <view  class="cu-list grid col-5 no-border" >
         <view class="cu-item" wx:for="{{orderItems}}" wx:key>
           <view bindtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}" class="cuIcon-{{item.icon}} text-{{item.color}}"><text >{{item.name}}</text>

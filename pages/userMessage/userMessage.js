@@ -1,18 +1,16 @@
-// pages/userMessage/userMessage.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nameShow:'',
-    nameShow1: '',
-    name:'请填写',
-    array: ['请选择','男', '女'],//性别选择
-    date: '完成设置生日当天独享特惠',//生日默认时间
-    index : 0,//性别默认男
-    phoneNumber:'请填写'
-
+    name:null,
+    array: ['男', '女'],//性别选择
+    date: null,//生日
+    index : null,//
+    phoneNumber:null,
+    id:''
   },
  showModal(e) {
     this.setData({
@@ -25,46 +23,85 @@ Page({
     })
   },
   formSubmit:function(e){
+
     this.setData({
       name:e.detail.value.userName
     })
+    this.updateMessage();
   },
   phoneNumberSubmit:function(e){
+    // console.log(e.detail.value.phoneNumber);
     this.setData({
       phoneNumber: e.detail.value.phoneNumber
     })
-  },
-  changphoneNumber:function(e){
-
+    this.updateMessage();
   },
   //性别改变
   changeSexy: function (e) {
     this.setData({
       index: e.detail.value
     })
+    this.updateMessage();
   },
   //生日改变
   changeDate: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
+    })
+    this.updateMessage();
+  },
+  updateMessage:function(e){
+    let name = this.data.name;
+    let phoneNumber = this.data.phoneNumber;
+    let sexy = this.data.index;
+    let birthDay = this.data.date;
+    let id = this.data.id;
+    wx.request({
+      url: app.ipAndPort + '/spUser/updateUserMessage',
+      method: 'POST',
+      data: {
+        id: id,
+        name: name,
+        phoneNumber: phoneNumber,
+        sexy: sexy,
+        birthDay: birthDay
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success:function(res){
+        if(res.data.code == 1){
+          wx.showToast({
+            title: '更改信息成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(this.data.name == null){
-      this.setData({
-        nameShow: false,
-        nameShow1: true
-      })
-    }else{
-      this.setData({
-        nameShow: true,
-        nameShow1: false
-      })
-    }
+    let that = this;
+    wx.request({
+      url: app.ipAndPort + '/spUser/getUserMessage',
+      method: 'POST',
+      data:{
+        id:2
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success:function(res){
+        let userMessage = res.data;
+        that.setData({
+          name: userMessage[0].name,
+          phoneNumber: userMessage[0].phoneNumber,
+          index: userMessage[0].sexy,
+          date: userMessage[0].birthDay,
+          id: userMessage[0].id
+        })
+      }
+
+    })
   },
 
   /**

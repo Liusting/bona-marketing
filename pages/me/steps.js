@@ -1,20 +1,24 @@
-
+// pages/me/steps.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    numList: [{
+      name: '用户申请'
+    }, {
+      name: '等待审核'
+    }, {
+      name: '审核中'
+    }, {
+      name: '完成'
+    },],
+    num:1,
   },
-
-  investMoney:function(){
-    wx.navigateTo({
-      url: '../invest/investMoney',
-    })
-},
-  investRecord: function () {
-    wx.navigateTo({
-      url: '../invest/investRecord',
+  numSteps() {
+    this.setData({
+      num: this.data.num == this.data.numList.length - 1 ? 0 : this.data.num + 1
     })
   },
   /**

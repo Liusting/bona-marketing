@@ -217,7 +217,7 @@
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" bindtap="appraise" data-id="{{item.id}}" class="cu-btn line-red round">评价</button>
-            <button style="float:right;margin-right:20rpx;" class="cu-btn line-info round" data-id="{{item.id}}"  bindtap="cancelOrder">查看物流</button>
+            <button style="float:right;margin-right:20rpx;" class="cu-btn line-info round" data-id="{{item.id}}"  bindtap="cancelOrder">申请售后</button>
           </view>
         </view>
       </view>

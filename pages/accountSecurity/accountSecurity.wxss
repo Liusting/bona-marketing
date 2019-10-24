@@ -61,3 +61,9 @@
   border: 1px solid #f1f1f1;
   margin: 5px 50px 0px 50px
 }
+.name-input{
+  width: 300px;
+  height: 80rx;
+  min-height: 80rpx;
+  border: 1px solid #f1f1f1;
+}

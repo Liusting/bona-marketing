@@ -2,24 +2,38 @@
   <text><text  class="margin-left {{'cuIcon-weixin text-green'}}"></text>获取微信收货地址</text>
   <text class="{{'cuIcon-right text-gray'}}"></text>
 </view>
+
 <scroll-view class="scroll" scroll-y="true" style="margin-top:5px">
   <view  wx:for="{{addressList}}"  wx:key bindtap='addClick' 
   data-id='{{item.id}}'
-  data-name='{{item.addresseeName}}'
-  data-address='{{item.address}}'
+  data-name="{{item.addresseeName}}"
+  data-provinceName='{{item.provinceName}}'
+  data-cityName='{{item.cityName}}'
+  data-countyName='{{item.countyName}}'
+  data-addressdetail='{{item.addressdetail}}'
   data-phone='{{item.phoneNumber}}'
   >
-    <view class="bg-white padding-sm " style="  border-bottom: 1px solid #f1f1f1">    
-      <view class="text-bold" >{{item.addresseeName}}
-        <text decode="{{true}}" space="{{true}}">,&nbsp;</text> {{item.phoneNumber}}
-        <text style="float: right;line-height:60rpx"  class="cuIcon-delete" data-id="{{item.id}}" bindtap="delAddress"></text>
-      </view>
-      <view class="text-cut" >
-       收货地址： {{item.address}} 
+  <view class="cu-bar flex bg-white " style="border-bottom:1px solid #f1f1f1">
+    <view class="margin-left" >
+      <text class="text-black text-bold">{{item.addresseeName}}</text><text class="text-black text-bold">, {{item.phoneNumber}}</text>
+      <view class="text-cut" style="width:620rpx;">
+        <text class="text-black" >收货地址：{{item.provinceName}}{{item.cityName}}{{item.countyName}}{{item.addressdetail}}</text>
       </view>
     </view>
+    <view class="flex align-center">
+      <text bindtap="editAddress"   
+      data-id='{{item.id}}'
+      data-name="{{item.addresseeName}}"
+      data-provinceName='{{item.provinceName}}'
+      data-cityName='{{item.cityName}}'
+      data-countyName='{{item.countyName}}'
+      data-addressdetail='{{item.addressdetail}}'
+      data-phone='{{item.phoneNumber}}'
+      class="margin-right {{'cuIcon-write text-gray'}}" ></text>
+    </view>
+  </view>
   </view>
 </scroll-view>
 <view class="add-address"  bindtap="addAddress">
-  <text>新增收货地址</text>
+  <text class="text-white">新增收货地址</text>
 </view>

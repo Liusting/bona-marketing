@@ -1,82 +1,44 @@
-<view class="container">
-<view >
- <image style="height:90px"  src='../../images/head.png'></image>  
-</view>
-  <view style="height: 10rpx; background-color:#f1f1f1;"></view>
-<view >
- <view  class="bg-white">
-<!-- 姓名 -->
-  <view class="list-item">
-    <text class="item-text">修改登录密码</text>
-    <text class="myorderlook-text" 
-    bindtap="showModal" data-target="passwordModal" data-typeid="{{0}}">请填写</text>
-    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
+
+  <view >
+    <image style="height:90px"  src='../../images/head.png'></image>  
   </view>
 
 
-<!-- 手机号 -->
-  <view class="list-item" >
-    <text class="item-text">注销账号</text>
-    <text class="myorderlook-text"></text>
-    <text class="{{'cuIcon-right text-gray'}}" style="margin-left:5px"></text>
+<!-- 修改登录密码 -->
+<view class="bg-white">
+  <view class="cu-bar margin-top" style="border-bottom:1px solid #f1f1f1">
+    <text class="margin-left">修改登录密码</text>
+    <text bindtap="showModal" data-target="passwordModal" data-typeid="{{0}}">请填写<text class="{{'cuIcon-right text-gray'}}"></text></text>
   </view>
+<!-- 注销账号 -->
+  <view class="cu-bar" bindtap="deleteAccount" >
+    <text class="margin-left">注销账号</text>
+    <text class="margin-left"><text class="{{'cuIcon-right text-gray'}}"></text></text>
+  </view>
+</view>
 
-</view>
-</view>
-</view>
+
+
 <!-- 点击修改登录密码时出现弹框 -->
 		<view class="cu-modal {{modalName=='passwordModal'?'show':''}}">
 			<view class="cu-dialog">
-				<view class="cu-bar bg-white justify-end">
+				<view class="flex bg-white padding-xs justify-center">
 					<view class="content">修改登录密码</view>
 				</view>
-				<view style="background-color:white">
-   <input class="password-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入原密码" />
-   <input class="newpassword-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新密码" />
-   <input class="newpassword-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新密码" />
+				<view class="bg-white padding-sm" >
+          <input class="password-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入原密码" />
+          <input class="newpassword-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新密码" />
+          <input class="newpassword-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新密码" />
 				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-						<button class="cu-btn bg-green margin-left" bindtap="hideModal">确定</button>
-					</view>
-				</view>
+        <view class="grid col-2 text-center bg-white " style="border-top: 1px solid #f1f1f1">
+          <view class="padding-xs" style="flex:1;border-right: 1px solid #f1f1f1">
+            <button class="cu-btn  bg-white" form-type="reset" bindtap="hideModal">取消</button>
+          </view>
+          <view class="padding-xs" style="flex:1">
+            <button class="cu-btn text-blue bg-white"  form-type="submit" bindtap="hideModal">确定</button>
+          </view>
+        </view>
 			</view>
 		</view>
    
 
-   <!-- 点击修改用户名时出现弹框 -->
-		<view class="cu-modal {{modalName=='usernameModal'?'show':''}}">
-			<view class="cu-dialog">
-				<view class="cu-bar bg-white justify-end">
-					<view class="content">修改用户名</view>
-				</view>
-				<view style="background-color:white">
-   <input class="password-input" maxlength="20" password type="text" bindinput="passWdBindKeyInput" placeholder="请输入新的用户名" />
-				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-						<button class="cu-btn bg-green margin-left" bindtap="hideModal">确定</button>
-					</view>
-				</view>
-			</view>
-		</view>
-   
-      <!-- 点击修改手机号码时出现弹框 -->
-		<view class="cu-modal {{modalName=='phonenumberModal'?'show':''}}">
-			<view class="cu-dialog">
-				<view class="cu-bar bg-white justify-end">
-					<view class="content">修改手机号码</view>
-				</view>
-				<view style="background-color:white">
-   <input class="password-input" maxlength="11" type="text" bindinput="passWdBindKeyInput" placeholder="请输入新的手机号码" />
-				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-						<button class="cu-btn bg-green margin-left" bindtap="hideModal">确定</button>
-					</view>
-				</view>
-			</view>
-		</view>

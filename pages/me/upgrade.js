@@ -1,22 +1,13 @@
-
+// pages/me/upgrade.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
-  investMoney:function(){
-    wx.navigateTo({
-      url: '../invest/investMoney',
-    })
-},
-  investRecord: function () {
-    wx.navigateTo({
-      url: '../invest/investRecord',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

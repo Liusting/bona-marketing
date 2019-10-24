@@ -171,7 +171,7 @@
   </view>
 
   <view class="cu-bar tabbar bg-white shadow foot bottom_view_height2">
-    <view class="action" open-type="contact">
+    <view class="action" open-type="contact" bindtap="chat">
       <view class="cuIcon-service text-blue">
         <!-- <view class="cu-tag badge"></view> -->
       </view>
@@ -321,10 +321,10 @@
 
             <!-- 底部固定的按钮区域 -->
       <view class="cu-bar tabbar bg-white shadow foot grid col-2 padding-sm text-center bottom_view_height1">
-        <view class="padding-xs">
+        <!-- <view class="padding-xs flex justify-center"> -->
           <!-- <button class="cu-btn bg-grey lg">立即购买</button> -->
           <button class="confirm" bindtap="buy">确定</button>
-        </view>
+        <!-- </view> -->
       </view>
     </view>
   </view>

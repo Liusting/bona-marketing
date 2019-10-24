@@ -42,12 +42,20 @@
       <text class="text-sm text-gray text-price" style="float:right">0.00</text>
     </view>
     <view class="padding-xs">
-      <text class="text-sm text-gray">店铺优惠</text>
-      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+      <text class="text-sm text-gray">券抵扣</text>
+      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">满立减折扣</text>
+      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
     </view>
     <view class="padding-xs">
       <text class="text-sm text-gray">会员折扣</text>
-      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+    </view>
+    <view class="padding-xs">
+      <text class="text-sm text-gray">积分折扣</text>
+      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
     </view>
     <view class="padding-xs" style="  border-bottom: 1px solid #f1f1f1;">
       <text>订单总价</text>
@@ -71,13 +79,21 @@
       <text class="text-sm text-gray">订单编号：</text>
       <text class="text-sm text-gray margin-left" >3463867637862764322</text>
     </view>        
-    <view class="padding-xs"  style="border-bottom: 1px solid #f1f1f1">
+    <view class="padding-xs">
+      <text class="text-sm text-gray">订单备注：</text>
+      <text class="text-sm text-gray margin-left" >发顺丰快递</text>
+    </view>  
+    <view class="padding-xs" >
       <text class="text-sm text-gray">创建时间：</text>
       <text class="text-sm text-gray margin-left" >2019-10-16 09:52:44</text>
     </view>
+    <view class="padding-xs"  style="border-bottom: 1px solid #f1f1f1">
+      <text class="text-sm text-gray">支付方式：</text>
+      <text class="text-sm text-gray margin-left" >微信支付</text>
+    </view>
     <view class="grid col-2 text-center  padding-sm ">
-      <text style="flex:1;border-right: 1px solid #f1f1f1"><text class=" cuIcon-service text-blue"></text>联系卖家</text>
-      <text style="flex:1"><text class=" cuIcon-phone text-blue"></text>拨打电话</text>
+      <text bindtap="chat" style="flex:1;border-right: 1px solid #f1f1f1"><text class=" cuIcon-service text-blue"></text>联系卖家</text>
+      <text bindtap="call" style="flex:1"><text class=" cuIcon-phone text-blue"></text>拨打电话</text>
     </view>
   </view>
 

@@ -8,6 +8,22 @@ Page({
     type:''
   },
   // 获取微信用户收货地址
+  // 修改地址
+  editAddress:function(e){
+    // console.log(e);
+    let id = e.currentTarget.dataset.id;
+    let name = e.currentTarget.dataset.name;
+    let phone = e.currentTarget.dataset.phone;
+    let provinceName = e.currentTarget.dataset.provincename;
+    let cityName = e.currentTarget.dataset.cityname;
+    let countyName = e.currentTarget.dataset.countyname;
+    let addressdetail = e.currentTarget.dataset.addressdetail;
+    // console.log(e.currentTarget.dataset.id);
+    // let addlist = JSON.stringify(e.currentTarget.dataset);
+    wx.navigateTo({
+      url: '../address/editAddress?id=' + id + '&provinceName=' + provinceName + '&cityName=' + cityName + '&countyName=' + countyName + '&addressdetail=' + addressdetail + '&name=' + name + '&phone=' + phone,
+    })
+  },
   getWeixinAddress:function(e){
     let that = this;
     wx.getSetting({
@@ -27,7 +43,10 @@ Page({
                 data: {
                   addresseeName: addresseeName,
                   phoneNumber: phoneNumber,
-                  address: provinceName + cityName + countyName + addressdetail,
+                  provinceName: provinceName,
+                  cityName: cityName,
+                  countyName: countyName,
+                  addressdetail: addressdetail,
                   userId: 3
                 },
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -66,7 +85,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.type);
+    // console.log(options.type);
+    // debugger;
     this.setData({
       type: options.type
     })
@@ -80,6 +100,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let resData = res.data;
+        console.log(resData);
         that.setData({
           addressList: resData
         })
@@ -113,7 +134,7 @@ Page({
   },
   //点击地址
   addClick: function(e){
-    console.log(e);
+    // console.log(e);
     //根据传入的类型来判断点击地址出现什么效果 2：从订单页进来  3：从地址管理进来
     if(this.data.type == 2){
       var address = e.currentTarget.dataset;
@@ -129,39 +150,5 @@ Page({
     }else{
 
     }
-  },
-//  删除地址
-  delAddress: function (e) {
-    var that = this;
-    wx.request({
-      url: app.ipAndPort + '/spAddress/deleteAddress',
-      method: 'POST',
-      data: {
-        id: e.currentTarget.dataset.id
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
-        wx.request({
-          url: app.ipAndPort + '/spAddress/getAddressList',
-          method: 'POST',
-          data: {
-            userId: 3
-          },
-          header: { 'content-type': 'application/x-www-form-urlencoded' },
-          success: function (res) {
-            let resData = res.data;
-            that.setData({
-              addressList: resData
-            })
-          }
-        });
-        wx.showToast({
-          title: '删除成功',
-          icon: 'success',
-          duration: 2000,
-        })
-      }    
-    })
-
   }
 })

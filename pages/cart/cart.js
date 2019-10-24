@@ -3,7 +3,6 @@ Component({
   data: {
     hfShow:'',//头部底部显示
     adminShow: false,//管理      
-    // shopcarData: [],//购物车商品列表     
     total: 0,//总金额   
     shopsel:false,   
     allsel: false,//全选 
@@ -15,86 +14,8 @@ Component({
     itemId:'',//商品id
     itemNumber:0,
     pageBackgroundColor: 'gray',
-    shopcarData: [{ 
-      id:'1001',
-      shopId: '1',
-      shopName: '小米旗舰店',
-      check: false,
-      itemdata:[{
-        item_id:'1',
-        money:'200',
-        type_id:'1',
-        user_id:'1',
-        number:1,
-        name:'Xiaomi/小米redmi note7 pro红米索尼4800万智能老年学生大电量手机官方旗舰',
-        check: false
-      },{
-          item_id: '2',
-          money: '300',
-          type_id: '1',
-          user_id: '1',
-          number: 1,
-          name: '小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂',
-          check: false
-      },
-        {
-          item_id: '3',
-          money: '1200',
-          type_id: '1',
-          user_id: '1',
-          number: 1,
-          name: 'Xiaomi/小米redmi 9 pro红米索尼4800万智能老年学生大电量手机官方旗舰',
-          check: false
-        }]
-      },
-      {
-        id: '1002',
-        shopId: '2',
-        shopName: '华为旗舰店',
-        check: false,
-        itemdata: [{
-          item_id: '4',
-          money: '200',
-          type_id: '1',
-          user_id: '1',
-          number: 2,
-          name: 'Xiaomi/小米redmi note7 pro红米索尼4800万智能老年学生大电量手机官方旗舰',
-          check: false
-        }, {
-          item_id: '5',
-          money: '300',
-          type_id: '1',
-          user_id: '1',
-          number: 2,
-          name: '小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂',
-            check: false
-        },
-        {
-          item_id: '6',
-          money: '1200',
-          type_id: '1',
-          user_id: '1',
-          number: 5,
-          name: 'Xiaomi/小米redmi 9 pro红米索尼4800万智能老年学生大电量手机官方旗舰',
-          check: false
-        }]
-      }, 
-      {
-        id: '1003',
-        shopId: '3',
-        shopName: 'OPPO旗舰店',
-        check: false,
-        itemdata: [{
-          item_id: '7',
-          money: '200',
-          type_id: '1',
-          user_id: '1',
-          number: 2,
-          name: 'Xiaomi/小米redmi note7 pro红米索尼4800万智能老年学生大电量手机官方旗舰',
-          check: false
-        }]
-      }
-    ]
+    shopcarData: [],//购物车商品列表  
+    changeNumber:'' 
   },
   // tab切换的时候马上响应数据
   ready: function () {
@@ -107,15 +28,13 @@ Component({
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
-        let resData = res.data.CartDetailList;
-        // console.log(resData);
-        if(resData.length == 0){
+        if (res.data.length == 0){
           that.setData({
             hfShow: true,
           })
         }else{
           that.setData({
-            // shopcarData: resData,
+            shopcarData: res.data,
             hfShow: false
           })
         }
@@ -144,13 +63,13 @@ Component({
     })
     this.judgmentAll();//每次按钮点击后都判断是否满足全选的条件  
     this.countTotal();
+    this.countSelect();
   },
     //判断是否为全选  
     judgmentAll: function () {
       let shopcarDataLet = this.data.shopcarData,
         shoplen = shopcarDataLet.length,
-        lenIndex = 0, 
-      itemNumber = 0;
+        lenIndex = 0;
       for (let i = 0; i < shoplen; i++) {  
         shopcarDataLet[i].check && lenIndex++;
         let itemdataList = shopcarDataLet[i].itemdata;
@@ -158,11 +77,11 @@ Component({
           
         }
       }
-      console.log(itemNumber);
       this.setData({
         allsel: lenIndex == shoplen   
       });
     },
+    //计算金额
     countTotal:function(){
       this.data.pageBackgroundColor = "gray"
       let shopcarDataLet = this.data.shopcarData;
@@ -189,6 +108,31 @@ Component({
         url: '../shop/shop?shopId=' + shopId + '&shopName=' + shopname
       })
     },
+    // 自定义页面刷新
+    refresh:function(){
+      var that = this;
+      wx.request({
+        url: app.ipAndPort + '/spCart/getCartDetail',
+        method: 'POST',
+        data: {
+
+        },
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        success: function (res) {
+          if (res.data.length == 0) {
+            that.setData({
+              hfShow: true,
+            })
+          } else {
+            that.setData({
+              shopcarData: res.data,
+              hfShow: false
+            })
+          }
+
+        }
+      })
+    },
   //自定义删除方法
   del:function(e){
     var that = this;
@@ -203,7 +147,7 @@ Component({
         },
         header: { 'content-type': 'application/x-www-form-urlencoded' },
         success: function (res) {
-          that.onLoad();
+          that.refresh();
         }
       })
     }
@@ -232,7 +176,7 @@ Component({
       let itemdataList = shopcarDataLet[i].itemdata;
       for(let j = 0;j < itemdataList.length; j++){
         if(itemdataList[j].check){
-          that.del(itemdataList[j].item_id);
+          that.del(itemdataList[j].id);
         }
       }
     }
@@ -240,13 +184,10 @@ Component({
   //点击全选  
   allcheckTap: function () {
     let shopcarDataLet = this.data.shopcarData,
-      allsel = !this.data.allsel,//点击全选后allsel变化
-    itemNumber = this.data.itemNumber;
-      // total = 0;
+      allsel = !this.data.allsel;//点击全选后allsel变化
     for (let i = 0, len = shopcarDataLet.length; i < len; i++) {
       shopcarDataLet[i].check = !this.data.allsel;//所有商品的选中状态和allsel值一样
       let itemdataList = shopcarDataLet[i].itemdata;
-      itemNumber += itemdataList.length
       for (let j = 0; j < itemdataList.length; j++) {
         if (allsel) {
           itemdataList[j].check = shopcarDataLet[i].check;
@@ -261,15 +202,14 @@ Component({
       this.data.pageBackgroundColor = 'red';
     }else{
       this.data.pageBackgroundColor = 'gray';
-      itemNumber = 0;
     }   
     this.setData({
       allsel: allsel,
       shopcarData: shopcarDataLet,
-      itemNumber: itemNumber,
       pageBackgroundColor: this.data.pageBackgroundColor,
     });
     this.countTotal();
+    this.countSelect();
     },
   //点击编辑按钮，是否完成的选项  
  adminTap: function () {
@@ -277,11 +217,47 @@ Component({
       adminShow: !this.data.adminShow
     });
   },
-  //点击单个选择按钮  
+    showModal(e) {
+      console.log(e.currentTarget.dataset);
+      this.setData({
+        modalName: e.currentTarget.dataset.target,
+        cartNumber: e.currentTarget.dataset.number,
+        cartId: e.currentTarget.dataset.id
+      })
+    },
+    hideModal(e) {
+      this.setData({
+        modalName: null
+      })
+    },
+    formSubmit: function (e) {
+      this.setData({
+        cartNumber: e.detail.value.cartNumber
+      })
+      this.updateNumber();
+      // this.refresh();
+    },
+
+//更改购物车数量
+updateNumber:function(e){
+  wx.request({
+    url: app.ipAndPort + '/spCart/updateCartNumber',
+    method: 'POST',
+    data: {
+      cartId: this.data.cartId,//购物车id
+      cartNumber: this.data.cartNumber
+    },
+    header: { 'content-type': 'application/x-www-form-urlencoded' },
+    success: function (res) {
+    }
+  })
+},
+    //点击单个选择按钮  
   checkTap: function (e) {
-    let id = e.currentTarget.dataset.id;//获取当前店铺的index
-    let index = e.currentTarget.dataset.index;//获取当前店铺的index
+    let id = e.currentTarget.dataset.id;
+    let index = e.currentTarget.dataset.index;
     let shopcarDataLet = this.data.shopcarData;
+    let selarr = [];
     let allsel = this.data.allsel;
     for (let i = 0; i < shopcarDataLet.length; i++) {
       if (shopcarDataLet[i].shopId == index) {
@@ -289,8 +265,8 @@ Component({
         let allsel = false;
         let itemdataList = shopcarDataLet[i].itemdata;
         for (let j = 0; j < itemdataList.length; j++) {
-          if (itemdataList[j].item_id == id) {
-            
+          if (itemdataList[j].id == id) {
+            selarr.push(itemdataList[j].id);
             itemdataList[j].check = !itemdataList[j].check;
           }
           if (!itemdataList[j].check) {
@@ -304,17 +280,20 @@ Component({
       }
     }
     this.setData({
+      selarr: selarr,
+      cartId: id,
       shopcarData: shopcarDataLet,
       allsel: allsel,
       pageBackgroundColor: this.data.pageBackgroundColor
     });
     this.judgmentAll();//每次按钮点击后都判断是否满足全选的条件  
     this.countTotal();//每次按钮点击后都计算总价格
+    this.countSelect();
   },
   //点击加减按钮  
   numchangeTap: function (e) {
     let that = this;
-    let itemId = e.currentTarget.dataset.id,//商品id 
+    let id = e.currentTarget.dataset.id,//商品id
       cartNumber = this.data.cartNumber,
     index = e.currentTarget.dataset.index,//店铺id
     shopcarDataLet = this.data.shopcarData,
@@ -326,7 +305,7 @@ Component({
           if (shopcarDataLet[i].shopId == index) {
             let itemdataList = shopcarDataLet[i].itemdata;
             for (let j = 0; j < itemdataList.length; j++) {
-              if (itemdataList[j].item_id == itemId) {
+              if (itemdataList[j].id == id) {
                 itemdataList[j].number++;
                 cartNumber = itemdataList[j].number;
                 this.countTotal();
@@ -341,7 +320,7 @@ Component({
           if (shopcarDataLet[i].shopId == index) {
             let itemdataList = shopcarDataLet[i].itemdata;
             for (let j = 0; j < itemdataList.length; j++) {
-              if (itemdataList[j].item_id == itemId) {
+              if (itemdataList[j].id == id) {
                 if (itemdataList[j].number < 2){
 
                 }else{
@@ -358,28 +337,33 @@ Component({
     this.setData({
       shopcarData: shopcar,
       cartNumber: cartNumber,
-      cartId: e.currentTarget.dataset.id,//商品id
+      cartId: e.currentTarget.dataset.id,//购物车id
       shopId: e.currentTarget.dataset.index,//店铺id
     });
-    wx.request({
-      url: app.ipAndPort + '/spCart/updateCartNumber',
-      method: 'POST',
-      data: {
-        cartId: this.data.cartId,//商品id
-        cartNumber: this.data.cartNumber
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
+    this.updateNumber();
+  },
+  //判断选择的
+  countSelect:function(e){
+    let selarr = [];
+    let shopcarDataLet = this.data.shopcarData;
+    for (let i = 0; i < shopcarDataLet.length; i++) {
+      let itemdataList = shopcarDataLet[i].itemdata;
+      for (let j = 0; j < itemdataList.length; j++) {
+        if (itemdataList[j].check) {
+          selarr.push(itemdataList[j].id);
+        }
       }
+    }
+    this.setData({
+      selarr: selarr,
+      itemNumber:selarr.length
     })
   },
 
-
   //点击结算
   goclearingTap:function(e){
-    console.log(this.data.selarr);
     // 先开始判断，如果为空的话提示
-    // console.log(this.data.selarr.length)
+    // console.log(this.data.selarr)
     if (this.data.selarr.length == 0){
       wx.showToast({
         title: '请选择商品',
@@ -387,10 +371,11 @@ Component({
         duration: 2000
       })
       return;
-    }else{
+    }
+    else{
       var model = JSON.stringify(this.data.selarr);
+    // console.log(model);
       wx.navigateTo({
-        
         url: '../order/order?model=' + model +'&type='+2
       })
     }

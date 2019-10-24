@@ -41,7 +41,7 @@ Page({
     itemId: 0,
     shopId:'',
     shopName:'',
-
+    str:[],
     // 参数view打开还是关闭状态
     groupViewOpen: false,
     // 要显示的参数的list
@@ -54,7 +54,7 @@ Page({
     * 生命周期函数--监听页面显示
     */
   onLoad: function (e) {
-    console.log(e);
+    // console.log(e);
     let itemId = e.itemId;
     let shopId = e.shopId;
     let shopName = e.shopName;
@@ -225,10 +225,12 @@ Page({
       }
       str = str.substr(0, str.length - 1);
       this.setData({
-        tipsTitle: "已选:" + str
+        tipsTitle: "已选:" + str,
+        str:str
       });
     }
-    console.log(spClickMap);
+    console.log('1111'); 
+      console.log(spClickMap);
   },
 
   // 类型选择点击事件
@@ -313,6 +315,12 @@ Page({
     this.showMoney();
     // 刷新提示显示
     this.showTipsTitle();
+  },
+  //联系客服
+  chat:function(e){
+    wx.navigateTo({
+      url: '../sp_order_list/chat',
+    })
   },
   //领券
   coupon:function(){
@@ -403,7 +411,7 @@ Page({
   },
   //  参数点击显示隐藏方法
   showGroupViewClick: function (e) {
-    console.log(e);
+    // console.log(e);
     let that = this;
     let groupViewOpen = !this.data.groupViewOpen;
   },
@@ -441,7 +449,7 @@ Page({
     }
     if (selectedList != null) {
       let url = '../order/order?GMSL=' + this.data.GMSL + '&itemId=' + this.data.itemId + '&money=' +this.data.money + 
-      '&type=' + 1;
+        '&type=' + 1 + '&spClickMap=' + this.data.str;
       wx.navigateTo({
         url: url,
       });
@@ -450,7 +458,7 @@ Page({
   },
   //点击图片预览
   previewImg: function (e) {
-    console.log(e.currentTarget.dataset.index)
+    // console.log(e.currentTarget.dataset.index)
     var index = e.currentTarget.dataset.index;
     var currentUrl = e.currentTarget.dataset.currenturl
     var previewUrls = e.currentTarget.dataset.previewurl

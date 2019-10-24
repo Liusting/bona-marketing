@@ -1,4 +1,4 @@
-<scroll-view scroll-y='true'style='width:100%;height:100vh;'>
+<scroll-view scroll-y='true' style="height:calc(100vh - 102rpx)">
 <swiper  class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
   <swiper-item wx:for="{{4}}" wx:key>
     <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
@@ -6,43 +6,63 @@
 </swiper>
 <view style="background:#f1f1f1" class="cu-list grid col-4 no-border" >
   <view class="cu-item" wx:for="{{iconList}}" wx:key>
-    <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+    <view bindtap="gotoClassify" class="cuIcon-{{item.icon}} text-{{item.color}}">
      </view>
      <text>{{item.name}}</text>
   </view>
 </view>
   <view class="shopback">
-    <text class="text-bold" style="padding-left:20rpx;font-size:35rpx">活动广场</text>
+    <text class="text-bold text-xl">活动广场</text>
   </view>
-  <view class="time cu-bar">
-    <view >
-      <text style="margin:10rpx" class="cuIcon-time"></text>
+  <view class="bg-white cu-bar">
+    <view>
+      <text class="cuIcon-time"></text>
       <text class="text-bold ">今日疯抢</text>
-      <text class="text-bold " style="margin-left:10rpx;">11点场 </text>
-      <text style="margin-left:10rpx" class="bg-red">{{countDownHour}}</text> : 
+      <text class="text-bold margin-left">11点场 </text>
+      <text class="bg-red margin-left">{{countDownHour}}</text> : 
       <text class="bg-red">{{countDownMinute}}</text> : 
       <text class="bg-red">{{countDownSecond}}</text>
     </view>
-    <view  class="cu-bar">
-      <text  class="text-bold ">更多疯抢<text class="text-red cuIcon-right"></text></text>
+    <view>
+      <text bindtap="moreDiscount" class="text-bold ">更多疯抢<text class="text-red cuIcon-right"></text></text>
     </view>
   </view>
 
-<scroll-view scroll-x  style='width:100%;height:400rpx;white-space: nowrap;'>
- <view class="bg-white  " wx:for="{{4}}" wx:key style="margin:10rpx 10rpx;width: 250rpx; height: 400rpx;display: inline-block">
-  <view class="cartnull">
-    <image class="scimg" src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
-  </view>
-  <view style="padding:0rpx 5rpx"><text class="shop_name">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text></view>
-  <view style="display:flex;padding:10rpx; text-align: center;align-items: center;">
-    <view >
-      <text  class="text-red text-lg text-bold text-price">15.80</text>
-      <view class="text-sm text-price" style="text-decoration:line-through" >15.80</view>
+<scroll-view scroll-x  style='white-space: nowrap;'>
+
+    <view class="cu-card" wx:for="{{4}}" wx:key style="width: 250rpx;display: inline-block">
+      <view class="cu-item shadow">
+        <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+      
+    <text class="shop_name">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>
+        <view class="padding-xs flex align-center justify-between">
+          <view >
+            <text  class="text-red text-lg text-bold text-price">15.80</text>
+            <view class="text-sm text-price" style="text-decoration:line-through" >15.80</view>
+          </view>
+          <view >
+            <button style="float:right;font-style:italic" class="cu-btn bg-red icon">抢</button>
+          </view>
+        </view>
+    
     </view>
-    <view style="width:100%;">
-      <button style="float:right;font-style:italic" class="cu-btn bg-red icon">抢</button>
-    </view>
   </view>
- </view>
 </scroll-view>
+  <view class="shopback">
+    <text class="text-bold text-xl" >掌柜推荐</text>
+  </view>
+    <view style="background:#f1f1f1" class="cu-list grid col-2">
+      <view  wx:for="{{shopData}}" wx:key>
+        <view style="background:#f1f1f1" class=" cu-card">
+          <view  class="cu-item shadow">
+          <image  src="{{item.imageUrl}}"  mode='widthFix' ></image>
+          <view class="shop_name">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+          <view class="padding flex align-center justify-between">
+            <text class="text-price text-red text-xl">27</text>
+            <text >199人付款</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
 </scroll-view>

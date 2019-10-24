@@ -1,2 +1,28 @@
-<!--pages/invest/investRecord.wxml-->
-<text>pages/invest/investRecord.wxml</text>
+<view class="cu-bar padding-sm bg-white">
+  <view>
+    <text>充值-银行卡</text>
+    <view>2019-08-12 09：01：23</view>
+  </view>
+  <view>
+    <text class="text-xl text-bold">270</text>
+  </view>
+</view>
+
+<view class="cu-bar padding-sm bg-white">
+  <view>
+    <text>充值-银行卡</text>
+    <view>2019-08-12 09：01：23</view>
+  </view>
+  <view>
+    <text class="text-xl text-red text-bold">+270</text>
+  </view>
+</view>
+<view class="cu-bar padding-sm bg-white">
+  <view>
+    <text>消费-小米旗舰店</text>
+    <view>2019-08-12 09：01：23</view>
+  </view>
+  <view>
+    <text class="text-xl text-bold">-270</text>
+  </view>
+</view>

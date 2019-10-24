@@ -19,9 +19,22 @@ Page({
   onReady: function () {
  
   },
+  //联系卖家
+  chat:function(e){
+    wx.navigateTo({
+      url: '../sp_order_list/chat',
+    })
+  },
+  //拨打电话
+  call:function(e){
+    wx.makePhoneCall({
+      phoneNumber: '13047838940',
+    })
+  },
+//点击店铺
   shop:function(){
     wx.navigateTo({
-      // url: '../shop/shop',
+      url: '../shop/shop'
     })
   },
   // 取消订单

@@ -8,14 +8,10 @@
 
 </view>
 
-  <view class="bg-black margin-top">
-    <view class="padding-xs cu-bar" style="border-bottom:1px solid yellow">
-      <text class="text-yellow">会员权益</text>
-      <text class="text-yellow">查看更多权益<text class="cuIcon-right"></text></text>
-    </view>
-    <view class="padding-xs cu-bar" >
-      <text  style="font-size:24rpx">升级VIP会员，尊享所有会员权益，消费省更多~</text>
-        <button class="cu-btn bg-yellow round sm">立即升级<text class="cuIcon-playfill"></text></button>
+  <view class="margin-top bg-black">
+    <view class="padding-sm flex justify-between" >
+      <text class="text-lg">会员权益</text>
+      <text >服务协议<text class="cuIcon-right"></text></text>
     </view>
       <view  class="cu-list grid col-5 no-border" >
         <view class="cu-item" wx:for="{{iconList}}" wx:key>
@@ -27,7 +23,12 @@
     </view>
   </view>
 
-<view class="padding bg-white margin-top">
+    <view class="margin-top bg-black padding-xs flex justify-between align-center" >
+      <text  style="font-size:24rpx">升级更高级会员，尊享高级会员权益，消费省更多~</text>
+      <button bindtap="upgrade" class="cu-btn bg-yellow round sm">立即升级<text class="cuIcon-playfill"></text></button>
+    </view>
+<view class="padding bg-white ">
+
   <view>
     <text>会员等级说明</text>
   </view>
