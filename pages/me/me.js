@@ -126,7 +126,7 @@ Component({
     switch (typeId){
       case 0:
         wx.navigateTo({
-          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+          url: '../sp_order_list/spOrderList?typeId=' + typeId //将要跳转id的值传参数过去
         });
         break;
       case 1:

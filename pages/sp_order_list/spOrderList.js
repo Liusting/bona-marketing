@@ -4,8 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currtab: 0,
-    pay_status:'',//支付状态
+    currtab: '',
     swipertab: [
       { name: '全部', index: 0}, 
       { name: '待付款', index: 1 },  
@@ -21,11 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onShow: function(e){
-    this.orderListShow();
   },
   onLoad: function (e) {
     var that = this;
-    this.orderListShow();
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -35,8 +32,9 @@ Page({
       }
     })
     this.setData({
-      currtab: e.typeId
+      currtab: e.typeId,
     })
+    this.tabChange(this.data.currtab)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -64,23 +62,16 @@ Page({
         currtab: e.target.dataset.current
       })
     }
+    this.tabChange(this.data.currtab)
   },
 
   tabChange: function (e) {
-    var pay_status = '';
     var that = this;
-    if (e.detail.current == 1){
-      pay_status = 0;
-    } else if (e.detail.current == 2||3||4){
-      pay_status = 1;
-    }
     this.setData({ 
-      currtab: e.detail.current,
-      pay_status: pay_status
+      currtab: e
       })
-    if (this.data.currtab == 1 || 2 || 3 || 4) {
-      that.orderListShow();
-    }
+
+    this.orderListShow();
   },
   orderListShow: function () {
     var that = this;
@@ -88,12 +79,12 @@ Page({
       url: app.ipAndPort + '/spOrder/getOrderList',
       method: 'POST',
       data: {
-        pay_status: this.data.pay_status,
         trade_status: this.data.currtab
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let orderList = res.data.orderList
+        console.log(orderList);
         that.setData({
           orderList: orderList
         })
