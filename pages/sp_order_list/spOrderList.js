@@ -14,6 +14,7 @@ Page({
       { name: '待评价', index: 4 },
       ],
     orderList: [],
+    deviceH:'',//当前屏幕高度
   },
 // 
   /**
@@ -23,17 +24,26 @@ Page({
     this.orderListShow();
   },
   onLoad: function (e) {
+    var that = this;
+    this.orderListShow();
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    })
     this.setData({
       currtab: e.typeId
     })
-    this.orderListShow();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     // 页面渲染完成
-    this.getDeviceInfo()
+    
   },
 
   // 订单详情页
@@ -42,18 +52,6 @@ Page({
       url: '../sp_order_list/orderDetail',
     })
   },
-  getDeviceInfo: function () {
-    let that = this
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          deviceW: res.windowWidth,
-          deviceH: res.windowHeight
-        })
-      }
-    })
-  },
-
   /**
   * @Explain：选项卡点击切换
   */
@@ -96,7 +94,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let orderList = res.data.orderList
-        console.log(orderList)
         that.setData({
           orderList: orderList
         })

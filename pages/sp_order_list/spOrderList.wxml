@@ -1,14 +1,17 @@
-<view class="swiper-tab">
-  <block wx:for="{{swipertab}}" wx:key="sptab">
-    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
-  </block>
+
+<view  class="bg-white nav" style="height:90rpx">
+  <view class="flex text-center text-lg">
+    <view class="cu-item flex-sub {{currtab == item.index ? 'on' : ''}}" wx:for="{{swipertab}}" wx:key bindtap="tabSwitch" data-current="{{item.index}}">
+      {{item.name}}
+    </view>
+  </view>
 </view>
 
-<view class="margin-top">
-<swiper  current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+
+<swiper  current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-45}}px" bindchange="tabChange">
   <!-- 全部 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" >
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -19,7 +22,7 @@
       </view>
       <view class="cu-card article">
       <view  class="cu-item shadow" wx:for="{{allOrder}}" wx:key=" ">
-        <view class="orderListTitle">
+        <view class="orderListTitle" bindtap="orderDetail">
         <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
 <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
           <text class="orderStatus">{{item.state}}</text>
@@ -49,7 +52,7 @@
   </swiper-item>
   <!-- 待付款 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -80,7 +83,7 @@
             </view>
           </view>
           <view class="productCount">
-             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right">合计:￥1399.86</text>
              <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
@@ -93,7 +96,7 @@
   </swiper-item>
   <!-- 待发货 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box"  scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -110,7 +113,7 @@
             <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'买家已付款':''}}</text>
           </view>
-          <view class="orderListDetails">
+          <view class="orderListDetails" bindtap="orderDetail">
             <view class="productImg">
               <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
             </view>
@@ -124,12 +127,11 @@
             </view>
           </view>
           <view class="productCount">
-             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right">合计:￥1399.86</text>
              <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" class="cu-btn line-red round">查看物流</button>
-            <!-- <button style="float:right;margin-right:20rpx;" class="cu-btn line-info round" data-id="{{item.id}}"  bindtap="cancelOrder">取消订单             </button> -->
           </view>
         </view>
       </view>
@@ -138,7 +140,7 @@
 
 <!-- 待收货 -->
     <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -154,7 +156,7 @@
             <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'卖家已发货':''}}</text>
           </view>
-          <view class="orderListDetails">
+          <view class="orderListDetails" bindtap="orderDetail">
             <view class="productImg">
               <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
             </view>
@@ -168,12 +170,12 @@
             </view>
           </view>
           <view class="productCount">
-             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right">合计:￥1399.86</text>
              <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
             <button style="float:right;margin-right:20rpx;" bindtap="confirmGet" data-id="{{item.id}}" class="cu-btn line-red round">确认收货</button>
-            <button style="float:right;margin-right:20rpx;" class="cu-btn line-info round" data-id="{{item.id}}"  bindtap="cancelOrder">查看物流             </button>
+            <button style="float:right;margin-right:20rpx;" class="cu-btn line-info round" data-id="{{item.id}}">查看物流             </button>
           </view>
         </view>
       </view>
@@ -182,7 +184,7 @@
 
 <!-- 待评价 -->
     <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -193,12 +195,12 @@
       </view>
        <view class="cu-card article">
         <view class="cu-item shadow" wx:for="{{orderList}}" wx:key=" " >
-          <view class="orderListTitle">
+          <view class="orderListTitle" >
             <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
             <text class="text-bold margin-left">{{item.shop_name}}<text class="margin-left {{'cuIcon-right text-gray'}}" ></text></text>
             <text class="orderStatus">{{item.trade_status == currtab?'交易成功':''}}</text>
           </view>
-          <view class="orderListDetails">
+          <view class="orderListDetails" bindtap="orderDetail">
             <view class="productImg">
                <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
             </view>
@@ -212,7 +214,7 @@
             </view>
           </view>
           <view class="productCount">
-             <text class="margin-left" style="float:right">合计:￥1399.86</text>
+             <text class="margin-right" style="float:right">合计:￥1399.86</text>
              <text class="margin-right" style="float:right;">共{{item.number}}件商品</text>
           </view>
           <view class="productbtn">
@@ -224,4 +226,3 @@
     </scroll-view>
   </swiper-item>
 </swiper>
-</view>

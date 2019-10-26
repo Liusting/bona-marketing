@@ -350,7 +350,7 @@ updateNumber:function(e){
       let itemdataList = shopcarDataLet[i].itemdata;
       for (let j = 0; j < itemdataList.length; j++) {
         if (itemdataList[j].check) {
-          selarr.push(itemdataList[j].id);
+          selarr.push("id:"+itemdataList[j].id, "number:"+itemdataList[j].number);
         }
       }
     }
@@ -374,7 +374,7 @@ updateNumber:function(e){
     }
     else{
       var model = JSON.stringify(this.data.selarr);
-    // console.log(model);
+    console.log(model);
       wx.navigateTo({
         url: '../order/order?model=' + model +'&type='+2
       })

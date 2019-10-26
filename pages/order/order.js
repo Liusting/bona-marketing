@@ -5,11 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    flag2: 0,
     currentTab: 0,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
+    bottom_view_height2: 100,
+    deviceH: '',//当前屏幕高度
     TabCur: 0,
     MainCur: 0,
     VerticalNavTop: 0,
@@ -21,8 +22,17 @@ Page({
     goods_freight: '', //运费
     goods_price: '', //商品价格
     total_price: '', //合计价格
+    itemId: '', //商品id
+    type: '', //选项
+    order_message: '', //订单留言
+    cart_ids: [], // 购物车商品id
+    addressId: '',
     modeName:'快递',
     typeList:'',
+    show: true,
+    flag: false,
+    flag1: true,
+    flag2: 0,
     mode: [
      { type: '0', name: '快递', checked:'true' },
      { type: '1', name: '门店自提' }, 
@@ -35,15 +45,6 @@ Page({
       statusBarHeight: app.globalData.statusBarHeight
     },
     statusBarHeight: app.globalData.statusBarHeight,
-    goods_id: '', //商品id
-    goods_num: '', //商品数量
-    type: '', //选项
-    order_message: '', //订单留言
-    cart_ids: [], // 购物车商品id
-    addressId: '',
-    show:true,
-    flag:false,
-    flag1:true,
     timeList:[{
       id:'0',
       time:'09:00-10:00'
@@ -91,7 +92,11 @@ Page({
   },
   //选择支付方式
   selectPay: function(e){
-    console.log(e);
+    console.log(e.currentTarget.dataset.id);
+    let id = e.currentTarget.dataset.id;
+    if(id == 1){
+      this.deliver();
+    }
   },
   //选择今天/明天/后天
   switchNav: function (e) {
@@ -216,6 +221,27 @@ Page({
       modalName: null
     })
   },
+  //提交订单
+  deliver:function(e){
+    wx.request({
+      url: app.ipAndPort + '/spOrder/addOrder',
+      method: 'POST',
+      data: {
+        item_id: this.data.itemId,
+        type_id:'2',
+        user_id:'2',
+        trade_status:'2',
+        pay_status:'1',
+        money:this.data.goods_price,
+        number: this.data.goods_count,
+        total_price: this.data.total_price,
+        remark: this.data.order_message
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+      }
+    })
+  },
   // //  提交订单
   // bindSubmitOrder: function (e) {
   //   var form_id = e.detail.formId;
@@ -280,6 +306,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.windowHeight);
+        console.log(res.windowWidth);
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    }),
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -288,16 +325,20 @@ Page({
     // for(let i = 0; i< model.length; i++){
     //   console.log(model[i]);
     // }
-    console.log(options);
-    var that = this;
+    // console.log(options);
+  
     var type = options.type;//用来判断是购物车下单还是详情页下单
-    // if (type == 1) {
+    if (type == 1) {
       that.setData({
         goods_price: options.money,
         goods_count: options.GMSL,
-        typeList: options.spClickMap
-
+        typeList: options.spClickMap,
+        total_price: options.money * options.GMSL,
+        itemId: options.itemId
       })
+    }else if(type == 2){
+      
+    }
       // console.log(this.data.goods_info)
     //   // 立即购买
     //   //直接购买

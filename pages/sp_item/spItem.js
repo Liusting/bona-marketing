@@ -229,8 +229,7 @@ Page({
         str:str
       });
     }
-    console.log('1111'); 
-      console.log(spClickMap);
+
   },
 
   // 类型选择点击事件

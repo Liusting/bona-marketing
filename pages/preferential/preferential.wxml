@@ -1,14 +1,18 @@
-<view class="swiper-tab">
-  <block wx:for="{{swipertab}}" wx:key="sptab">
-    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
-  </block>
-</view>
-<view style="height: 20rpx; background-color:#f1f1f1;"></view>
 
-<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+<view  class="bg-white nav" style="height:90rpx">
+  <view class="flex text-center text-lg">
+    <view class="cu-item flex-sub {{currtab == item.index ? 'on' : ''}}" wx:for="{{swipertab}}" wx:key bindtap="tabSwitch" data-current="{{item.index}}">
+      {{item.name}}
+    </view>
+  </view>
+</view>
+
+
+
+<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-45}}px" bindchange="tabChange">
   <!-- 优惠卷未使用 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!allOrder.length}}">
         <view class="font_14"><image class="scimg" src="/images/person/search_no.png"></image></view>
         <text>没有可用优惠券/(ㄒoㄒ)/~~</text>
@@ -17,7 +21,7 @@
         <view class="cuponListDetails">
           <view class="cupon_view">
           <view>
-            <text class="cupon_money">{{item.reduce}}</text><text style="color:red">元</text>
+            <text class="text-red text-xxl">{{item.reduce}}</text><text style="color:red">元</text>
             <view>
             <text>满{{item.total}}元使用</text>
             </view>
@@ -29,7 +33,7 @@
                         <view style="font-size:8px;margin-bottom:10px;">适用时间：2019.08.26-2019.09.01</view> 
             <view style="font-size:8px;margin-bottom:10px;">适用门店：华为旗舰店，小米旗舰店</view> 
           </view>
-          <view class="cupon_use">
+          <view class="flex align-center text-center justify-center margin-right">
             <button class="cu-btn bg-red round sm" bindtap="cupon_use" data-total="{{item.total}}"
             data-reduce="{{item.reduce}}"
             data-usetime="{{item.usetime}}"
@@ -42,7 +46,7 @@
   </swiper-item>
   <!-- 已使用 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
       <view class="search_no" wx:if="{{!allOrder.length}}">
         <view class="font_14"><image class="scimg" src="/images/person/search_no.png"></image></view>
         <text>没有可用优惠券/(ㄒoㄒ)/~~</text>
@@ -51,7 +55,7 @@
         <view class="cuponListDetails">
           <view class="cupon_view">
           <view>
-            <text class="cupon_money">10</text><text style="color:red">元</text>
+            <text class="text-red text-xxl">10</text><text style="color:red">元</text>
             <view>
             <text>满200元使用</text>
             </view>
@@ -63,7 +67,7 @@
             <view style="font-size:8px;margin-bottom:10px;">适用时间：2019.08.26-2019.09.01</view> 
             <view style="font-size:8px;margin-bottom:10px;">适用门店：华为旗舰店，小米旗舰店</view> 
           </view>
-          <view class="cupon_use">
+          <view class="flex align-center text-center justify-center margin-right">
             <button class="cu-btn bg-grey round sm" >即将过期</button>
           </view>
         </view>

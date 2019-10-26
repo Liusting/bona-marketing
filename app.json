@@ -1,9 +1,9 @@
 {
   "pages": [
-
+        
     "pages/index/index",
     "pages/home/home",
-    "pages/home/moreDiscount",
+"pages/home/moreDiscount",
     "pages/item_type/itemType",
     "pages/cart/cart",
     "pages/me/me",
@@ -29,9 +29,9 @@
     "pages/invest/investNotice",
     "pages/userMessage/userMessage",
     "pages/preferential/preferential",
-    "pages/order/order",
+"pages/order/order",
     "pages/me/memberMessage",
-  "pages/me/upgrade",
+    "pages/me/upgrade",
     "pages/integral/integral",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",

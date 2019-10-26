@@ -1,5 +1,5 @@
-<scroll-view scroll-y  style="height:460px;">
-  <view class="padding flex radius bg-white margin" bindtap="bindaddress" hidden="{{flag}}">
+<scroll-view scroll-y  style="height:{{deviceH-50}}px">
+  <view class="padding-xs flex radius bg-white margin-sm" bindtap="bindaddress" hidden="{{flag}}">
     <view class="flex align-center">
       <view class="text-xxl align-center text-center justify-center round flex bg-orange " style="width:38px;height:38px">
         <text class="  cuIcon-locationfill text-white"></text>
@@ -16,7 +16,7 @@
     </view>
   </view>
 
-  <view class="padding flex bg-white margin" hidden="{{flag1}}">
+  <view class="padding-xs flex bg-white margin-sm" hidden="{{flag1}}">
     <view class="flex align-center">
       <view class="text-xxl align-center text-center justify-center round flex bg-orange " style="width:38px;height:38px">
         <text class="  cuIcon-locationfill text-white"></text>
@@ -29,7 +29,7 @@
       </view>
     </view>
   </view>
-  <view class="bg-white padding margin"  >
+  <view class="bg-white padding-xs margin-sm radius"  >
     <view class="padding-xs" >
         <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
         <text class="text-bold margin-left" >小米旗舰店</text>
@@ -77,20 +77,21 @@
     </view>
     <view class="padding flex align-center " style="  border-bottom: 1px solid #f1f1f1">
       <text>订单备注</text>
-      <input bindinput="bindwaitMsg" class="margin-left" style="width:450rpx" placeholder="其他要求"/>
+      <input bindinput="bindwaitMsg" class="margin-left" style="width:400rpx" placeholder="其他要求"/>
     </view>
     <view class="padding flex justify-end align-center text-sm"> 
-      <text class="text-gray margin-right">共2件</text>
-      <text>小计：<text class="text-price text-red " >3398.00</text></text>
+      <text class="text-gray margin-right">共{{goods_count}}件</text>
+      <text>小计：<text class="text-price text-red " >{{total_price}}</text></text>
     </view>
   </view>
 </scroll-view>
 
-  <view class="justify-end add-address padding">
-    <view class="margin-right">合计：<text class=" text-price text-red">1699.89</text></view>
-    <view class="btn-group">
-      <button class="cu-btn bg-red round shadow-blur"  bindtap="showModal" data-target="bottomModal">提交订单</button>
-    </view>
+
+  <view class="bg-white flex padding justify-end align-center" style="height:{{bottom_view_height2}}rpx">
+      <view class="margin-right">合计：<text class=" text-price text-red">{{total_price}}</text></view>
+      <view class="btn-group" >
+        <button class="cu-btn bg-red round shadow-blur"  bindtap="showModal" data-target="bottomModal">提交订单</button>
+      </view>
   </view>
 
 <!-- 选择底部滑窗 -->
@@ -100,7 +101,7 @@
           <view class="padding-sm {{payWay == 0?'text-green':''}}" bindtap="selectPay" data-id="{{0}}">微信支付</view>
           <view class="padding-sm {{payWay == 1?'text-green':''}}" bindtap="selectPay" data-id="{{1}}">货到付款</view>
           <view class="padding-sm {{payWay == 2?'text-green':''}}" bindtap="selectPay" data-id="{{2}}">储值支付</view>
-          <view class="padding-sm" bindtap="hideModal" >取消</view>
+          <view class="padding-sm" bindtap="hideModal" data-id="{{3}}">取消</view>
         </view>
        </view>
         </view>

@@ -9,8 +9,8 @@ let store = new Store({
 
 App({ 
   // 全局ip+端口
-  ipAndPort: 'http://172.16.20.126:8081',
-  // ipAndPort: 'http://192.168.2.177:8081',
+  // ipAndPort: 'http://172.16.20.32:8081',
+  ipAndPort: 'http://192.168.2.177:8081',
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

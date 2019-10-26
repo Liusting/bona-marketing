@@ -5,6 +5,7 @@
    */
   data: {
     currtab: 0,
+    deviceH: '',//当前屏幕高度
     swipertab: [
       { name: '全部', index: 0 },
       { name: '即将过期', index: 1 },
@@ -21,6 +22,15 @@
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

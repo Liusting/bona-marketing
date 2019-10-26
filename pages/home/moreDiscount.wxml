@@ -1,13 +1,142 @@
-<scroll-view scroll-x class="bg-white nav" scroll-with-animation scroll-left="{{scrollLeft}}">
-  <view class="cu-item flex-sub {{index==TabCur?'text-green':''}}" wx:for="{{10}}" wx:key bindtap="tabSelect" data-id="{{index}}">
-   <view class=" text-center">
-    <text> Tab{{index}}</text>
-    <!-- <view>即将开场</view> -->
-   </view>
-      <view class=" text-center">
-    <text> Tab{{index}}</text>
-    <!-- <view>即将开场</view> -->
-   </view>
-  </view>
 
-</scroll-view>
+<view class="padding-sm flex grid col-5">
+  <view wx:for="{{swipertab}}" wx:key="sptab">
+    <view style="text-align: center;"  data-current="{{item.index}}" bindtap="tabSwitch">
+      <view class="text-bold {{currtab == item.index ? 'text-red' : ''}}">{{item.name}}</view>
+      <view class="{{currtab == item.index ? 'bg-red text-white round' : ''}}">即将开始</view>
+    </view>
+  </view>
+</view>
+
+
+<view >
+<swiper  current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-56}}px" bindchange="tabChange">
+  <!-- 全部 -->
+<swiper-item>
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+        <view  wx:for="{{5}}" wx:key=" " >
+          <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
+            <view >
+              <image style="width:200rpx;height:200rpx;"src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+            </view>
+            <view >
+              <view class="productTitle">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+              <view class="margin-top cu-bar">
+              <view>
+                <text class="text-price text-red">5499.00</text>
+                <view class="text-sm text-price" style="text-decoration:line-through" >5699.00</view>
+              </view>
+              <view>
+                <button   class="cu-btn bg-red radius">立即抢购</button>
+                <view class="text-sm" >库存：25件</view>
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 待付款 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+        <view  wx:for="{{5}}" wx:key=" " >
+          <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
+            <view >
+              <image style="width:200rpx;height:200rpx;"src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+            </view>
+            <view >
+              <view class="productTitle">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+              <view class="margin-top cu-bar">
+              <view>
+                <text class="text-price text-red">5499.00</text>
+                <view class="text-sm text-price" style="text-decoration:line-through" >5699.00</view>
+              </view>
+              <view>
+                <button   class="cu-btn bg-red radius">立即抢购</button>
+                <view class="text-sm" >库存：25件</view>
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 待发货 -->
+  <swiper-item>
+       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+        <view  wx:for="{{5}}" wx:key=" " >
+          <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
+            <view >
+              <image style="width:200rpx;height:200rpx;"src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+            </view>
+            <view >
+              <view class="productTitle">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+              <view class="margin-top cu-bar">
+              <view>
+                <text class="text-price text-red">5499.00</text>
+                <view class="text-sm text-price" style="text-decoration:line-through" >5699.00</view>
+              </view>
+              <view>
+                <button   class="cu-btn bg-red radius">立即抢购</button>
+                <view class="text-sm" >库存：25件</view>
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    </scroll-view>
+  </swiper-item>
+
+<!-- 待收货 -->
+    <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+        <view  wx:for="{{5}}" wx:key=" " >
+          <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
+            <view >
+              <image style="width:200rpx;height:200rpx;"src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+            </view>
+            <view >
+              <view class="productTitle">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+              <view class="margin-top cu-bar">
+              <view>
+                <text class="text-price text-red">5499.00</text>
+                <view class="text-sm text-price" style="text-decoration:line-through" >5699.00</view>
+              </view>
+              <view>
+                <button   class="cu-btn bg-red radius">立即抢购</button>
+                <view class="text-sm" >库存：25件</view>
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    </scroll-view>
+  </swiper-item>
+
+<!-- 待评价 -->
+    <swiper-item>
+       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+        <view  wx:for="{{5}}" wx:key=" " >
+          <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
+            <view >
+              <image style="width:200rpx;height:200rpx;"src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+            </view>
+            <view >
+              <view class="productTitle">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</view>
+              <view class="margin-top cu-bar">
+              <view>
+                <text class="text-price text-red">5499.00</text>
+                <view class="text-sm text-price" style="text-decoration:line-through" >5699.00</view>
+              </view>
+              <view>
+                <button   class="cu-btn bg-red radius">立即抢购</button>
+                <view class="text-sm" >库存：25件</view>
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+</view>  

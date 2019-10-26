@@ -1,20 +1,4 @@
 
-/*切换栏*/
-.swiper-tab {
-  height: 40px;
-  line-height: 40px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  background: #fff;
-}
- 
-.swiper-tab-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
  
 .on {
   border-bottom:2px solid red;
@@ -50,17 +34,6 @@
   margin: 50rpx 10px 20px 30rpx;
   font-size:8px;
 
-}
-.cupon_use{
-  display: flex; 
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10rpx;
-}
-.cupon_money{
-  color: red;
-  font-size: 50rpx;
 }
 
 
