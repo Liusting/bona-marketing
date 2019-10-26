@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/spOrder")
@@ -22,17 +23,59 @@ public class SpOrderController {
     @Autowired
     private SpOrderMapper spOrderMapper;
 
-//    获取未付款、待发货、已收货、待评价订单列表
+//    获取全部、未付款、待发货、已收货、待评价订单列表
     @RequestMapping(value = {"/getOrderList"},method = {RequestMethod.POST})
     @ResponseBody
     public Object getOrderList(HttpServletRequest request){
-        String pay_status = request.getParameter("pay_status");
         String trade_status = request.getParameter("trade_status");
-        List<Map<String, Object>> orderList = spOrderMapper.getOrderList(pay_status,trade_status);
+        String type1 = null;
+        String type2 = null;
+        if(trade_status.equals("0")){
+            type1 = "0";
+            type2 = null;
+        }else{
+            type1 = null;
+            type2 = "0";
+        }
+        List<Map<String, Object>> orderList = spOrderMapper.getOrderList(type1,type2,trade_status);
         Map<String,Object> map = new HashMap<>();
         map.put("orderList",orderList);
         return map;
     }
+
+    //新增订单
+    @RequestMapping(value = {"/addOrder"},method = {RequestMethod.POST})
+    @ResponseBody
+    public Object addOrder(HttpServletRequest request){
+        SpOrder spOrder = new SpOrder();
+        String uuid = UUID.randomUUID().toString();
+        String id = uuid.replaceAll("-", "");
+        String itemId  = request.getParameter("item_id");
+        String typeId = request.getParameter("type_id");
+        String userId = request.getParameter("user_id");
+        String tradeStatus = request.getParameter("trade_status");
+        String payStatus = request.getParameter("pay_status");
+        String money = request.getParameter("money");
+        String number = request.getParameter("number");
+        String totalPrice = request.getParameter("total_price");
+        String remark = request.getParameter("remark");
+        spOrder.setId(id);
+        spOrder.setItemId(itemId);
+        spOrder.setTypeId(typeId);
+        spOrder.setUserId(userId);
+        spOrder.setTradeStatus(tradeStatus);
+        spOrder.setPayStatus(payStatus);
+        spOrder.setMoney(Double.parseDouble(money));
+        spOrder.setNumber(Integer.parseInt(number));
+        spOrder.setTotalPrice(Double.parseDouble(totalPrice));
+        spOrder.setRemark(remark);
+        spOrderMapper.addOrder(spOrder);
+        Map map = new HashMap();
+        map.put("code",1);
+        return map;
+    }
+
+
 
     //取消订单
     @RequestMapping(value = {"/canCelList"},method = {RequestMethod.POST})

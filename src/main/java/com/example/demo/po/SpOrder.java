@@ -9,6 +9,11 @@ public class SpOrder {
     private int number;
     private String name;
     private String shopName;
+    private String userId;
+    private String tradeStatus;
+    private double totalPrice;
+    private String remark;
+
 
     public String getId() {
         return id;
@@ -72,5 +77,37 @@ public class SpOrder {
 
     public void setShopName(String shopName) {
         this.shopName = shopName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getTradeStatus() {
+        return tradeStatus;
+    }
+
+    public void setTradeStatus(String tradeStatus) {
+        this.tradeStatus = tradeStatus;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

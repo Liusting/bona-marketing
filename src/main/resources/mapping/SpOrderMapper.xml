@@ -19,12 +19,40 @@
         ID AS id, NUMBER AS number, NAME AS name, PAYSTATUS AS payStatus,SHOPNAME AS shopName,
         MONEY as money,TYPEID as typeId,ITEMID as itemId
     </sql>
+
+    <insert id="addOrder">
+        INSERT INTO sp_order
+        (id,item_id,type_id,user_id,trade_status,money,number,pay_status,total_amount,pay_time,display,remark,desc_star,service_star,manner_star)
+        VALUES (
+        #{spOrder.id,jdbcType=VARCHAR},
+        #{spOrder.itemId,jdbcType=VARCHAR},
+        #{spOrder.typeId,jdbcType=VARCHAR},
+        #{spOrder.userId,jdbcType=VARCHAR},
+        #{spOrder.tradeStatus,jdbcType=VARCHAR},
+        #{spOrder.money,jdbcType=DOUBLE},
+        #{spOrder.number,jdbcType=INTEGER},
+        #{spOrder.payStatus,jdbcType=VARCHAR},
+        #{spOrder.totalPrice,jdbcType=DOUBLE},
+        NOW(),
+        '1',
+        #{spOrder.remark,jdbcType=VARCHAR},
+        '0',
+        '0',
+        '0'
+         )
+    </insert>
+
     <!--获取未付款、待发货、已收货、待评价订单列表-->
     <select id="getOrderList" resultType="java.util.Map">
-        SELECT so.id,so.trade_status,so.type_id,so.pay_status,so.item_id,si.name,ss.name AS 'shop_name',so.number,so.money FROM sp_order so
+        SELECT so.id,so.trade_status,so.display,so.type_id,so.pay_status,so.item_id,si.name,ss.name AS 'shop_name',so.number,so.money FROM sp_order so
         LEFT JOIN sp_item si ON so.item_id = si.id
         LEFT JOIN sp_shop ss ON ss.id = si.shop_id
-        WHERE so.pay_status = #{pay_status} AND so.trade_status = #{trade_status} AND so.display = 1 ;
+        <if test="type1 != null and type1 != ''">
+            WHERE 1 = 1;
+        </if>
+        <if test="type2 != null and type2 != ''">
+            WHERE so.trade_status = #{trade_status};
+        </if>
     </select>
     <!-- 取消订单-->
     <update id="cancelPay">

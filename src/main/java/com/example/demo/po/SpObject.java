@@ -67,6 +67,8 @@ public class SpObject {
         this.goodsId = goodsId;
     }
 
+
+
     public String id;
     public String name;
     public String upperId;
@@ -75,4 +77,5 @@ public class SpObject {
     public String itemId;
     public String type;
     public String goodsId;
+
 }

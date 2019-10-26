@@ -26,7 +26,8 @@ spring:
       datetime_format: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.20.126:3306/bona_marketing?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    url: jdbc:mysql://172.16.20.32:3306/bona_marketing?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://192.168.2.177:3306/bona_marketing?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: 123456
 
