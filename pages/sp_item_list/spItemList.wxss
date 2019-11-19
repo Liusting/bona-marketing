@@ -9,12 +9,7 @@
 .box view.cu-bar {
   margin-top: 20rpx; 
 }
-.firstTop {
-	position: fixed;
-	width: 100%;
-	z-index: 1024;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
-}
+
 .cesi{
    padding: 0;
    margin: 0;

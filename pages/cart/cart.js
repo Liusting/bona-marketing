@@ -1,7 +1,7 @@
 var app = getApp();
 Component({
   data: {
-    hfShow:'',//头部底部显示
+    hfShow:true,//头部底部显示
     adminShow: false,//管理      
     total: 0,//总金额   
     shopsel:false,   
@@ -15,7 +15,33 @@ Component({
     itemNumber:0,
     pageBackgroundColor: 'gray',
     shopcarData: [],//购物车商品列表  
-    changeNumber:'' 
+    changeNumber:'' ,
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+    shopData: [{
+      imageUrl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg',
+      name: '苹果手机',
+      number: '12',
+      integral: '14000',
+    }, {
+      imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      name: '华为手机',
+      number: '12',
+      integral: '14000',
+    }, {
+      imageUrl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg',
+      name: '小米手机',
+      number: '12',
+      integral: '14000',
+    }, {
+      imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      name: '小米手机',
+      number: '12',
+      integral: '14000',
+    }],
   },
   // tab切换的时候马上响应数据
   ready: function () {
@@ -39,6 +65,14 @@ Component({
           })
         }
 
+      }
+    });
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
       }
     })
   },

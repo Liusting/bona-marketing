@@ -1,37 +1,41 @@
 {
   "pages": [
-        
+        "pages/me/upgrade",
+    "pages/me/memberMessage",
+    "pages/preferential/preferential",
     "pages/index/index",
     "pages/home/home",
-"pages/home/moreDiscount",
+    "pages/home/moreDiscount",
     "pages/item_type/itemType",
     "pages/cart/cart",
     "pages/me/me",
-    "pages/me/steps",
-    "pages/me/refund",
-    "pages/sp_item_list/spItemList",
+      "pages/me/steps",
+  "pages/me/refund",
+  "pages/sp_item_list/spItemList",
+    "pages/order/order",
     "pages/sp_item/spItem",
     "pages/sp_item/coupon",
     "pages/cesi/cesi",
     "pages/cesi2/cesi2",
     "pages/logs/logs",
     "pages/integral/luckDraw",
-    "pages/addressList/addressList",
+          "pages/addressList/addressList",
     "pages/address/address",
     "pages/address/editAddress",
     "pages/accountSecurity/accountSecurity",
-    "pages/sp_order_list/spOrderList",
-    "pages/sp_order_list/orderDetail",
+
+          "pages/sp_order_list/spOrderList",
+          "pages/sp_order_list/orderDetail",
+          "pages/invest/invest",
     "pages/sp_order_list/chat",
-    "pages/invest/invest",
+   
     "pages/invest/investMoney",
     "pages/invest/investRecord",
     "pages/invest/investNotice",
     "pages/userMessage/userMessage",
-    "pages/preferential/preferential",
-"pages/order/order",
-    "pages/me/memberMessage",
-    "pages/me/upgrade",
+
+
+
     "pages/integral/integral",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",
@@ -39,10 +43,13 @@
     "pages/shop/shop"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "Color UI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
   },
   "sitemapLocation": "sitemap.json"
 }

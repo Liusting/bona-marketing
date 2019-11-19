@@ -9,35 +9,35 @@
   <view class="action" bindtap="NavChange" data-cur="HomePage">
     <view class='cuIcon-cu-image'>
       <!-- <image src="/images/tabbar/{{PageCur=='HomePage'?'basics_cur.png':'basics.png'}}"></image> -->
-      <view class="{{PageCur=='HomePage'?'cuIcon-homefill text-green' : 'cuIcon-home text-gray'}}"></view>
+      <view class="{{PageCur=='HomePage'?'cuIcon-homefill text-orange' : 'cuIcon-home text-gray'}}"></view>
     </view>
-    <view class="{{PageCur=='HomePage'?'text-green':'text-gray'}}">首页</view>
+    <view class="{{PageCur=='HomePage'?'text-orange':'text-gray'}}">首页</view>
   </view>
 
   <!-- 导航栏分类 -->
   <view class="action" bindtap="NavChange" data-cur="ClassificationOfCommodities">
     <view class='cuIcon-cu-image'>
       <!-- <image src="/images/tabbar/{{PageCur=='ClassificationOfCommodities'?'component_cur.png':'component.png'}}"></image> -->
-      <view class="{{PageCur=='ClassificationOfCommodities'?'cuIcon-circlefill text-green' : 'cuIcon-circle text-gray'}}"></view>
+      <view class="{{PageCur=='ClassificationOfCommodities'?'cuIcon-circlefill text-orange' : 'cuIcon-circle text-gray'}}"></view>
     </view>
-    <view class="{{PageCur=='ClassificationOfCommodities'?'text-green':'text-gray'}}">分类</view>
+    <view class="{{PageCur=='ClassificationOfCommodities'?'text-orange':'text-gray'}}">分类</view>
   </view>
 
   <!-- 导航栏购物车 -->
     <view class="action" bindtap="NavChange" data-cur="MyCart">
     <view class='cuIcon-cu-image'>
-      <view class="{{PageCur=='MyCart'?'cuIcon-cartfill text-green' : 'cuIcon-cart text-gray'}}"></view>
+      <view class="{{PageCur=='MyCart'?'cuIcon-cartfill text-orange' : 'cuIcon-cart text-gray'}}"></view>
     </view>
-    <view class="{{PageCur=='MyCart'?'text-green':'text-gray'}}">购物车</view>
+    <view class="{{PageCur=='MyCart'?'text-orange':'text-gray'}}">购物车</view>
   </view>
 
 <!-- 导航栏我的 -->
   <view class="action" bindtap="NavChange" data-cur="MyMessage">
     <view class='cuIcon-cu-image'>
       <!-- <image src="/images/tabbar/{{PageCur=='MyMessage'?'about_cur.png':'about.png'}}"></image> -->
-     <view class="{{PageCur=='MyMessage'?'cuIcon-myfill text-green' : 'cuIcon-my text-gray'}}"></view>
+     <view class="{{PageCur=='MyMessage'?'cuIcon-myfill text-orange' : 'cuIcon-my text-gray'}}"></view>
     </view>
-    <view class="{{PageCur=='MyMessage'?'text-green':'text-gray'}}">我的</view>
+    <view class="{{PageCur=='MyMessage'?'text-orange':'text-gray'}}">我的</view>
   </view>
 
 </view>

@@ -1,3 +1,4 @@
+const app = getApp();
 const formatTime = date => {
 
   const year = date.getFullYear()
@@ -28,6 +29,11 @@ Component({
     }
   },
   data: {
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     countDownHour: 0, //倒计时 -时
     countDownMinute: 0, //倒计时 -分
     countDownSecond: 0, //倒计时-秒
@@ -102,7 +108,15 @@ Component({
   },
 
   ready:function(){
-
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    });
     //设置倒计时时间，1s变换一次
     var interval = setInterval(function () {
       var d = new Date();  //获取系统日期和时间

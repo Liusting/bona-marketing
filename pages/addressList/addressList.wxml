@@ -1,9 +1,19 @@
-<view class="bg-white text-lg align-center cu-bar" bindtap="getWeixinAddress">
-  <text><text  class="margin-left {{'cuIcon-weixin text-green'}}"></text>获取微信收货地址</text>
-  <text class="{{'cuIcon-right text-gray'}}"></text>
+
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">管理地址</view>
+    </cu-custom>
+  </view>
 </view>
 
-<scroll-view class="scroll" scroll-y="true" style="margin-top:5px">
+<view  class="bg-white cu-bar  align-center flex justify-between" bindtap="getWeixinAddress">
+  <text class="margin-left"><text  class="cuIcon-weixin text-green"></text>获取微信收货地址</text>
+  <text class="cuIcon-right margin-right"></text>
+</view>
+
+<scroll-view class="margin-top-xs" scroll-y="true" style="height:{{deviceH-64-49.2-50}}px">
   <view  wx:for="{{addressList}}"  wx:key bindtap='addClick' 
   data-id='{{item.id}}'
   data-name="{{item.addresseeName}}"

@@ -1,13 +1,18 @@
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom ><view slot="content">首页</view></cu-custom>
+  </view>
+</view>
 <view class="VerticalBox">
 <!-- 左边滚动导航栏 -->
-  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 100rpx)">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation  style="height:{{deviceH-50-64}}px">
     <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
       {{item.name}}
     </view>
   </scroll-view>
 
 <!-- 右边联动左边的数据展示 -->
-  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 100rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:{{deviceH-50-64}}px" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
     <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
       <view wx:for="{{item.listType2}}" wx:for-item="listType2" wx:key>
         <view class="cu-bar bg-white solid-bottom margin-top">

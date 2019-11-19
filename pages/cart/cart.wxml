@@ -1,42 +1,68 @@
-
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom ><view slot="content">购物车</view></cu-custom>
+  </view>
+</view>
 <!-- 头部：管理 -->
 
-  <view  class='bg-white padding-sm justify-end flex' hidden='{{hfShow}}'>
-    <text class='text-orange' catchtap='adminTap'>{{adminShow?'完成':'编辑'}}</text>
+  <view style="height:40px"  class='bg-white  align-center justify-end flex' hidden='{{hfShow}}'>
+    <text class='text-orange margin-right' catchtap='adminTap'>{{adminShow?'完成':'管理'}}</text>
   </view>
 
-  <!-- 中部滑动：显示购物车列表 -->
-  <scroll-view scroll-y  style="height:calc((100vh - 102rpx) - 84rpx - 84rpx)"> 
-    <view class="container carts-list" wx:if="{{shopcarData==''}}">
-      <view class="cartnull">
-        <image class="scimg" src="/images/person/search_no.png" mode="aspectFill"/>
-      </view>
-      <view class="cartnull">
-        <text >购物车空空如也/(ㄒoㄒ)/~~</text>
-      </view>
-      <view class="cartnull">
-        <button bindtap="goshop" style="width:300rpx;margin-top:50rpx;" class="cu-btn line-orange lg">去逛逛</button>
+<scroll-view class="bg-white" scroll-y  wx:if="{{shopcarData==''}}" style="height:{{deviceH-64-50}}px">
+  <view class="margin-top">
+    <view class="justify-center flex align-center">
+      <image class="scimg" src="/images/person/search_no.png" mode="aspectFill"/>
+    </view>
+    <view class="justify-center flex align-center">
+      <text >购物车空空如也/(ㄒoㄒ)/~~</text>
+    </view>
+    <view class="margin-top justify-center flex align-center">
+      <button bindtap="goshop"  class="cu-btn round bg-orange lg">去逛逛</button>
+    </view>
+  </view>
+  <view class="margin-top padding-sm flex text-xl text-red justify-center">
+    <text>——————为您推荐——————</text>
+  </view>
+  <view>
+    <view  class="cu-list grid col-2">
+      <view  wx:for="{{shopData}}" wx:key>
+        <view class="padding-sm ">
+          <view>
+            <image class="dcimg" src="{{item.imageUrl}}"  mode='scaleToFill' ></image>
+            <view class="shop_name">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八</view>
+            <view class="padding flex align-center justify-between">
+              <text class="text-price text-red text-xl">27</text>
+              <text >199人付款</text>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
-    <view class='shop' wx:for='{{shopcarData}}' wx:key>  
+  </view>
+</scroll-view>
+
+  
+  <scroll-view wx:else scroll-y  style="height:{{deviceH-64-40-50-50}}px"> 
+    <view class='bg-white padding-sm margin-sm radius' wx:for='{{shopcarData}}' wx:key>  
       <view class="flex align-center padding-xs" >
-      <view style="height:100%;width:30rpx;" >
-        <text class="cuIcon-round" hidden='{{item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
-        <text class="cuIcon-roundcheckfill" hidden='{{!item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
+        <view>
+          <text class="cuIcon-round" hidden='{{item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
+          <text class="cuIcon-roundcheckfill" hidden='{{!item.check}}' bindtap="shopcheck" data-index='{{item.shopId}}'></text> 
         </view>
-      <view  bindtap="gotoShop" data-shopId="{{item.shopId}}" data-shopName="{{item.shopName}}">
-        <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-          <text class="text-bold margin-left text-lg" >{{item.shopName}}</text>
-          <text class="margin-left {{'cuIcon-right text-gray'}}" ></text>
+        <view  bindtap="gotoShop" data-shopId="{{item.shopId}}" data-shopName="{{item.shopName}}">
+          <view class="cu-avatar sm round margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+            <text class="text-bold margin-left text-lg" >{{item.shopName}}</text>
+            <text class="margin-left {{'cuIcon-right text-gray'}}" ></text>
           </view>
-      </view>
+        </view>
       <view class="flex bg-white" wx:for='{{item.itemdata}}' wx:for-item="items" wx:key bindlongtap="delete" data-id="{{items.id}}"  data-index="{{index}}">
-        <view class='shop_check_box'>  
+        <view class='flex align-center padding-xs'>  
           <text class="cuIcon-round" bindtap="checkTap"  hidden='{{items.check}}' data-id="{{items.id}}" data-index="{{item.shopId}}" ></text>   
           <text class="cuIcon-roundcheckfill" bindtap="checkTap"  hidden='{{!items.check}}' data-id="{{items.id}}" data-index="{{item.shopId}}" ></text>  
         </view>    
         <view class="padding-xs flex">
-        <view class="productImg">
+        <view >
           <image class ="scimg" src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
         </view>  
         <view  >
@@ -71,20 +97,22 @@
   </scroll-view>
 
  <!-- // 底部 -->
-  <view class='footer' hidden='{{hfShow}}' >   
-      <text style="margin-left: 20rpx;" class="cuIcon-round" hidden='{{allsel}}' catchtap='allcheckTap'></text>   
-      <text style="margin-left: 20rpx;" class="cuIcon-roundcheckfill"  hidden='{{!allsel}}' catchtap='allcheckTap'></text>    
-      <text class='check_text'>全选</text>   
-          <text class='footer_total_text' hidden='{{adminShow}}'>合计：<text class='footer_total_price'>￥{{total}}    </text> </text>  
-    <text class='footer_total' hidden='{{adminShow}}' catchtap="goclearingTap">结算<text>({{itemNumber}})</text></text>
-    
-    <text hidden='{{!adminShow}}' style="background-color:{{pageBackgroundColor}}" class='deleteshop'  catchtap='deleteshopTap'>删除</text>
+  <view class='bg-white  flex align-center justify-between' style="height:100rpx" hidden='{{hfShow}}' > 
+  <view>
+      <text  class=" margin-left cuIcon-round" hidden='{{allsel}}' catchtap='allcheckTap'></text>   
+      <text  class=" margin-left cuIcon-roundcheckfill"  hidden='{{!allsel}}' catchtap='allcheckTap'></text>  
+      <text class="margin-left-xs">全选</text>   
+      <text class="margin-left-xs" hidden='{{adminShow}}'>合计：<text class='text-price text-red'>{{total}}    </text> </text>  
+      </view>
+    <view >
+        <button hidden='{{adminShow}}' catchtap="goclearingTap" class="margin-right cu-btn round bg-orange lg">结算<text>({{itemNumber}})</text></button>
+        <button hidden='{{!adminShow}}'  class='margin-right cu-btn round line-{{pageBackgroundColor}}'  catchtap='deleteshopTap'>删除</button>
+    </view>
     </view> 
 
 
 
 
-<!-- 点击姓名时出现弹框 -->
 		<view class="cu-modal {{modalName=='nameModal'?'show':''}}">
 			<form class="cu-dialog" bindsubmit="formSubmit" bindreset="formReset">
 				<view class="padding bg-white flex justify-center">

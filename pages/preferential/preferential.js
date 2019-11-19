@@ -1,3 +1,4 @@
+const app = getApp();
   Page({
 
   /**
@@ -5,7 +6,11 @@
    */
   data: {
     currtab: 0,
-    deviceH: '',//当前屏幕高度
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     swipertab: [
       { name: '全部', index: 0 },
       { name: '即将过期', index: 1 },

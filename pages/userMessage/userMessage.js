@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    avatarUrl: "",//用户头像
+    nickName: "",//用户昵称
     name:null,
     array: ['男', '女'],//性别选择
     date: null,//生日
@@ -101,6 +103,25 @@ Page({
         })
       }
 
+    });
+    // 判断是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              var userInfo = res.userInfo
+              var nickName = userInfo.nickName;//获取微信用户昵称
+              var avatarUrl = userInfo.avatarUrl; //获取微信用户头像存放的Url 
+              that.setData({
+                avatarUrl: avatarUrl,
+                nickName: nickName,
+              })
+            }
+          })
+        }
+      }
     })
   },
 

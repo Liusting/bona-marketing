@@ -1,72 +1,6 @@
 @import "/colorui/main.wxss";
 @import "/colorui/icon.wxss";
-.header{  
-    padding: 0 20rpx;  
-    background: #fff;  
-    height: 90rpx;  
-    border-bottom: 1px solid #efefef;
-    top: 0
-}
-.header_text{
-  font-size: 30rpx;  
-  line-height: 90rpx;  
-  padding:0 6rpx;  
-  color: #ff9600;
-  float: right;
-}
-.check_box{  
-    flex: 1;  
-    display: flex;  
-    line-height: 90rpx;  
-    font-size: 30rpx;
-}
-.check_img{  
-    width: 38rpx;  
-    height: 38rpx;  
-    margin-top:26rpx;
-}
 
-.main{
-  flex: 1;  
-  overflow:auto;/* winphone8和android4+ */  
-  -webkit-overflow-scrolling: touch; /* ios5+ */
-}
-.orderListTitle {
-  height: 70rpx;
-  line-height: 70rpx;
-  display: flex;
-}
-.shop{
-  background: #fff;  
-  padding:20rpx;  
-  border-radius: 10px;
-  margin: 5px 10px 0px 10px
-  /* 上  右  下  左*/
-}
-.shop_check_box{
-display: flex;
-align-items: center;
-
-}
-.orderListDetails {
-  display: flex;
-  height: 200rpx;
-  background-color: #fff;
-}
-.orderListTitle .userName {
-  padding-right: 10rpx;
-  margin-left:20rpx;
-  font-weight: bolder;
-    font-size:30rpx;
-}
-.orderListDetails .productImg {
-  height:200rpx;
-  width:200rpx;
-}
-
-.shop_detail{
-  height: 200rpx
-}
 .shop_name{
   font-size: 27rpx;  
   line-height: 40rpx;  
@@ -90,74 +24,12 @@ align-items: center;
   -webkit-box-orient:vertical;  
   overflow:hidden;
 }
-.shop_detail_bottom{
-  display: flex;
-  align-items: center;
-  margin-top: 10rpx;
-}
-.shop_price{
-  flex: 1;  
-  color: red;
-  margin-right: 30rpx;
-}
-.num_change{
-  display: flex;  
-}
-.shop_num{
-  line-height: 38rpx;  
-  height: 38rpx;  
-  width: 60rpx;  
-  text-align: center;  
-  font-size: 30rpx;
-}
-.add_icon,.minus_icon{
-  width: 38rpx;  
-  height: 38rpx;
-}
-.footer{
-width: 100%;
-background-color: #fff;
-border: none;
-height: 100rpx;
-border-bottom: 1px solid #f1f1f1
-}
-.check_text{  
-    margin-left: 15rpx;  
-    line-height: 90rpx;
-}
-.footer_total_text{
-  margin-left: 35rpx; 
-}
-.footer_total_price{
-  margin-left: 15rpx; 
-  color: red;
-  position: relative;
-  width: 800rpx
-}
-.footer_total{
-  background-color: #f37b1d; 
-  text-align: center;
-  line-height: 100rpx;
-  color: white;
-  float: right;
-  font-size: 30rpx;
-  width: 30%;
-  height: 100rpx;
-}
-.deleteshop{
-  background-color: red;
-  text-align: center;
-  line-height: 100rpx;
-  float:right;
-  width:30%;
-}
+
 .scimg{
   height: 180rpx;
   width: 180rpx;
 }
-.cartnull{
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+.dcimg{
+  height: 168px;
+  width: 168px;
 }

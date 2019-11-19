@@ -2,6 +2,11 @@
 var app = getApp()
 Component({
   data: {
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
       // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrl: "",//用户头像
     nickName: "",//用户昵称
@@ -66,6 +71,16 @@ Component({
   },
   // tab切换的时候马上响应数据
   ready: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    });
+
     this.bindGetUserInfo();
   },
   methods:{

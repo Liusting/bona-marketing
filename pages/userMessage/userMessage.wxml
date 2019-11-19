@@ -1,36 +1,31 @@
-<view style="background:#fff;margin-bottom:20rpx">
-  <view class="list-item1">
-    <view class="userInfo">
-    <text class="text-bold margin-left">头像</text>
-    </view>
-    <view class="margin-right">
-    <view class="userinfo-avatar">
-      <open-data  type="userAvatarUrl"></open-data>
-      </view>
-    </view> 
+
+  <view class="bg-white padding flex justify-between align-center">
+    <text class="text-bold ">头像</text>
+    <view class="cu-avatar lg round " style="background-image:url({{avatarUrl}});"></view>
   </view>
-  <view class="cu-bar">
-    <text class="text-bold margin-left">微信昵称</text>
-    <text class="margin-right">Liusting</text>
+
+  <view class="bg-white padding flex justify-between align-center">
+    <text class="text-bold ">微信昵称</text>
+    <text >{{nickName}}</text>
   </view>
-</view>
-<view class="bg-white">
+
+<view class="bg-white margin-top">
   <!-- 姓名 -->
-  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1">
-    <text class="text-bold margin-left">真实姓名</text>
+  <view class=" padding flex justify-between align-center" style="border-bottom:1px solid #f1f1f1">
+    <text class="text-bold ">真实姓名</text>
     <text 
     bindtap="showModal" data-target="nameModal" data-typeid="{{0}}">{{name?name:'请填写'}}<text class="{{'cuIcon-right text-gray'}}" ></text></text>
   </view>
   
 <!-- 手机号 -->
-  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1">
-    <text class="text-bold margin-left">手机号</text>
+  <view class="padding flex justify-between align-center" style="border-bottom:1px solid #f1f1f1">
+    <text class="text-bold ">手机号</text>
     <text  bindtap="showModal" data-target="phonenumberModal" 
     data-typeid="{{0}}">{{phoneNumber?phoneNumber:'请填写'}}<text class="{{'cuIcon-right text-gray'}}" ></text></text>
   </view>
   <!-- 性别 -->
-  <view class="cu-bar" style="border-bottom:1px solid #f1f1f1" >
-    <text class="text-bold margin-left">性别</text>
+  <view class="padding flex justify-between align-center" style="border-bottom:1px solid #f1f1f1" >
+    <text class="text-bold ">性别</text>
     <picker  mode="selector" value="{{index}}" bindchange="changeSexy" range="{{array}}">
     <view >
       {{index?array[index]:'请选择'}}<text class="{{'cuIcon-right text-gray'}}"></text>
@@ -41,12 +36,12 @@
   <view>
 </view>
 
-  <view class="text-grey cu-bar margin-left" >
+  <view class="text-grey padding" >
   生日信息只能修改一次
   </view>
   <view class="bg-white">
-    <view class="cu-bar">
-      <text class="text-bold margin-left">生日</text>
+    <view class="padding flex justify-between align-center">
+      <text class="text-bold ">生日</text>
       <picker  mode="date" value="{{date}}" bindchange="{{date?'':'changeDate'}}">
         <view class="picker-date">{{date?date:'完成设置生日当天独享特惠'}}<text class="{{'cuIcon-right text-gray'}}"              ></text>
         </view>

@@ -1,3 +1,11 @@
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">会员升级</view>
+    </cu-custom>
+  </view>
+</view>
 
     <view class=" flex  bg-white raduis margin-xs" style="border:1px solid red;height:150rpx">
       <view class="flex align-center text-center" style="width:80%;height:100% ;border-right:1px dashed red">

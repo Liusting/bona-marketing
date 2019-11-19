@@ -9,8 +9,8 @@ let store = new Store({
 
 App({ 
   // 全局ip+端口
-  // ipAndPort: 'http://172.16.20.32:8081',
-  ipAndPort: 'http://192.168.2.177:8081',
+  ipAndPort: 'http://172.16.20.227:8081',
+  // ipAndPort: 'http://192.168.2.177:8081',
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -42,11 +42,11 @@ App({
         }
       }
     })
-    if (wx.cloud) {
-      wx.cloud.init({
-        traceUser: true
-      })
-    }
+    // if (wx.cloud) {
+    //   wx.cloud.init({
+    //     traceUser: true
+    //   })
+    // }
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;

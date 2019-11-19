@@ -13,7 +13,12 @@ Page({
       { name: '待评价', index: 4 },
       ],
     orderList: [],
-    deviceH:'',//当前屏幕高度
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+
   },
 // 
   /**
@@ -70,7 +75,6 @@ Page({
     this.setData({ 
       currtab: e
       })
-
     this.orderListShow();
   },
   orderListShow: function () {

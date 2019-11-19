@@ -1,3 +1,11 @@
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">我的优惠</view>
+    </cu-custom>
+  </view>
+</view>
 
 <view  class="bg-white nav" style="height:90rpx">
   <view class="flex text-center text-lg">
@@ -9,7 +17,7 @@
 
 
 
-<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-45}}px" bindchange="tabChange">
+<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-45-64}}px" bindchange="tabChange">
   <!-- 优惠卷未使用 -->
   <swiper-item>
     <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
@@ -46,7 +54,7 @@
   </swiper-item>
   <!-- 已使用 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45}}px">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45-64}}px">
       <view class="search_no" wx:if="{{!allOrder.length}}">
         <view class="font_14"><image class="scimg" src="/images/person/search_no.png"></image></view>
         <text>没有可用优惠券/(ㄒoㄒ)/~~</text>

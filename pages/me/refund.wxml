@@ -1,3 +1,13 @@
+
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">退货/售后</view>
+    </cu-custom>
+  </view>
+</view>
+
   <view class="bg-white flex justify-center text-center" style="height:100vh" wx:if="{{!refundList.length}}">
     <view >
       <image class="scimg" src="/images/person/search_no.png" mode="aspectFill"/>
@@ -6,7 +16,7 @@
     </view>
   </view>
 
-  <scroll-view scroll-y="true" wx:else>
+  <scroll-view scroll-y="true" wx:else style="height:{{deviceH-64}}px">
     <view class="cu-bar search bg-white margin-bottom">
       <view class="search-form round">
         <text class="cuIcon-search"></text>

@@ -18,7 +18,11 @@ Page({
       type: 'image',
         url: 'https://m.360buyimg.com/n12/s750x750_jfs/t9733/126/2033941175/68120/a4eb4468/59edb8d6N37bea6f7.jpg!q70.jpg'
     }],
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     card_view_height: 100,
     // bottom_view_height1和bottom_view_height2是初始化高度用到的
     bottom_view_height1: 50,
@@ -54,15 +58,25 @@ Page({
     * 生命周期函数--监听页面显示
     */
   onLoad: function (e) {
+
     // console.log(e);
     let itemId = e.itemId;
     let shopId = e.shopId;
     let shopName = e.shopName;
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    });
+
     this.setData({
       shopId: shopId,
       shopName: shopName
     })
-    let that = this;
     wx.request({
       url: app.ipAndPort + '/spCart/getCartDetail',
       method: 'POST',

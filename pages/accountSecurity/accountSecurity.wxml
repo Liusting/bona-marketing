@@ -6,14 +6,18 @@
 
 <!-- 修改登录密码 -->
 <view class="bg-white">
-  <view class="cu-bar margin-top" style="border-bottom:1px solid #f1f1f1">
-    <text class="margin-left">修改登录密码</text>
-    <text bindtap="showModal" data-target="passwordModal" data-typeid="{{0}}">请填写<text class="{{'cuIcon-right text-gray'}}"></text></text>
+  <view class="bg-white  padding flex align-center justify-between" style="border-bottom:1px solid #f1f1f1">
+    <text>修改登录密码</text>
+    <text bindtap="showModal" data-target="passwordModal" data-typeid="{{0}}">请填写<text class="{{'cuIcon-right '}}"></text></text>
   </view>
 <!-- 注销账号 -->
-  <view class="cu-bar" bindtap="deleteAccount" >
+  <!-- <view class="cu-bar" bindtap="deleteAccount" >
     <text class="margin-left">注销账号</text>
     <text class="margin-left"><text class="{{'cuIcon-right text-gray'}}"></text></text>
+  </view> -->
+  <view class="bg-white  padding flex align-center justify-between" bindtap="deleteAccount" >
+    <text >注销账号</text>
+    <text class="cuIcon-right"></text>
   </view>
 </view>
 

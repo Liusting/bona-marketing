@@ -1,4 +1,14 @@
-<scroll-view scroll-y="hidden" style='height:100%'>
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">商品详情</view>
+    </cu-custom>
+  </view>
+</view>
+
+
+<scroll-view scroll-y style='height:{{deviceH-64}}px'>
 <swiper class="" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
  <swiper-item>  
         <video style="width:100%" id="myVideo" src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' bindtap="bofang" controls='true'></video>

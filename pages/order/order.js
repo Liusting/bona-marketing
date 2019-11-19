@@ -11,6 +11,7 @@ Page({
     Custom: app.globalData.Custom,
     bottom_view_height2: 100,
     deviceH: '',//当前屏幕高度
+    deviceW:'',
     TabCur: 0,
     MainCur: 0,
     VerticalNavTop: 0,
@@ -33,6 +34,7 @@ Page({
     flag: false,
     flag1: true,
     flag2: 0,
+    flag3:true,
     mode: [
      { type: '0', name: '快递', checked:'true' },
      { type: '1', name: '门店自提' }, 
@@ -120,7 +122,13 @@ Page({
         flag:true,
         flag1: false
       })
-    } else if (e.currentTarget.dataset.item.type == 0 || 2){
+    }else if (e.currentTarget.dataset.item.type == 2) {
+      this.setData({
+        flag: false,
+        flag1: true,
+        flag3: false
+      })
+    }else if (e.currentTarget.dataset.item.type == 0 ){
       this.setData({
         flag: false,
         flag1: true

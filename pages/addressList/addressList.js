@@ -4,6 +4,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     addressList: [],
     type:''
   },
@@ -85,12 +90,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options.type);
-    // debugger;
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    });
     this.setData({
       type: options.type
     })
-    var that = this;
     wx.request({
       url: app.ipAndPort + '/spAddress/getAddressList',
       method: 'POST',

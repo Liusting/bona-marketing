@@ -1,102 +1,112 @@
-
-<view class="bg-white padding">
-  <view class="cu-steps">
-    <view class="cu-item {{index>num?'':'text-blue'}}" wx:for="{{numList}}" wx:key>
-      <text class="num" data-index="{{index + 1}}"></text> {{item.name}}
-    </view>
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">审核进度</view>
+    </cu-custom>
   </view>
 </view>
-<view class="margin-top bg-white padding-sm">
-    <view class="padding-xs" >
-      <text class="margin-left text-bold">商品信息</text>
-    </view>
-    <view class="bg-white flex" wx:for="{{1}}" wx:key>
-      <view style="height:200rpx;width:200rpx;">
-        <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
-      </view>
-      <view class="padding-xs ">
-        <view class="productTitle">小米小爱音箱play小爱同学智能音箱蓝牙ai智能机器人</view>
-        <view class="cu-bar">
-          <text >单价:<text class="text-price text-red text-bold text-xl" >99.00</text></text>
-          <text class="margin-left">数量:<text class=" text-red text-bold text-xl" >1</text></text>
-        </view>   
+
+<scroll-view scroll-y style="height:{{deviceH-64}}px">
+  <view class="bg-white padding">
+    <view class="cu-steps">
+      <view class="cu-item {{index>num?'':'text-blue'}}" wx:for="{{numList}}" wx:key>
+        <text class="num" data-index="{{index + 1}}"></text> {{item.name}}
       </view>
     </view>
   </view>
+  <view class="margin-top bg-white padding-sm">
+      <view class="padding-xs" >
+        <text class="margin-left text-bold">商品信息</text>
+      </view>
+      <view class="bg-white flex" wx:for="{{1}}" wx:key>
+        <view style="height:200rpx;width:200rpx;">
+          <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+        </view>
+        <view class="padding-xs ">
+          <view class="productTitle">小米小爱音箱play小爱同学智能音箱蓝牙ai智能机器人</view>
+          <view class="cu-bar">
+            <text >单价:<text class="text-price text-red text-bold text-xl" >99.00</text></text>
+            <text class="margin-left">数量:<text class=" text-red text-bold text-xl" >1</text></text>
+          </view>   
+        </view>
+      </view>
+    </view>
 
-  <view class=" bg-white">
-    <view class="padding-xs">
-      <text class="text-sm text-gray">商品总价</text>
-      <text class="text-sm text-gray text-price" style="float:right">26.00</text>
+    <view class=" bg-white">
+      <view class="padding-xs">
+        <text class="text-sm text-gray">商品总价</text>
+        <text class="text-sm text-gray text-price" style="float:right">26.00</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">运费(快递)</text>
+        <text class="text-sm text-gray text-price" style="float:right">0.00</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">券抵扣</text>
+        <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">满立减折扣</text>
+        <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">会员折扣</text>
+        <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">积分折扣</text>
+        <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
+      </view>
+      <view class="padding-xs" style="  border-bottom: 1px solid #f1f1f1;">
+        <text>订单总价</text>
+        <text class="text-price" style="float:right">26.00</text>
+      </view>
+      <view class="padding-xs">
+        <text>已付款</text>
+        <text class="text-price text-red" style="float:right">26.00</text>
+      </view>
     </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">运费(快递)</text>
-      <text class="text-sm text-gray text-price" style="float:right">0.00</text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">券抵扣</text>
-      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">满立减折扣</text>
-      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">会员折扣</text>
-      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">积分折扣</text>
-      <text class="text-sm text-gray" style="float:right">- <text class="text-sm text-gray text-price">0.00</text></text>
-    </view>
-    <view class="padding-xs" style="  border-bottom: 1px solid #f1f1f1;">
-      <text>订单总价</text>
-      <text class="text-price" style="float:right">26.00</text>
-    </view>
-    <view class="padding-xs">
-      <text>已付款</text>
-      <text class="text-price text-red" style="float:right">26.00</text>
-    </view>
-  </view>
 
-  <view class="margin-top bg-white">
-    <view class="padding-sm">
-      <text><text class=" cuIcon-titles text-orange"></text>服务信息</text>
+    <view class="margin-top bg-white">
+      <view class="padding-sm">
+        <text><text class=" cuIcon-titles text-orange"></text>服务信息</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">服务单号：</text>
+        <text class="text-sm text-gray margin-left" >595915687</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">申请时间：</text>
+        <text class="text-sm text-gray margin-left" >2019-10-16 09:52:44</text>
+      </view>        
+      <view class="padding-xs margin-bottom" style="border-bottom: 1px solid #f1f1f1">
+        <text class="text-sm text-gray">服务类型：</text>
+        <text class="text-sm text-gray margin-left" >退货</text>
+      </view>
+      <view class="padding-xs"  >
+        <text class="text-sm text-gray">商品退回：</text>
+        <text class="text-sm text-gray margin-left" >客户邮寄</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">取件地址：</text>
+        <text class="text-sm text-gray margin-left" >广西壮族自治区玉林市北流市平政镇北河村</text>
+      </view>
+      <view class="padding-xs">
+        <text class="text-sm text-gray">收货地址：</text>
+        <text class="text-sm text-gray margin-left" >广东省佛山市禅城区泛家居创意园6B3楼</text>
+      </view>        
+      <view class="padding-xs" >
+        <text class="text-sm text-gray">联系人：</text>
+        <text class="text-sm text-gray margin-left" >珠穆朗玛峰</text>
+      </view>
+      <view class="padding-xs " >
+        <text class="text-sm text-gray">联系电话：</text>
+        <text class="text-sm text-gray margin-left" >18678879787</text>
+      </view>
     </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">服务单号：</text>
-      <text class="text-sm text-gray margin-left" >595915687</text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">申请时间：</text>
-      <text class="text-sm text-gray margin-left" >2019-10-16 09:52:44</text>
-    </view>        
-    <view class="padding-xs margin-bottom" style="border-bottom: 1px solid #f1f1f1">
-      <text class="text-sm text-gray">服务类型：</text>
-      <text class="text-sm text-gray margin-left" >退货</text>
-    </view>
-    <view class="padding-xs"  >
-      <text class="text-sm text-gray">商品退回：</text>
-      <text class="text-sm text-gray margin-left" >客户邮寄</text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">取件地址：</text>
-      <text class="text-sm text-gray margin-left" >广西壮族自治区玉林市北流市平政镇北河村</text>
-    </view>
-    <view class="padding-xs">
-      <text class="text-sm text-gray">收货地址：</text>
-      <text class="text-sm text-gray margin-left" >广东省佛山市禅城区泛家居创意园6B3楼</text>
-    </view>        
-    <view class="padding-xs" >
-      <text class="text-sm text-gray">联系人：</text>
-      <text class="text-sm text-gray margin-left" >珠穆朗玛峰</text>
-    </view>
-    <view class="padding-xs " >
-      <text class="text-sm text-gray">联系电话：</text>
-      <text class="text-sm text-gray margin-left" >18678879787</text>
-    </view>
+  <view class="flex align-center justify-center padding">
+    <button class=" cu-btn line-red round">取消售后</button>
+    <button class="margin-left cu-btn line-red round">删除服务单</button>
   </view>
-<view class="flex align-center justify-center padding">
-  <button class=" cu-btn line-red round">取消售后</button>
-  <button class="margin-left cu-btn line-red round">删除服务单</button>
-</view>
+</scroll-view>

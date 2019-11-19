@@ -8,6 +8,8 @@ Component({
     }
   },
   data: {
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
@@ -19,8 +21,16 @@ Component({
   },
 
   ready: function () {
-    let list = [{}];
-    let that = this;
+    var that = this;
+     let list = [{}];
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    });
     wx.request({
       url: app.ipAndPort+'/spItemType/getSpItemType',
       method: 'POST',
