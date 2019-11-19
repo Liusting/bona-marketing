@@ -1,8 +1,6 @@
 {
   "pages": [
-        "pages/me/upgrade",
-    "pages/me/memberMessage",
-    "pages/preferential/preferential",
+
     "pages/index/index",
     "pages/home/home",
     "pages/home/moreDiscount",
@@ -34,7 +32,9 @@
     "pages/invest/investNotice",
     "pages/userMessage/userMessage",
 
-
+        "pages/me/upgrade",
+        "pages/me/memberMessage",
+        "pages/preferential/preferential",
 
     "pages/integral/integral",
     "pages/integral/integralShop",

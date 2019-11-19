@@ -1,3 +1,11 @@
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">抢购活动</view>
+    </cu-custom>
+  </view>
+</view>
 
 <view class="padding-sm flex grid col-5">
   <view wx:for="{{swipertab}}" wx:key="sptab">
@@ -13,7 +21,7 @@
 <swiper  current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-56}}px" bindchange="tabChange">
   <!-- 全部 -->
 <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56-64}}px">
         <view  wx:for="{{5}}" wx:key=" " >
           <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
             <view >
@@ -38,7 +46,7 @@
   </swiper-item>
   <!-- 待付款 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56-64}}px">
         <view  wx:for="{{5}}" wx:key=" " >
           <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
             <view >
@@ -63,7 +71,7 @@
   </swiper-item>
   <!-- 待发货 -->
   <swiper-item>
-       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56-64}}px">
         <view  wx:for="{{5}}" wx:key=" " >
           <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
             <view >
@@ -89,7 +97,7 @@
 
 <!-- 待收货 -->
     <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56-64}}px">
         <view  wx:for="{{5}}" wx:key=" " >
           <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
             <view >
@@ -115,7 +123,7 @@
 
 <!-- 待评价 -->
     <swiper-item>
-       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56}}px">
+       <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-56-64}}px">
         <view  wx:for="{{5}}" wx:key=" " >
           <view class="margin-sm radius bg-white padding-sm flex" bindtap="orderDetail">
             <view >

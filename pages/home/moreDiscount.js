@@ -13,7 +13,12 @@ Page({
       { name: '16:00', index: 4 },
     ],
     orderList: [],
-    deviceH:'',
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+
   },
   // 
   /**
