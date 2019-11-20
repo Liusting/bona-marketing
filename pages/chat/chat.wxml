@@ -1,0 +1,24 @@
+<view class="cu-custom bg-blue" style="height:{{CustomBar}}px;border-bottom:1px solid #f1f1f1">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <view class="margin-left text-xl text-white">
+      <text>聊天</text>
+    </view>
+  </view>
+</view>
+
+<scroll-view scroll-y style="height:{{deviceH-64}}px" >
+  <view wx:for="{{messageList}}" wx:key>
+    <view class="bg-white padding-sm flex align-center" style="border-bottom:1px solid #f1f1f1">
+      <view class="cu-avatar lg round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class="margin-left" style="width:80%">
+        <view class="flex justify-between align-center">
+          <view class="text-black text-xl">{{item.name}}</view>
+          <view class="text-gary">{{item.time}}</view>
+        </view>
+        <view class="text-cut  text-gray margin-top-xs ">
+          <text>你好亲，在的呢，有什么可以帮你呢？亲有什么疑问都可以问我</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

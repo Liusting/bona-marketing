@@ -1,14 +1,20 @@
-<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+<view class="cu-custom bg-blue" style="height:{{CustomBar}}px">
   <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
-    <cu-custom ><view slot="content">首页</view></cu-custom>
+    <view class="search-form  round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索" bindconfirm="homeSearch" confirm-type="search"></input>
+    </view>
   </view>
 </view>
 <scroll-view scroll-y style="height:{{deviceH-50-64}}px">
-<swiper  class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+
+
+<swiper   class="screen-swiper round-dot  " indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
   <swiper-item wx:for="{{4}}" wx:key>
     <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
   </swiper-item>
 </swiper>
+
 <view style="background:#f1f1f1" class="cu-list grid col-4 no-border" >
   <view class="cu-item" wx:for="{{iconList}}" wx:key>
     <view bindtap="gotoClassify" class="cuIcon-{{item.icon}} text-{{item.color}}">

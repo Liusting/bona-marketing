@@ -482,14 +482,14 @@ Page({
   },
   //点击购物车
   cart:function(){
-    wx.reLaunch({
-      url: '../cart/cart'
+    wx.switchTab({
+      url: '../index/index?name=' + 'MyCart'
     })
-    // wx.switchTab({
-    //   url: '../index/index'
+    // wx.navigateTo({
+    //   url: '../index/index?name=' + 'MyCart'
     // })
   },
-  // 首页
+  // 店铺
   home() {
     let shopId = this.data.shopId;
     let shopName = this.data.shopName;

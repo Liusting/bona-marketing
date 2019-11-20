@@ -4,6 +4,7 @@
     "HomePage": "/pages/home/home",
     "ClassificationOfCommodities": "/pages/item_type/itemType",
     "MyCart": "/pages/cart/cart",
+    "Message": "/pages/chat/chat",
     "MyMessage": "/pages/me/me"
   }
 }

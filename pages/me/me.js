@@ -24,16 +24,60 @@ Component({
         name: '积分',
         number:7840
       },
-      // {
-      //   id: 3,
-      //   name: '卡',
-      //   number:0
-      // },
+      {
+        id: 3,
+        name: '卡',
+        number:0
+      },
       {
         id: 4,
         name: '券',
         number:2
       }
+    ],
+    myTools: [
+      {
+        id: 2,
+        icon: 'goodsfavor',
+        name: '商品收藏',
+        color: 'orange'
+      },
+      {
+        id: 3,
+        icon: 'shopfill',
+        name: '店铺收藏',
+        color: 'red'
+      },
+      {
+        id: 4,
+        icon: 'footprint',
+        name: '历史浏览',
+        color: 'grey'
+      },
+      {
+        id: 5,
+        icon: 'rechargefill',
+        name: '退款售后',
+        color: 'olive'
+      },
+      {
+        id: 6,
+        icon: 'locationfill ',
+        name: '收货地址',
+        color: 'purple'
+      },
+      {
+        id: 6,
+        icon: 'people ',
+        name: '个人信息',
+        color: 'purple'
+      },
+      {
+        id: 6,
+        icon: 'settings ',
+        name: '设置',
+        color: 'purple'
+      },
     ],
     // orderItems
     orderItems: [
@@ -41,6 +85,12 @@ Component({
         typeId: 1,
         icon:'pay',
         name: '待付款',
+        badge: 7
+      },
+      {
+        typeId: 1,
+        icon: 'pick',
+        name: '待分享',
         badge: 7
       },
       {
@@ -61,12 +111,12 @@ Component({
         name: '待评价',
         badge: 2
       },
-      {
-        typeId: 5,
-        icon: 'refund',
-        name: '退货/售后',
-        badge: 120,
-      }
+      // {
+      //   typeId: 5,
+      //   icon: 'refund',
+      //   name: '退货/售后',
+      //   badge: 120,
+      // }
     ],
   },
   // tab切换的时候马上响应数据

@@ -1,5 +1,7 @@
 <HomePage wx:if="{{PageCur=='HomePage'}}"></HomePage>
 <ClassificationOfCommodities wx:if="{{PageCur=='ClassificationOfCommodities'}}"></ClassificationOfCommodities>
+
+<Message wx:if="{{PageCur=='Message'}}"></Message>
 <MyCart wx:if="{{PageCur=='MyCart'}}"></MyCart>
 <MyMessage wx:if="{{PageCur=='MyMessage'}}"></MyMessage>
 
@@ -22,6 +24,13 @@
     </view>
     <view class="{{PageCur=='ClassificationOfCommodities'?'text-orange':'text-gray'}}">分类</view>
   </view>
+    <!-- 导航栏聊天 -->
+    <view class="action" bindtap="NavChange" data-cur="Message">
+    <view class='cuIcon-cu-image'>
+      <view class="{{PageCur=='Message'?'cuIcon-messagefill text-orange' : 'cuIcon-message text-gray'}}"></view>
+    </view>
+    <view class="{{PageCur=='Message'?'text-orange':'text-gray'}}">消息</view>
+  </view>
 
   <!-- 导航栏购物车 -->
     <view class="action" bindtap="NavChange" data-cur="MyCart">
@@ -30,6 +39,8 @@
     </view>
     <view class="{{PageCur=='MyCart'?'text-orange':'text-gray'}}">购物车</view>
   </view>
+
+
 
 <!-- 导航栏我的 -->
   <view class="action" bindtap="NavChange" data-cur="MyMessage">

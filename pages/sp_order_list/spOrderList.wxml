@@ -16,16 +16,16 @@
 </view>
 
 
-<swiper  current="{{currtab}}" class="swiper-box " duration="300" style="height:{{deviceH-45-64}}px" >
+<swiper  current="{{currtab}}"  duration="300" style="height:{{deviceH-45-64}}px" >
   <!-- 全部 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45-64}}px">
+    <scroll-view  scroll-y style="height:{{deviceH-45-64}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
-        <image class="scimg" src="/images/person/search_no.png"></image>
+          <image class="scimg" src="/images/person/search_no.png"></image>
         </view>
         <view class="noOrder">
-        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+          <text>没有可用订单/(ㄒoㄒ)/~~</text>
         </view>
       </view>
       <view class="cu-card article">
@@ -62,7 +62,7 @@
   </swiper-item>
   <!-- 待付款 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true" style="height:{{deviceH-45-64}}px">
+    <scroll-view  scroll-y style="height:{{deviceH-45-64}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>
@@ -106,7 +106,7 @@
   </swiper-item>
   <!-- 待发货 -->
   <swiper-item>
-    <scroll-view class="hot-box"  scroll-y="true" style="height:{{deviceH-45-64}}px">
+    <scroll-view  scroll-y style="height:{{deviceH-45-64}}px">
       <view class="search_no" wx:if="{{!orderList.length}}">
         <view class="noOrder">
         <image class="scimg" src="/images/person/search_no.png"></image>

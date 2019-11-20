@@ -1,6 +1,8 @@
-<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+<view class="cu-custom bg-blue" style="height:{{CustomBar}}px">
   <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
-    <cu-custom ><view slot="content">购物车</view></cu-custom>
+    <view class="margin-left text-xl text-white">
+      <text>购物车</text>
+    </view>
   </view>
 </view>
 <!-- 头部：管理 -->
@@ -105,7 +107,7 @@
       <text class="margin-left-xs" hidden='{{adminShow}}'>合计：<text class='text-price text-red'>{{total}}    </text> </text>  
       </view>
     <view >
-        <button hidden='{{adminShow}}' catchtap="goclearingTap" class="margin-right cu-btn round bg-orange lg">结算<text>({{itemNumber}})</text></button>
+        <button hidden='{{adminShow}}' catchtap="goclearingTap" class="margin-right cu-btn round bg-orange lg">结算</button>
         <button hidden='{{!adminShow}}'  class='margin-right cu-btn round line-{{pageBackgroundColor}}'  catchtap='deleteshopTap'>删除</button>
     </view>
     </view> 

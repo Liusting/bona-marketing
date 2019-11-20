@@ -1,83 +1,102 @@
-<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+<view class="cu-custom bg-blue" style="height:{{CustomBar}}px">
   <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
-    <cu-custom ><view slot="content">个人中心</view></cu-custom>
-  </view>
-</view>
-<view class=" bg-gradual-pink userInfo" hidden="{{flag1}}">
-  <view class='header'>
-      <view class="userinfo-avatar">
-      <open-data  type="userAvatarUrl"></open-data>
-      </view> 
-  </view>
-    <view >
-    <text class="text-bold" style="font-size:40rpx;margin-left:30rpx">{{nickName}}</text>
-    <view>
-    <view catchtap="memberMessage" style="margin-left:30rpx" class="cuIcon-vip">注册会员<text class="cuIcon-right"></text></view>
+    <view class="margin-left text-xl text-white">
+      <text>个人中心</text>
     </view>
   </view>
 </view>
 
-<view class="userInfo" style="justify-content: center" hidden="{{flag}}">
+
+  <view class=" padding bg-blue" style="height:350rpx;  border-bottom-right-radius: 7px;border-bottom-left-radius: 7px;">
+   <view class="flex align-center">
+      <view class="cu-avatar xl round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+     
+     <view class="margin-left flex align-center justify-between" style="width:80%">
+      <view class="">
+        <text class="text-xl">李晓芳</text>
+        <view class="cuIcon-people ">
+          <text class=" padding-xs">注册会员</text>
+        </view>
+      </view>
+      <view  class="cu-tag bg-blue line-white radius">我的佣金</view>
+     </view>
+
+    </view>
+    <view class="margin-left margin-top cuIcon-notification">
+      <text class="margin-left-xs">生活就是要看淡一切，一切也就成了过眼云烟。</text>
+    </view>
+  </view>
+
+<!-- <view class="userInfo" style="justify-content: center" hidden="{{flag}}">
   <view class='header'>
     <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
       微信授权登录
       </button>
   </view>
-</view>
-<view class="container">
-  <view class="navs" style="margin-top:-40rpx;  border-top-left-radius: 10px;border-top-right-radius: 10px;">
-    <block >
-      <view class="nav-item" bindtap="toMyAccount" data-id="{{1}}">
-        <text style="color:red;font-size:35rpx;font-weight:3600">3423.00</text>
-        <text>余额</text>
-      </view>
-      <view class="nav-item" bindtap="toMyAccount" data-id="{{2}}">
-        <text style="color:red;font-size:35rpx;font-weight:3600">3423</text>
-        <text>积分</text>
-      </view>
-      <view class="nav-item" bindtap="toMyAccount" data-id="{{3}}">
-        <text style="color:red;font-size:35rpx;font-weight:3600">0</text>
-        <text>卡</text>
-      </view>
-      <view class="nav-item" bindtap="toMyAccount" data-id="{{4}}">
-        <text style="color:red;font-size:35rpx;font-weight:3600">4</text>
-        <text>券</text>
-      </view>
-    </block>
-  </view>
+</view> -->
 
-<view class="margin-top bg-white" >
-  <view class="   padding flex align-center justify-between" style="border-bottom:1px solid #f1f1f1">
-    <text >我的订单</text>
-    <text catchtap="toOrder" data-typeid="{{0}}">查看全部订单 <text class="{{'cuIcon-right '}}"></text>  </text>
-  </view>
-  <view  class="cu-list grid col-5 no-border " >
-    <view class="cu-item" wx:for="{{orderItems}}" wx:key>
-      <view bindtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}" class="cuIcon-{{item.icon}} text-{{item.color}}"><text >{{item.name}}</text>
-      <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
-        <block wx:if="{{item.badge!=0}}">{{item.badge>99?"99+":item.badge}}</block>
+
+  <view class=" bg-white margin-sm padding-sm" style="border-radius:7px;margin-top:-40px">
+    <view  class="grid col-4">
+      <view class="" wx:for="{{headItems}}" wx:key wx:if="{{index<12}}">
+        <view class="padding-xs  text-center" data-id="{{item.id}}" bindtap="alwaysTool">
+          <view class="text-lg"><text class="text-xl text-red"><text>{{item.number}}</text></text>
+          </view>
+          <view class="margin-top-xs ">
+            <text>{{item.name}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
+
+<view class=" bg-white" >
+  <view class="   padding flex align-center justify-between" style="border-bottom:1px solid #f1f1f1">
+    <text class="text-lg text-black">我的订单</text>
+    <text class="text-gary" catchtap="toOrder" data-typeid="{{0}}">查看全部<text class="{{'cuIcon-right '}}"></text>  </text>
+  </view>
+  <view  class="cu-list grid col-5 no-border" >
+    <view class="cu-item " wx:for="{{orderItems}}" wx:key>
+      <view bindtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}" class="cuIcon-{{item.icon}}  text-{{item.color}}"><text class="text-sl">{{item.name}}</text>
+      <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+        <block wx:if="{{item.badge!=0}}">{{item.badge>99?"99+":item.badge}}</block>
+      </view>
+    </view>
+  </view>
+  </view>
 </view>
+
+  <view class="bg-white margin-top">
+    <view class="padding flex align-center " style="border-bottom:1px solid #f1f1f1">
+      <text class="text-lg text-black">必备工具</text>
+    </view>
+    <view  class=" grid col-5   padding-sm">
+      <view class="" wx:for="{{myTools}}" wx:key wx:if="{{index<12}}">
+        <view class="padding-xs  text-center ">
+          <view class="text-lg"><text class="text-xxl text-{{item.color}}"><text class="cuIcon-{{item.icon}}"></text></text></view>
+          <view class="margin-top-sm ">
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 
     <!-- 收货地址 -->
-    <view class="bg-white margin-top padding align-center flex justify-between" style="border-bottom:1px solid #f1f1f1" bindtap="address">
+    <!-- <view class="bg-white margin-top padding align-center flex justify-between" style="border-bottom:1px solid #f1f1f1" bindtap="address">
       <text class="cuIcon-location"><text class="margin-left-sm">地址管理</text></text>
       <text class="cuIcon-right"></text>
-    </view>
+    </view> -->
 
        <!-- 个人设置 -->
-    <view class="bg-white  padding flex align-center justify-between"  style="border-bottom:1px solid #f1f1f1" bindtap="userMessage">
+    <!-- <view class="bg-white  padding flex align-center justify-between"  style="border-bottom:1px solid #f1f1f1" bindtap="userMessage">
       <text class="cuIcon-friend"><text class="margin-left-sm">个人信息</text></text>
       <text class="cuIcon-right"></text>
-    </view>
+    </view> -->
 
       <!-- 账户安全 -->
-    <view class="bg-white  padding flex align-center justify-between" bindtap="accountSecurity" style="border-bottom:1px solid #f1f1f1" >
+    <!-- <view class="bg-white  padding flex align-center justify-between" bindtap="accountSecurity" style="border-bottom:1px solid #f1f1f1" >
       <text class="cuIcon-safe"><text class="margin-left-sm">账户安全</text></text>
       <text class="cuIcon-right"></text>
-    </view>
+    </view> -->
 
-</view>

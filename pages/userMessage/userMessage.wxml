@@ -1,3 +1,11 @@
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">返回</view>
+      <view slot="content">个人信息</view>
+    </cu-custom>
+  </view>
+</view>
 
   <view class="bg-white padding flex justify-between align-center">
     <text class="text-bold ">头像</text>
