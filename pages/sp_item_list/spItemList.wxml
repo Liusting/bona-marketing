@@ -1,4 +1,12 @@
-<view class='firstTop'>
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom  isBack="{{true}}">
+      <view slot="backText">小米</view>
+      <!-- <view slot="content">商品列表</view> -->
+    </cu-custom>
+  </view>
+</view>
+
   <view class="cu-bar search bg-white" data-id="id_search">
     <view class="search-form round">
       <text class="cuIcon-search"></text>
@@ -19,48 +27,9 @@
     </scroll-view>
     <text class="cuIcon-qrcode text-orange" bindtap="showModal" data-target="DrawerModalR"></text>  
   </view>
-</view>
 
-<!-- 搜索类型单选框弹窗 -->
-<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
-  <view class="cu-dialog" catchtap>
-    <radio-group class="block">
-      <view class="cu-list menu text-left">
-        <view class="cu-item" wx:for="{{radioList}}" wx:key>
-          <label class="flex justify-between align-center flex-sub" bindtap="radioClick" data-index="{{item}}">
-            <view class="flex-sub">{{item.name}}</view>
-            <radio class="round" wx:if="{{item.checked}}" checked></radio>
-            <radio class="round" wx:if="{{!item.checked}}"></radio>
-          </label>
-        </view>
-      </view>
-    </radio-group>
-  </view>
-</view>
-
-<!-- 规格选择滑窗 -->
-<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
-  <scroll-view scroll-y catchtap class="cu-dialog basis-lg" catchtap style="height:calc(100vh)">
-    <view class="cu-list menu text-left">
-      <view wx:for="{{groupList}}" wx:key>
-        <view class="cu-form-group solids-bottom" bindtap='groupClick' data-id="{{item.id}}">
-          <view class="title">{{item.name}}</view>
-          <text class="cuIcon-{{item.open?'unfold':'right'}} text-orange"></text>
-        </view>
-        <view wx:if="{{item.open}}">
-          <view class="grid col-3 padding-sm">
-            <view wx:if="{{clickGroupObj[item.id]==null || clickGroupObj[item.id]==zlist.id}}"  wx:for="{{item.list}}" wx:for-item="zlist" class="padding-xs text-xs" wx:key="{{index}}">
-              <button class="cu-btn orange text-hang block bg-{{(clickGroupObj[item.id]==zlist.id)?'yellow':'gray'}}" bindtap='groupObjClick' data-id="{{zlist.id}}" data-upperId="{{item.id}}"> {{zlist.name}}</button>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </scroll-view>
-</view>
-
-<scroll-view scroll-y="true"  bindscrolltolower="scrollBottomEvent"  style="height:{{scroll_height}}px">
-  <view class="cu-card article {{isCard?'no-card':''}}" style='margin-top:180rpx;'>
+<scroll-view scroll-y  bindscrolltolower="scrollBottomEvent"  style="height:{{deviceH-100-64}}px">
+  <view class="cu-card article {{isCard?'no-card':''}}" >
     <view class="cu-item shadow" wx:for="{{spList}}" wx:key>
       <view class="title">
         <view class='height15'></view>
@@ -87,3 +56,52 @@
     <text class="text-grey">没有更多数据</text>
   </view>
 </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 搜索类型单选框弹窗 -->
+<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{radioList}}" wx:key>
+          <label class="flex justify-between align-center flex-sub" bindtap="radioClick" data-index="{{item}}">
+            <view class="flex-sub">{{item.name}}</view>
+            <radio class="round" wx:if="{{item.checked}}" checked></radio>
+            <radio class="round" wx:if="{{!item.checked}}"></radio>
+          </label>
+        </view>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<!-- 规格选择滑窗 -->
+<view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+  <scroll-view scroll-y catchtap class="cu-dialog basis-lg" catchtap style="margin-top:64px;height:{{deviceH-64}}px">
+    <view class="cu-list menu text-left">
+      <view wx:for="{{groupList}}" wx:key>
+        <view class="cu-form-group solids-bottom" bindtap='groupClick' data-id="{{item.id}}">
+          <view class="title">{{item.name}}</view>
+          <text class="cuIcon-{{item.open?'unfold':'right'}} text-orange"></text>
+        </view>
+        <view wx:if="{{item.open}}">
+          <view class="grid col-3 padding-sm">
+            <view wx:if="{{clickGroupObj[item.id]==null || clickGroupObj[item.id]==zlist.id}}"  wx:for="{{item.list}}" wx:for-item="zlist" class="padding-xs text-xs" wx:key="{{index}}">
+              <button class="cu-btn orange text-hang block bg-{{(clickGroupObj[item.id]==zlist.id)?'yellow':'gray'}}" bindtap='groupObjClick' data-id="{{zlist.id}}" data-upperId="{{item.id}}"> {{zlist.name}}</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

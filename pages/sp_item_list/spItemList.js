@@ -34,6 +34,7 @@ Page({
     scrollLeft: 0,
     //scroll_height 初始滚屏的高度
     scroll_height: 450, 
+    deviceH:'',
     //currentInt 懒加载,初始为第1页
     currentInt:1,
     //scrollIfSel 懒加载，是否继续去查询
@@ -114,13 +115,14 @@ Page({
     var that = this;
 
     this.setData({
-      name: options.name
+      name: '小米'
     });
     this.spGetList();
     wx.getSystemInfo({ //微信自身api
       success: function (res) {
         that.setData({
-          scroll_height: res.windowHeight  //此处是计算滚动屏的高度
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
         });
       }
     });

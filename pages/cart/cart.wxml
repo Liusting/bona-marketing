@@ -11,7 +11,7 @@
     <text class='text-orange margin-right' catchtap='adminTap'>{{adminShow?'完成':'管理'}}</text>
   </view>
 
-<scroll-view class="bg-white" scroll-y  wx:if="{{shopcarData==''}}" style="height:{{deviceH-64-50}}px">
+<scroll-view class="bg-white" scroll-y  wx:if="{{shopcarData==''}}" style="height:{{deviceH-64}}px">
   <view class="margin-top">
     <view class="justify-center flex align-center">
       <image class="scimg" src="/images/person/search_no.png" mode="aspectFill"/>

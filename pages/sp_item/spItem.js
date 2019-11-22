@@ -59,10 +59,10 @@ Page({
     */
   onLoad: function (e) {
 
-    // console.log(e);
-    let itemId = e.itemId;
-    let shopId = e.shopId;
-    let shopName = e.shopName;
+    console.log(e);
+    let itemId = '1';
+    let shopId = '1';
+    let shopName = '小米旗舰店';
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

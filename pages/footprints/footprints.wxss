@@ -1,0 +1,5 @@
+/* pages/footprints/footprints.wxss */
+.scimage{
+  width: 94px;
+  height: 94px;
+}

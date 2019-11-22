@@ -27,8 +27,11 @@
         <text class="text-bold text-price text-xxl">{{goodsDetailList[0].minPrice}}-{{goodsDetailList[0].maxPrice}}</text>
         <view class="cu-tag round sm">热卖促销</view>
       </view>
+      <view>已拼12000件</view>
     </view>
-    <view class="spItem-form-group">
+
+  <view class="padding bg-white" >
+    <view class="flex justify-between ">
       <view class="title text-red">
         <view class="cu-tag round sm">满200减10劵</view>
         <view class="cu-tag round sm">满400减50劵</view>
@@ -39,16 +42,16 @@
         <text class="cuIcon-right text-grat"></text>
       </view>
     </view>
-
-    <view >
-    <view class="spItem-form-group1" >
-      <text class='text-bold'>{{goodsDetailList[0].name}}</text>
-      <view style="height:100%;width:30%;margin-left:5rpx;float:right">
-        <text open-type="share" class="padding-xs cuIcon-share bg-orange  round" style="font-size:25rpx;">分享</text>
+    <view class="flex justify-between align-center margin-top-xs">
+      <text style="width:280px" class='text-bold text'>{{goodsDetailList[0].name}}</text>
+      <view class="action text-center" open-type="share" >
+        <view class="cuIcon-pick text-red">
+      </view>
+      分享
       </view>
     </view>
-
-
+  </view>
+<!-- 
     <view class="cu-form-group margin-top">
       <view class="title">
         <text class='text-grey' decode="{{true}}">发货&nbsp;&nbsp;</text>
@@ -56,19 +59,86 @@
         <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;快递:免运费</text>
       </view>
       <view class='text-grey'>月销:2222</view>
-    </view>
-    </view>
+    </view> -->
+  
     <!-- 分割 -->
-  <view style="height: 20rpx; background-color:#f1f1f1;"></view>
+  <!-- <view style="height: 20rpx; background-color:#f1f1f1;"></view> -->
 
     <view class="spItem-form-group margin-top" bindtap="showModal" data-target="bottomModal">
       <view class="title text-grey">规格</view>
 
       <text class="cuIcon-right text-orange"></text>
     </view>
-    <view class="spItem-form-group margin-top" bindtap="showGroupViewModal" data-target="GroupViewModal">
+
+    <view class="spItem-form-group " bindtap="showGroupViewModal" data-target="GroupViewModal">
       <view class="title text-grey">参数</view>
       <text class="cuIcon-right text-orange"></text>
+    </view>
+
+    <view class="bg-white margin-top" >
+      <view class="flex justify-between align-center padding" style="border-bottom:1px solid #f1f1f1">
+        <text>10人在拼单，可直接参与</text>
+        <text>查看更多<text  class="cuIcon-right "></text></text>
+      </view>
+      <view class="padding">
+        <view class="flex align-center">
+          <view class="cu-avatar  round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+          <text class="margin-left-xs">笨笨糖</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bg-white margin-top" >
+      <view class="flex justify-between align-center padding" style="border-bottom:1px solid #f1f1f1">
+        <text>商品评价(5125)</text>
+        <text>查看更多<text  class="cuIcon-right "></text></text>
+      </view>
+      <view class="padding">
+        <view class="flex align-center">
+          <view class="cu-avatar sm round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+          <text class="margin-left-xs">笨笨糖</text>
+        </view>
+        <view class="text margin-top-xs">
+          <text>物美价廉，太赞了，本来以为特别差页，这么好。就是笑了点，不过特别值这个价，开心。。。会推荐给身边需要人买的</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="bg-white margin-top">
+      <view class="flex padding justify-between align-center">
+        <view class="flex align-center" >
+          <view class="cu-avatar radius " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
+          <view class="margin-left-xs">
+            <text class="text-black">居之家家具旗舰店</text>
+            <view class="text-gray text-sm">  
+              <text>商品数量：5 </text><text>已售：10+万件 </text>
+            </view>
+          </view>
+        </view>
+        <view>
+          <button class="cu-btn line-black">进店逛逛</button>
+        </view>
+      </view>
+      <view class="grid col-3">
+        <view class="text-center">描述相符 高</view>
+        <view class="text-center">服务态度 高</view>
+        <view class="text-center">物流服务 高</view>
+      </view>
+
+      <view class="grid col-3 margin-top">
+        <view class="bg-white" wx:for="{{3}}" wx:key>
+          <view class="  padding-xs">
+            <view>
+              <image class="scimg" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+            </view>
+            <view class="text-cut text-sm"><text>德国工艺指甲刀不锈钢指甲钳修脚刀</text></view>
+            <view class="flex justify-between">
+              <text class="text-price text-red">7.71</text>
+              <text class="text-gray text-xs">已拼2823件</text>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   
     <view wx:if="{{groupViewOpen}}">
@@ -162,7 +232,7 @@
           
         </view>
 
-        <view style="height:{{bottom_view_height1}}rpx">
+        <view style="height{{bottom_view_height1}}rpx">
         </view>
       </scroll-view>
 
@@ -181,22 +251,35 @@
   </view>
 
   <view class="cu-bar tabbar bg-white shadow foot bottom_view_height2">
-    <view class="action" open-type="contact" bindtap="chat">
-      <view class="cuIcon-service text-blue">
-        <!-- <view class="cu-tag badge"></view> -->
-      </view>
-      客服
-    </view>
     <view class="action" bindtap="home">
       <view class="cuIcon-shop text-red"></view> 店铺
     </view>
-    <view class="action">
-      <view class="cuIcon-cart" bindtap="cart">
-        <view class="cu-tag badge">{{cartslength.length}}</view>
+    <view class="action" open-type="contact" bindtap="chat">
+      <view class="cuIcon-service text-blue">
       </view>
-      购物车
+      客服
     </view>
-    <view class="bg-red submit" bindtap="showModal1" data-target="bottomModal1">立即订购</view>
+    <view class="action">
+      <view class="cuIcon-like" bindtap="cart">
+      </view>
+      收藏
+    </view>
+    <view class="bg-red light flex align-center justify-center padding-sm " style="height:50px" bindtap="showModal1" data-target="bottomModal1">
+       <view class=" text-white">
+        <view class="flex justify-center" bindtap="cart">
+          <text class="text-price">9.65</text>
+        </view>
+        <view class="flex justify-center">单独购买</view>
+      </view>
+    </view>
+    <view class="bg-red submit" >
+      <view>
+        <view  bindtap="cart">
+          <text class="text-price ">9.65</text>
+        </view>
+        <view>发起拼单</view>
+      </view>
+    </view>
   </view>
 </scroll-view>
 

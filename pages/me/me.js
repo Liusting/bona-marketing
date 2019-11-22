@@ -37,31 +37,31 @@ Component({
     ],
     myTools: [
       {
-        id: 2,
+        id:1,
         icon: 'goodsfavor',
         name: '商品收藏',
         color: 'orange'
       },
       {
-        id: 3,
+        id: 2,
         icon: 'shopfill',
         name: '店铺收藏',
         color: 'red'
       },
       {
-        id: 4,
+        id: 3,
         icon: 'footprint',
         name: '历史浏览',
         color: 'grey'
       },
       {
-        id: 5,
+        id: 4,
         icon: 'rechargefill',
         name: '退款售后',
         color: 'olive'
       },
       {
-        id: 6,
+        id: 5,
         icon: 'locationfill ',
         name: '收货地址',
         color: 'purple'
@@ -73,7 +73,7 @@ Component({
         color: 'purple'
       },
       {
-        id: 6,
+        id: 7,
         icon: 'settings ',
         name: '设置',
         color: 'purple'
@@ -185,6 +185,28 @@ Component({
     }
 
   },
+  toTool:function(e){
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+    switch(id){
+      case 4: wx.navigateTo({
+        url: '../me/refund',
+      });
+        break;
+      case 5: wx.navigateTo({
+        url: '../addressList/addressList?type=' + 3
+      });
+        break;
+      case 6: wx.navigateTo({
+        url: '../userMessage/userMessage'
+      });
+        break;
+      case 7: wx.navigateTo({
+        url: '../accountSecurity/accountSecurity'
+      });
+        break;
+    }
+  },
   //事件处理函数
   toOrder: function (e) {
     let typeId = e.currentTarget.dataset.typeid;//取遍历的id值
@@ -214,39 +236,7 @@ Component({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
         });
         break;
-      case 5: wx.navigateTo({
-        url: '../me/refund',
-      });
-      break;
     }
-  },
-  // 我的优惠
-  preferential: function () {
-    let url = "../preferential/preferential";
-    wx.navigateTo({
-      url: url
-    });
-  },
-  // 我的积分
-  integral: function () {
-    let url = "../integral/integral";
-    wx.navigateTo({
-      url: url
-    });
-  },
-  // 账户安全
-  accountSecurity: function () {
-    let url = "../accountSecurity/accountSecurity";
-    wx.navigateTo({
-      url: url
-    });
-  },
-  //收货地址
-  address: function (e) {
-    let url = "../addressList/addressList";
-    wx.navigateTo({
-      url: '../addressList/addressList?type=' + 3
-    });
   },
   memberMessage: function(){
     let url = "../me/memberMessage";
@@ -254,13 +244,7 @@ Component({
       url: url
     });
   },
-  // 个人信息
-  userMessage: function () {
-    let url = "../userMessage/userMessage";
-    wx.navigateTo({
-      url: url
-    });
-  },
+
   onLoad: function () {
 
   },

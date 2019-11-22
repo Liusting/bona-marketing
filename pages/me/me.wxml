@@ -14,7 +14,7 @@
      <view class="margin-left flex align-center justify-between" style="width:80%">
       <view class="">
         <text class="text-xl">李晓芳</text>
-        <view class="cuIcon-people ">
+        <view class="cuIcon-people " bindtap="memberMessage">
           <text class=" padding-xs">注册会员</text>
         </view>
       </view>
@@ -39,7 +39,7 @@
   <view class=" bg-white margin-sm padding-sm" style="border-radius:7px;margin-top:-40px">
     <view  class="grid col-4">
       <view class="" wx:for="{{headItems}}" wx:key wx:if="{{index<12}}">
-        <view class="padding-xs  text-center" data-id="{{item.id}}" bindtap="alwaysTool">
+        <view class="padding-xs  text-center" data-id="{{item.id}}" bindtap="toMyAccount">
           <view class="text-lg"><text class="text-xl text-red"><text>{{item.number}}</text></text>
           </view>
           <view class="margin-top-xs ">
@@ -72,7 +72,7 @@
     </view>
     <view  class=" grid col-5   padding-sm">
       <view class="" wx:for="{{myTools}}" wx:key wx:if="{{index<12}}">
-        <view class="padding-xs  text-center ">
+        <view class="padding-xs  text-center " bindtap="toTool"  data-id="{{item.id}}">
           <view class="text-lg"><text class="text-xxl text-{{item.color}}"><text class="cuIcon-{{item.icon}}"></text></text></view>
           <view class="margin-top-sm ">
             <text>{{item.name}}</text>

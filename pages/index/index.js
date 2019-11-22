@@ -1,6 +1,6 @@
 Page({
   data: {
-    PageCur: 'HomePage'
+    PageCur: 'MyMessage'
   },
   NavChange(e) {
     this.setData({

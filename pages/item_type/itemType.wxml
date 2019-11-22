@@ -5,26 +5,34 @@
     </view>
   </view>
 </view>
+
+<view class="cu-bar bg-white solid-bottom" >
+    <view class="search-form  round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索" bindconfirm="homeSearch" confirm-type="search"></input>
+    </view>
+</view>
+
 <view class="VerticalBox">
 <!-- 左边滚动导航栏 -->
-  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation  style="height:{{deviceH-50-64}}px">
-    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation  style="height:{{deviceH-50-64-50}}px">
+    <view class="cu-item {{index==TabCur?'text-orange cur ':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
       {{item.name}}
     </view>
   </scroll-view>
 
 <!-- 右边联动左边的数据展示 -->
-  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:{{deviceH-50-64}}px" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
-    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:{{deviceH-50-64-50}}px" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class=" " wx:for="{{list}}" wx:key id="main-{{index}}">
       <view wx:for="{{item.listType2}}" wx:for-item="listType2" wx:key>
-        <view class="cu-bar bg-white solid-bottom margin-top">
-          <view class="action">
-            <text class="cuIcon-title text-orange "></text> {{listType2.name}}
-          </view>
+        <view class="padding-sm flex justify-between bg-white ">
+          <text>{{listType2.name}}</text>
+          <text>查看全部<text class="cuIcon-right"></text></text>
         </view>
         <view class="cu-list grid col-4 {{gridBorder?'':'no-border'}}">
           <view class="cu-item" wx:for="{{listType2.listType3}}" wx:for-item="listType3" wx:key bindtap="typeClick" data-index="../sp_item_list/spItemList?name={{listType3.name}}">
-            <view class="cuIcon-brandfill text-mauve">
+            <view >
+              <image class="scimg" mode="widthFix" src="../../images/phone.png"></image>
             </view>
             <text>{{listType3.name}}</text>
           </view>
