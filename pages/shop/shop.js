@@ -4,6 +4,11 @@ Page({
     shopName:'',
     currentInt:'',
     shopData: [],
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
     orderList: [{
       name: '综合',
       index: 0
@@ -61,7 +66,8 @@ Page({
 
     })
     this.setData({
-      shopName: options.shopName
+      // shopName: options.shopName
+      shopName:'小米旗舰店'
     })
   },
   gridchange: function (e) {

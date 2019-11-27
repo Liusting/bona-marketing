@@ -1,0 +1,68 @@
+<view class="grad " style="height:{{deviceH}}px">
+  <view class="cu-custom" style="height:{{CustomBar}}px">
+    <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+      <cu-custom isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">累计收益</view>
+      </cu-custom>
+    </view>
+  </view>
+  <view class="flex justify-end">
+    <text class="cuIcon-question margin-right">活动说明</text>
+  </view>
+  <view class="">
+    <view class="flex text-sl justify-center padding">
+      <text>1234.56元</text>
+    </view>
+    <view class="flex justify-center padding-bottom">
+      包含待结算12.56元
+    </view>
+  </view>
+  <view class="grid col-2  padding">
+    <view>
+      <view class="flex justify-center">昨日收益</view>
+      <view class="flex justify-center">123.45元</view>
+    </view>
+    <view>
+      <view class="flex justify-center">邀请人数</view>
+      <view class="flex justify-center">1233人</view>
+    </view>
+  </view>
+
+  <view class="flex padding-sm justify-between">
+    <view class="flex align-center">
+      <text>56</text>
+      <view class="margin-left cu-avatar lg round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+      <view class="margin-left align-center">
+        <text>江南旧墨</text>
+        <view class="margin-top-xs">可提现金额230.00元</view>
+      </view>
+    </view>
+    <view class="flex align-center">
+      <button class="cu-btn round bg-yellow">立即提现</button>
+    </view>
+  </view>
+
+  <view class="grid col-3 padding-xs">
+    <view class="text-center">排名</view>
+    <view class="text-center">推荐人数</view>
+    <view class="text-center">佣金(元)</view>
+  </view>
+  <scroll-view scroll-y style="height:300px">
+    <view wx:for="{{10}}" wx:key>
+      <view class="grid col-3 padding-sm">
+        <view class="flex align-center justify-center">
+          <text>{{index+1}}</text>
+          <view class="margin-left cu-avatar round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+          <text class="margin-left-xs">江**墨</text>
+        </view>
+        <view class="flex align-center justify-center">
+          <text>66</text>
+        </view>
+        <view class="flex align-center justify-center">
+          1226.3元
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

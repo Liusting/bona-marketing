@@ -1,0 +1,4 @@
+/* pages/myCommission/myCommission.wxss */
+.grad {
+    background-image: linear-gradient(pink, #7aedf5);
+}

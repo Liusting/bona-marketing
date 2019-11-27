@@ -7,8 +7,7 @@
   </view>
 </view>
 <view>
-  <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{deviceH-CustomBar}}px;'>
-    <!-- <view class='scrollMsg'> -->
+  <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: 100px;'>
     <block wx:key wx:for='{{msgList}}' wx:for-index="index">
 
       <!-- 单个消息1 客服发出（左） -->
@@ -28,12 +27,33 @@
       </view>
 
     </block>
-
   </scroll-view>
 
+<!-- <form bindsubmit='commentSubmit'>
+  <view class='  ' >
+    <textarea contenteditable="true" contenteditable="true"  auto-height  class='  bg-white ' name='commentValue' placeholder='评论' ></textarea>
+  </view>
+  <button form-type='submit' class='textarea_btn'>发送</button>
+</form> -->
+
   <view class='inputRoom' style='bottom: {{inputBottom}}'>
-    <!-- <image style='width: 7vw; margin-left: 3.2vw;' src='../../images/pic_icon.png' mode='widthFix'></image> -->
-    <input class="solid-bottom" bindconfirm='sendClick' bindfocus='focus' confirm-type='send'  value='{{inputVal}}' confirm-type='send' bindblur='blur' adjust-position="{{false}}" focus="{{false}}" ></input>
+
+
+<view class="page-body">
+  <view class="page-section">
+    <view class="page-section-title">输入区域高度自适应，不会出现滚动条</view>
+    <view class="textarea-wrp">
+      <textarea bindblur="bindTextAreaBlur" auto-height />
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="page-section-title">这是一个可以自动聚焦的textarea</view>
+    <view class="textarea-wrp">
+      <textarea auto-focus="true" style="height: 3em" />
+    </view>
+  </view>
+</view>
     <view class="text-xxl">
       <text class="cuIcon-roundadd "></text>
     </view>

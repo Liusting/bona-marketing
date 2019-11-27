@@ -1,13 +1,13 @@
 <view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
   <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
-    <cu-custom  isBack="{{true}}">
+    <cu-custom isBack="{{true}}">
       <view slot="backText">返回</view>
       <view slot="content">确认订单</view>
     </cu-custom>
   </view>
 </view>
 
-<scroll-view scroll-y  style="height:{{deviceH-50-64}}px">
+<scroll-view scroll-y style="height:{{deviceH-50-64}}px">
   <view class="padding-xs flex radius bg-white margin-sm" bindtap="bindaddress" hidden="{{flag}}">
     <view class="flex align-center">
       <view class="text-xxl align-center text-center justify-center round flex bg-orange " style="width:38px;height:38px">
@@ -15,13 +15,14 @@
       </view>
     </view>
     <view class="margin-left" style="width:550rpx">
-      <text class="text-black text-bold">收货人：{{address_info.name}}</text><text class="margin-left ">{{address_info.phone}}</text>
+      <text class="text-black text-bold">收货人：{{address_info.name}}</text>
+      <text class="margin-left ">{{address_info.phone}}</text>
       <view>
         <text class="productTitle text-black">收货地址：{{address_info.provincename}}{{address_info.cityname}}{{address_info.countyname}}{{address_info.addressdetail}}</text>
       </view>
     </view>
     <view class="flex align-center">
-      <text class="{{'cuIcon-right text-gray'}}" ></text>
+      <text class="{{'cuIcon-right text-gray'}}"></text>
     </view>
   </view>
 
@@ -32,67 +33,82 @@
       </view>
     </view>
     <view class="margin-left" style="width:550rpx">
-      <text class="text-black text-bold">负责人：刘桂廷</text><text class="margin-left text-bold">13047838940</text>
+      <text class="text-black text-bold">负责人：刘桂廷</text>
+      <text class="margin-left text-bold">13047838940</text>
       <view>
         <text class="productTitle text-black">门店地址：广东省佛山市禅城区季华园5路沃尔玛三楼自提点</text>
       </view>
     </view>
   </view>
-  <view class="bg-white padding-xs margin-sm radius"  >
-    <view class="padding-xs" >
-        <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-        <text class="text-bold margin-left" >小米旗舰店</text>
+  <view class="bg-white padding-xs margin-sm radius">
+    <view class="padding-xs">
+      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <text class="text-bold margin-left">小米旗舰店</text>
     </view>
     <view class="flex bg-white">
       <view class="flex align-center text-center justify-center">
         <image style="  height: 220rpx;width: 220rpx;margin: 10rpx 10rpx;" src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
       </view>
-      <view >
-        <text class='productTitle ' style="margin-top: 10rpx;">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>  
+      <view>
+        <text class='productTitle ' style="margin-top: 10rpx;">小米9手机壳cc9e红米k20Pro青春note7版8保护6x套max3note5防摔mix2s全包屏幕指纹se八5plus九a硅胶note3磨砂</text>
         <view class="text-sm margin-top bg-gray padding-xs text-cut text-gray" style="width:400rpx">
           规格：{{typeList}}
-        </view>      
+        </view>
         <view class="margin-top">
-          <text class="text-price text-red text-lg margin-right" >{{goods_price}}</text>
-          <text class="text-sm" style="text-decoration:line-through" >￥1799.00</text>
+          <text class="text-price text-red text-lg margin-right">{{goods_price}}</text>
+          <text class="text-sm" style="text-decoration:line-through">￥1799.00</text>
           <text class="margin-right" style="float:right;">共{{goods_count}}件</text>
         </view>
-     </view>
+      </view>
     </view>
 
     <view class="padding cu-bar" bindtap="showModal" data-target="RadioModal" style="  border-bottom: 1px solid #f1f1f1">
       <view>配送方式</view>
-      <view >{{modeName}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view>   
+      <view>{{modeName}}
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
     <view class="padding cu-bar" bindtap="showModal" hidden="{{flag1}}" data-target="timeModal" style="  border-bottom: 1px solid #f1f1f1">
       <view>自提时间</view>
-      <view >今天 16:00-17:00<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view> 
+      <view>今天 16:00-17:00
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
     <view class="padding cu-bar" bindtap="showModal" hidden="{{flag3}}" data-target="timeModal" style="  border-bottom: 1px solid #f1f1f1">
       <view>收货时间</view>
-      <view >今天 16:00-17:00<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view> 
-    <view class="padding cu-bar"  style="  border-bottom: 1px solid #f1f1f1">
+      <view>今天 16:00-17:00
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
+    <view class="padding cu-bar" style="  border-bottom: 1px solid #f1f1f1">
       <view>券抵扣</view>
-      <view >卖家赠送优惠券5元<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view> 
+      <view>卖家赠送优惠券5元
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
     <view class="padding cu-bar" bindtap="preferential" style="  border-bottom: 1px solid #f1f1f1">
       <view>满立减抵扣</view>
-      <view >满{{preferential_info.total}}减{{preferential_info.reduce}}<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view> 
+      <view>满{{preferential_info.total}}减{{preferential_info.reduce}}
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
     <view class="padding cu-bar" bindtap="preferential" style="  border-bottom: 1px solid #f1f1f1">
       <view>会员折扣</view>
-      <view >注册会员，可抵扣30元<text class="{{'cuIcon-right text-gray'}}"></text></view>
-    </view> 
+      <view>注册会员，可抵扣30元
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
+    </view>
     <view class="padding cu-bar" bindtap="preferential" style="  border-bottom: 1px solid #f1f1f1">
       <view>积分折扣</view>
-      <view >当前积分3444，可抵扣3.44元<text class="{{'cuIcon-right text-gray'}}"></text></view>
+      <view>当前积分3444，可抵扣3.44元
+        <text class="{{'cuIcon-right text-gray'}}"></text>
+      </view>
     </view>
     <view class="padding flex align-center " style="  border-bottom: 1px solid #f1f1f1">
       <text>订单备注</text>
-      <input bindinput="bindwaitMsg" class="margin-left" style="width:400rpx" placeholder="其他要求"/>
+      <input bindinput="bindwaitMsg" class="margin-left" style="width:400rpx" placeholder="其他要求" />
     </view>
-    <view class="padding flex justify-end align-center text-sm"> 
+    <view class="padding flex justify-end align-center text-sm">
       <text class="text-gray margin-right">共{{goods_count}}件</text>
       <text>小计：<text class="text-price text-red " >{{total_price}}</text></text>
     </view>
@@ -100,59 +116,60 @@
 </scroll-view>
 
 
-  <view class="bg-white add-address justify-end">
-      <view class="margin-right">合计：<text class=" text-price text-red">{{total_price}}</text></view>
-      <view class="btn-group margin-right" >
-        <button class="cu-btn bg-red round shadow-blur"  bindtap="showModal" data-target="bottomModal">提交订单</button>
-      </view>
+<view class="bg-white add-address justify-end">
+  <view class="margin-right">合计：
+    <text class=" text-price text-red">{{total_price}}</text>
   </view>
+  <view class="btn-group margin-right">
+    <button class="cu-btn bg-red round shadow-blur" bindtap="showModal" data-target="bottomModal">提交订单</button>
+  </view>
+</view>
 
 <!-- 选择底部滑窗 -->
-  <view class="cu-modal justify-start bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal" style='overflow: hidden;'>
-    <view class="cu-dialog background-white">
-        <view class="cu-item shadow">
-          <view class="padding-sm {{payWay == 0?'text-green':''}}" bindtap="selectPay" data-id="{{0}}">微信支付</view>
-          <view class="padding-sm {{payWay == 1?'text-green':''}}" bindtap="selectPay" data-id="{{1}}">货到付款</view>
-          <view class="padding-sm {{payWay == 2?'text-green':''}}" bindtap="selectPay" data-id="{{2}}">储值支付</view>
-          <view class="padding-sm" bindtap="hideModal" data-id="{{3}}">取消</view>
-        </view>
-       </view>
-        </view>
-
-  <!-- 配送方式选择 -->
-  <view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
-    <view class="cu-dialog" >
-      <radio-group class="block">
-        <view class="cu-list menu text-left">
-          <view class="cu-item" wx:for="{{mode}}" wx:key>
-            <label class="flex justify-between align-center flex-sub" bindtap="radioselect" data-item="{{item}}">
-              <view class="flex-sub">{{item.name}}</view>
-              <radio  bindtap="hideModal" checked="{{item.checked}}" class="round"></radio>
-            </label>
-          </view>
-        </view>
-      </radio-group>
+<view class="cu-modal justify-start bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal" style='overflow: hidden;'>
+  <view class="cu-dialog background-white">
+    <view class="cu-item shadow">
+      <view class="padding-sm {{payWay == 0?'text-green':''}}" bindtap="selectPay" data-id="{{0}}">微信支付</view>
+      <view class="padding-sm {{payWay == 1?'text-green':''}}" bindtap="selectPay" data-id="{{1}}">货到付款</view>
+      <view class="padding-sm {{payWay == 2?'text-green':''}}" bindtap="selectPay" data-id="{{2}}">储值支付</view>
+      <view class="padding-sm" bindtap="hideModal" data-id="{{3}}">取消</view>
     </view>
   </view>
+</view>
 
-  <view class="cu-modal justify-start bottom-modal {{modalName=='timeModal'?'show':''}}"  style='overflow: hidden;'>
-    <view class="cu-dialog">
-      <view class="bg-white justify-between flex  padding-sm" style="  border-bottom: 1px solid #f1f1f1">
-        <text>到店自提时间</text>
-        <text class="cuIcon-close" bindtap="hideModal"></text>
-      </view>
-      <view class="flex">
-        <view class='bg-gray' style="width: 50%;height:500rpx;" >
-          <view class="padding {{flag2==0?'bg-white text-red':''}}" id='0' bindtap='switchNav'>今天</view>
-          <view class="padding {{flag2==1?'bg-white text-red':''}}" id='1' bindtap='switchNav'>明天</view>
-          <view class="padding {{flag2==2?'bg-white text-red':''}}" id='2' bindtap='switchNav'>后天</view>
+<!-- 配送方式选择 -->
+<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog">
+    <radio-group class="block">
+      <view class="cu-list menu text-left">
+        <view class="cu-item" wx:for="{{mode}}" wx:key>
+          <label class="flex justify-between align-center flex-sub" bindtap="radioselect" data-item="{{item}}">
+            <view class="flex-sub">{{item.name}}</view>
+            <radio bindtap="hideModal" checked="{{item.checked}}" class="round"></radio>
+          </label>
         </view>
-        <scroll-view class='bg-white' scroll-y style="width:50%;height:500rpx;">
-          <view class="padding" wx:for="{{timeList}}" wx:key >
-            <text bindtap="selectTime" data-id="{{item.id}}">{{item.time}}</text>
-          </view>
-        </scroll-view>
       </view>
+    </radio-group>
+  </view>
+</view>
+
+<view class="cu-modal justify-start bottom-modal {{modalName=='timeModal'?'show':''}}" style='overflow: hidden;'>
+  <view class="cu-dialog">
+    <view class="bg-white justify-between flex  padding-sm" style="  border-bottom: 1px solid #f1f1f1">
+      <text>到店自提时间</text>
+      <text class="cuIcon-close" bindtap="hideModal"></text>
+    </view>
+    <view class="flex">
+      <view class='bg-gray' style="width: 50%;height:500rpx;">
+        <view class="padding {{flag2==0?'bg-white text-red':''}}" id='0' bindtap='switchNav'>今天</view>
+        <view class="padding {{flag2==1?'bg-white text-red':''}}" id='1' bindtap='switchNav'>明天</view>
+        <view class="padding {{flag2==2?'bg-white text-red':''}}" id='2' bindtap='switchNav'>后天</view>
+      </view>
+      <scroll-view class='bg-white' scroll-y style="width:50%;height:500rpx;">
+        <view class="padding" wx:for="{{timeList}}" wx:key>
+          <text bindtap="selectTime" data-id="{{item.id}}">{{item.time}}</text>
+        </view>
+      </scroll-view>
     </view>
   </view>
-
+</view>

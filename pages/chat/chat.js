@@ -12,16 +12,15 @@ Component({
    * 组件的初始数据
    */
   data: {
-    deviceW: '',//屏幕宽度
+    deviceW: '', //屏幕宽度
     deviceH: '', //屏幕高度
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
-    messageList:[
-      {
-        id:1,
-        name:'顺德家具城',
-        time:'19/10/03'
+    messageList: [{
+        id: 1,
+        name: '顺德家具城',
+        time: '19/10/03'
       },
       {
         id: 1,
@@ -35,13 +34,13 @@ Component({
       }
     ]
   },
-  ready: function () {
+  ready: function() {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
-          deviceW: res.windowWidth,//当前屏幕宽度
-          deviceH: res.windowHeight//当前屏幕高度
+          deviceW: res.windowWidth, //当前屏幕宽度
+          deviceH: res.windowHeight //当前屏幕高度
         })
         console.log(res.windowWidth);
       }
@@ -51,6 +50,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    chatDetail: function() {
+      wx.navigateTo({
+        url: '../chat/chatDetail/chatDetail',
+      })
+    }
   }
 })

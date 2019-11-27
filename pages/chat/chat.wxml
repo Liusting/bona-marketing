@@ -8,7 +8,7 @@
 
 <scroll-view scroll-y style="height:{{deviceH-64}}px" >
   <view wx:for="{{messageList}}" wx:key>
-    <view class="bg-white padding-sm flex align-center" style="border-bottom:1px solid #f1f1f1">
+    <view class="bg-white padding-sm flex align-center" bindtap="chatDetail" style="border-bottom:1px solid #f1f1f1">
       <view class="cu-avatar lg round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
       <view class="margin-left" style="width:80%">
         <view class="flex justify-between align-center">

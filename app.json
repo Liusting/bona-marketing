@@ -9,7 +9,6 @@
     "pages/me/steps",
     "pages/me/refund",
     "pages/sp_item/spItem",
-    "pages/sp_order_list/chat",
     "pages/order/order",
     "pages/sp_item_list/spItemList",
     "pages/sp_item/coupon",
@@ -30,13 +29,17 @@
     "pages/invest/investNotice",
     "pages/userMessage/userMessage",
     "pages/me/upgrade",
+    "pages/myCommission/myCommission",
     "pages/me/memberMessage",
     "pages/preferential/preferential",
     "pages/integral/integral",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",
     "pages/appraise/appraise",
-    "pages/shop/shop"
+    "pages/goodsCollection/goodsCollectionList",
+    "pages/shop/shop",
+    "pages/shopCollection/shopCollectionList",
+    "pages/chat/chatDetail/chatDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

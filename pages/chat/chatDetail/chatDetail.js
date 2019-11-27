@@ -41,7 +41,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollHeight:0,
+    focus: false,
+    scrollHeight: 0,
     inputBottom: 0,
     deviceW: '',//屏幕宽度
     deviceH: '', //屏幕高度

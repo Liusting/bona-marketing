@@ -159,6 +159,11 @@ Component({
     })
   }
 ,
+  myCommission:function(){
+    wx.navigateTo({
+      url: '../myCommission/myCommission',
+    })
+  },
   toMyAccount:function(e){
     let id = e.currentTarget.dataset.id;
     switch(id){
@@ -189,6 +194,18 @@ Component({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     switch(id){
+      case 1: wx.navigateTo({
+        url: '../goodsCollection/goodsCollectionList',
+      });
+        break;
+      case 2: wx.navigateTo({
+        url: '../shopCollection/shopCollectionList',
+      });
+        break;
+      case 3: wx.navigateTo({
+        url: '../footprints/footprints',
+      });
+        break;
       case 4: wx.navigateTo({
         url: '../me/refund',
       });
