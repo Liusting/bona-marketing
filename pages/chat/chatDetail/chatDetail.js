@@ -1,6 +1,9 @@
+// pages/contact/contact.js
 const app = getApp();
 var inputVal = '';
 var msgList = [];
+var windowWidth = wx.getSystemInfoSync().windowWidth;
+var windowHeight = wx.getSystemInfoSync().windowHeight;
 var keyHeight = 0;
 
 /**
@@ -10,15 +13,15 @@ function initData(that) {
   inputVal = '';
 
   msgList = [{
-    speaker: 'server',
-    contentType: 'text',
-    content: '欢迎来到英雄联盟，敌军还有30秒到达战场，请做好准备！'
-  },
-  {
-    speaker: 'customer',
-    contentType: 'text',
-    content: '欢迎来到英雄联盟，敌军还有30秒到达战场，请做好准备！...'
-  }
+      speaker: 'customer',
+      contentType: 'text',
+      content: '我怕是走错片场了...'
+    },
+    {
+      speaker: 'server',
+      contentType: 'text',
+      content: '欢迎来到英雄联盟，敌军还有30秒到达战场，请做好准备！'
+    }
   ]
   that.setData({
     msgList,
@@ -41,64 +44,130 @@ Page({
    * 页面的初始数据
    */
   data: {
-    focus: false,
-    scrollHeight: 0,
+    scrollHeight: '100vh',
     inputBottom: 0,
-    deviceW: '',//屏幕宽度
+    inputValue: '',
+    if_send: false,
+    add: true,
+    flag: true,
+    deviceW: '', //屏幕宽度
     deviceH: '', //屏幕高度
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
+    toolList: [{
+        id: 1,
+        name: '图片',
+        icon: '../../../img/pictrue.png'
+      },
+      {
+        id: 2,
+        name: '拍摄',
+        icon: '../../../img/camera.png'
+      },
+      {
+        id: 3,
+        name: '位置',
+        icon: '../../../img/location.png'
+      }
+    ]
   },
-
+  //返回
+  BackPage() {
+    wx.navigateBack({
+      delta: 1
+    });
+  },
+  add_icon_click: function() {
+    var that = this;
+    this.setData({
+      flag: !that.data.flag
+    })
+  },
+  // 提交文字
+  submitTo: function(e) {
+    let that = this;
+    if (that.data.inputValue == "") {
+      return;
+    }else{
+      msgList.push({
+        speaker: 'customer',
+        contentType: 'text',
+        content: that.data.inputValue
+      })
+      inputVal = '';
+      that.setData({
+        msgList,
+        inputVal,
+        if_send: false,
+        inputValue: '',
+        add: true,
+        flag: true,
+      });
+    }
+  },
+  // 输入框
+  bindKeyInput: function(e) {
+    if (e.detail.value == "") {
+      this.setData({
+        if_send: false,
+        inputValue: e.detail.value
+      })
+    } else {
+      this.setData({
+        if_send: true,
+        inputValue: e.detail.value,
+        flag:true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     initData(this);
-    // this.setData({
-    //   cusHeadIcon: app.globalData.userInfo.avatarUrl,
-    // });
+    this.setData({
+      // cusHeadIcon: app.globalData.userInfo.avatarUrl,
+    });
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
-          deviceW: res.windowWidth,//当前屏幕宽度
-          deviceH: res.windowHeight//当前屏幕高度
+          deviceW: res.windowWidth, //当前屏幕宽度
+          deviceH: res.windowHeight //当前屏幕高度
         })
       }
-    })
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 获取聚焦
    */
-  focus: function (e) {
-    console.log(e);
+  focus: function(e) {
     keyHeight = e.detail.height;
     this.setData({
-      scrollHeight: keyHeight
+      scrollHeight: (windowHeight - keyHeight) + 'px'
     });
     this.setData({
       toView: 'msg-' + (msgList.length - 1),
@@ -106,11 +175,11 @@ Page({
     })
     //计算msg高度
     // calScrollHeight(this, keyHeight);
-    console.log(this.data.scrollHeight)
+
   },
 
   //失去聚焦(软键盘消失)
-  blur: function (e) {
+  blur: function(e) {
     this.setData({
       scrollHeight: '100vh',
       inputBottom: 0
@@ -124,7 +193,7 @@ Page({
   /**
    * 发送点击监听
    */
-  sendClick: function (e) {
+  sendClick: function(e) {
     msgList.push({
       speaker: 'customer',
       contentType: 'text',
@@ -133,7 +202,11 @@ Page({
     inputVal = '';
     this.setData({
       msgList,
-      inputVal
+      inputVal,
+      if_send: false,
+      inputValue: '',
+      add: true,
+      flag: true,
     });
 
 
@@ -142,7 +215,7 @@ Page({
   /**
    * 退回上一页
    */
-  toBackClick: function () {
+  toBackClick: function() {
     wx.navigateBack({})
   }
 

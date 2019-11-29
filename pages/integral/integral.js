@@ -1,4 +1,5 @@
 // pages/integral/integral.js
+var app = getApp();
 Page({
 
   /**
@@ -52,7 +53,12 @@ Page({
       name: '积分秒杀'
     }],
     gridCol: 3,
-    skin: false
+    skin: false,
+    deviceW: '',//屏幕宽度
+    deviceH: '', //屏幕高度
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
 
   },
   more:function(){
@@ -82,7 +88,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          deviceW: res.windowWidth,//当前屏幕宽度
+          deviceH: res.windowHeight//当前屏幕高度
+        })
+      }
+    })
   },
 
   /**

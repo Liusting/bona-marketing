@@ -1,62 +1,82 @@
-<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
-  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
-    <cu-custom  isBack="{{true}}">
-      <view slot="backText">返回</view>
-      <view slot="content">李晓芳</view>
-    </cu-custom>
-  </view>
-</view>
-<view>
-  <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: 100px;'>
-    <block wx:key wx:for='{{msgList}}' wx:for-index="index">
+<view class="cu-custom bg-blue" style="height:{{CustomBar}}px;border-bottom:1px solid #f1f1f1">
+  <view class="align-center flex" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
 
-      <!-- 单个消息1 客服发出（左） -->
-      <view wx:if='{{item.speaker=="server"}}' id='msg-{{index}}' class="flex align-center padding">
-        <view >
-          <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
-        </view>
-        <text class='margin-left bg-white padding-sm text-black radius' >{{item.content}}</text>
-      </view>
-
-      <!-- 单个消息2 用户发出（右） -->
-      <view wx:else id='msg-{{index}}' class="flex justify-end align-center padding">
-        <text class='margin-right padding-sm text-black radius' style="background-color: #96EB6A;">{{item.content}}</text>
-        <view >
-          <view class="cu-avatar  radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
-        </view>
-      </view>
-
-    </block>
-  </scroll-view>
-
-<!-- <form bindsubmit='commentSubmit'>
-  <view class='  ' >
-    <textarea contenteditable="true" contenteditable="true"  auto-height  class='  bg-white ' name='commentValue' placeholder='评论' ></textarea>
-  </view>
-  <button form-type='submit' class='textarea_btn'>发送</button>
-</form> -->
-
-  <view class='inputRoom' style='bottom: {{inputBottom}}'>
-
-
-<view class="page-body">
-  <view class="page-section">
-    <view class="page-section-title">输入区域高度自适应，不会出现滚动条</view>
-    <view class="textarea-wrp">
-      <textarea bindblur="bindTextAreaBlur" auto-height />
-    </view>
-  </view>
-
-  <view class="page-section">
-    <view class="page-section-title">这是一个可以自动聚焦的textarea</view>
-    <view class="textarea-wrp">
-      <textarea auto-focus="true" style="height: 3em" />
+    <view class="content" style="margin-left:calc(750rpx - {{Custom.right}}px)">
+      <text class="cuIcon-back" bindtap="BackPage"></text>
+      <text class="margin-left-sm">[在线]小米旗舰店</text>
     </view>
   </view>
 </view>
-    <view class="text-xxl">
-      <text class="cuIcon-roundadd "></text>
+
+<scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{500}}px;'>
+  <view class="cu-chat">
+    <view wx:key wx:for='{{msgList}}' wx:for-index="index">
+      <!-- 用户发出信息 -->
+      <view class="cu-item self" wx:if='{{item.speaker=="customer"}}' id='msg-{{index}}'>
+        <view class="main">
+          <view class="content bg-green shadow">
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+        <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+        <view class="date">2018年3月23日 13:23</view>
+      </view>
+      <!-- 客服的信息 -->
+      <view class="cu-item" wx:else id='msg-{{index}}'>
+        <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+        <view class="main">
+          <view class="content shadow">
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+        <view class="date "> 13:23</view>
+      </view>
     </view>
   </view>
+</scroll-view>
+<!-- <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{500}}px;'>
 
+  <block wx:key wx:for='{{msgList}}' wx:for-index="index">
+    <!-- 单个消息1 客服发出（左） -->
+<!-- <view class="padding-sm" wx:if='{{item.speaker=="server"}}' id='msg-{{index}}' style='display: flex;'>
+      <view>
+        <view class="cu-avatar lg round " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big25002.jpg);"></view>
+      </view>
+      <view class="bg-green padding-sm text-lg margin-left-xs" style="border-radius: 10rpx;">{{item.content}}</view>
+    </view> -->
+<!-- 单个消息2 用户发出（右） -->
+<!-- <view wx:else id='msg-{{index}}' style='display: flex; justify-content: flex-end; padding: 2vw 2vw 2vw 11vw;'>
+      <view class='rightMsg'>{{item.content}}</view>
+      <view style='width: 11vw; height: 11vw;'>
+        <image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='../../../img/pictrue.png'></image>
+      </view>
+    </view>
+  </block> -->
+
+
+<!-- <view style='width: 100%; height: 18vw;'></view>
+</scroll-view> -->
+
+<view class='cu-bar foot ' >
+  <input bindconfirm='sendClick' adjust-position='{{false}}' value='{{inputVal}}' bindinput="bindKeyInput" confirm-type='send' bindfocus='focus' bindblur='blur'></input>
+  <button wx:if='{{if_send&&inputValue!=""}}' bindtap="submitTo" class="cu-btn bg-green">发送</button>
+  <view bindtap='add_icon_click' id='1' wx:if='{{add&&!if_send&&inputValue==""}}' class="action text-xxl">
+    <text class="cuIcon-roundadd"></text>
+  </view>
+</view>
+
+
+<view class="grid col-4" hidden="{{flag}}" style='bottom: {{inputBottom}}'>
+  <view wx:for="{{toolList}}" wx:key>
+    <view>
+      <view class="flex justify-center ">
+        <view class=" flex justify-center bg-white align-center radius" style="height:55px;width:55px;border-radius:5px">
+          <image class="" style="height:24px;width:24px;" src="{{item.icon}}" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="flex justify-center">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
 </view>

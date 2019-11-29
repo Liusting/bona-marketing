@@ -29,7 +29,7 @@ Component({
     }
   },
   data: {
-    deviceW: '',//屏幕宽度
+    deviceW: '', //屏幕宽度
     deviceH: '', //屏幕高度
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
@@ -44,7 +44,7 @@ Component({
       number: '12',
       integral: '14000',
     }, {
-        imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
       name: '华为手机',
       number: '12',
       integral: '14000',
@@ -59,7 +59,7 @@ Component({
       number: '12',
       integral: '14000',
     }, {
-        imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
+      imageUrl: 'https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg',
       name: '小米手机',
       number: '12',
       integral: '14000',
@@ -67,59 +67,51 @@ Component({
     iconList: [{
       icon: 'cardboardfill',
       color: 'red',
-      badge: 120,
       name: '家居百货'
     }, {
       icon: 'clothesfill',
       color: 'orange',
-      badge: 1,
       name: '服饰鞋包'
     }, {
       icon: 'picfill',
       color: 'yellow',
-      badge: 0,
       name: '美妆个护'
     }, {
       icon: 'noticefill',
       color: 'olive',
-      badge: 22,
       name: '食品酒饮'
     }, {
       icon: 'upstagefill',
       color: 'cyan',
-      badge: 0,
       name: '母婴玩具'
     }, {
       icon: 'camerafill',
       color: 'blue',
-      badge: 0,
       name: '数码家电'
     }, {
       icon: 'presentfill',
       color: 'purple',
-      badge: 0,
       name: '新人好礼'
     }, {
       icon: 'more',
       color: 'mauve',
-      badge: 0,
       name: '全部'
     }]
   },
 
-  ready:function(){
+  ready: function() {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
-          deviceW: res.windowWidth,//当前屏幕宽度
-          deviceH: res.windowHeight//当前屏幕高度
+          deviceW: res.windowWidth, //当前屏幕宽度
+          deviceH: res.windowHeight //当前屏幕高度
         })
       }
     });
     //设置倒计时时间，1s变换一次
-    var interval = setInterval(function () {
-      var d = new Date();  //获取系统日期和时间
+    var interval = setInterval(function() {
+      var d = new Date(); //获取系统日期和时间
       var nowHour = d.getHours(); //小时
       var nowMinutes = d.getMinutes(); //分
       var nowSeconds = d.getSeconds(); //秒
@@ -169,23 +161,23 @@ Component({
       });
     }.bind(this), 1000);
   },
-onLoad:function(){
-  
-},
+  onLoad: function() {
+
+  },
   methods: {
     // 点击分类
-    gotoClassify:function(e){
+    gotoClassify: function(e) {
 
     },
     //更多疯抢
-    moreDiscount:function(e){
+    moreDiscount: function(e) {
       wx.navigateTo({
         url: '../home/moreDiscount',
       })
     },
-    customMethod: function () { },
-    onLoad: function(){
-      
+    customMethod: function() {},
+    onLoad: function() {
+
     }
   }
 })

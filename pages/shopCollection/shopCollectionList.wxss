@@ -1,1 +1,21 @@
-/* pages/shopCollection/shopCollectionList.wxss */
+.productImg {
+  height: 220rpx;
+  width: 220rpx;
+  position: relative;
+}
+
+.images-content {
+  width: 45px;
+  height: 24px;  
+  line-height: 24px;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.438);
+  color: white;
+
+}

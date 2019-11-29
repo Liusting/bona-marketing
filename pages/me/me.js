@@ -192,7 +192,7 @@ Component({
   },
   toTool:function(e){
     let id = e.currentTarget.dataset.id;
-    console.log(id);
+    // console.log(id);
     switch(id){
       case 1: wx.navigateTo({
         url: '../goodsCollection/goodsCollectionList',

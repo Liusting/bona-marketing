@@ -42,7 +42,6 @@ Component({
           deviceW: res.windowWidth, //当前屏幕宽度
           deviceH: res.windowHeight //当前屏幕高度
         })
-        console.log(res.windowWidth);
       }
     });
   },

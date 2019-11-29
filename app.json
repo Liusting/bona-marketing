@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/chat/chatDetail/chatDetail",
     "pages/index/index",
     "pages/home/home",
     "pages/home/moreDiscount",
@@ -36,10 +37,9 @@
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",
     "pages/appraise/appraise",
-    "pages/goodsCollection/goodsCollectionList",
-    "pages/shop/shop",
     "pages/shopCollection/shopCollectionList",
-    "pages/chat/chatDetail/chatDetail"
+    "pages/goodsCollection/goodsCollectionList",
+    "pages/shop/shop"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

@@ -1,2 +1,40 @@
-<!--pages/shopCollection/shopCollectionList.wxml-->
-<text>pages/shopCollection/shopCollectionList.wxml</text>
+<view class="cu-custom" style="background:#2f70df;height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <cu-custom isBack="{{true}}">
+      <view slot="backText">店铺收藏</view>
+      <!-- <view slot="content">商品详情</view> -->
+    </cu-custom>
+  </view>
+</view>
+<scroll-view class="bg-white" scroll-y style="height:{{deviceH-CustomBar}}px">
+  <view class="padding">店铺收藏</view>
+  <view wx:for="{{5}}" wx:key  style="border-bottom:1px solid gray">
+    <view class="padding flex align-center justify-between">
+      <view class="flex align-center">
+        <view class="cu-avatar lg  " style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+        <view class="margin-left-sm">
+          <text class="text-black ">土谷官方旗舰店</text>
+          <view class="text-sm">已拼：10万+件</view>
+        </view>
+      </view>
+      <view class="flex align-center">
+        <view class="text-gray margin-right">
+          <text class="cuIcon-more"></text>
+        </view>
+        <view>
+          <button class="cu-btn bg-red">进店逛逛</button>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-x style='white-space: nowrap;'>
+      <view wx:for="{{10}}" wx:key style="display: inline-block">
+        <view class="productImg  margin-lr-xs">
+          <image src="https://m.360buyimg.com/n12/jfs/t11317/108/1080677336/325163/f4c2a03a/59fd8b17Nbe2fcca3.jpg!q70.jpg" mode="widthFix"></image>
+          <text class="images-content round text-price">12</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+</scroll-view>

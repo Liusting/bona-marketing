@@ -1,53 +1,14 @@
-page {
-  background-color: #f1f1f1;
-}
-
-.inputRoom {
-  width: 100vw;
-  height: 16vw;
-  border-top: 1px solid #cdcdcd;
-  background-color: #f1f1f1;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  z-index: 20;
-}
 
 input {
-  width: 76vw;
+  width: 80vw;
   height: 9.33vw;
+  margin-left: 20rpx;
   background-color: #fff;
   border-radius: 40rpx;
-  margin-left: 2vw;
   padding: 0 3vw;
   font-size: 28rpx;
   color: #444;
 }
 
-textarea {
-  width: 700rpx;
-  padding: 25rpx 0;
-}
 
-.textarea-wrp {
-  padding: 0 25rpx;
-  background-color: #fff;
-}
 
-.page-section{
-  width: 100%;
-  margin-bottom: 60rpx;
-}
-
-.page-section:last-child{
-  margin-bottom: 0;
-}
-
-.page-section-title{
-  font-size: 28rpx;
-  color: #999999;
-  margin-bottom: 10rpx;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
-}

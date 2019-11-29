@@ -111,7 +111,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         let resData = res.data;
-        console.log(resData);
+        // console.log(resData);
         that.setData({
           addressList: resData
         })
