@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/chat/chatDetail/chatDetail",
+
     "pages/index/index",
     "pages/home/home",
     "pages/home/moreDiscount",
@@ -34,6 +34,7 @@
     "pages/me/memberMessage",
     "pages/preferential/preferential",
     "pages/integral/integral",
+        "pages/chat/chatDetail/chatDetail",
     "pages/integral/integralShop",
     "pages/integral/integralSeckill",
     "pages/appraise/appraise",

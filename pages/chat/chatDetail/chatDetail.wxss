@@ -1,6 +1,6 @@
 
 input {
-  width: 80vw;
+  width: 76vw;
   height: 9.33vw;
   margin-left: 20rpx;
   background-color: #fff;
@@ -12,3 +12,8 @@ input {
 
 
 
+.logo_ground{
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}

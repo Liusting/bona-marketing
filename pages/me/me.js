@@ -88,35 +88,29 @@ Component({
         badge: 7
       },
       {
-        typeId: 1,
+        typeId: 2,
         icon: 'pick',
         name: '待分享',
         badge: 7
       },
       {
-        typeId: 2,
+        typeId: 3,
         icon:'send',
         name: '待发货',
         badge: 0
       },
       {
-        typeId: 3,
+        typeId: 4,
         icon:'deliver',
         name: '待收货',
         badge: 120
       },
       {
-        typeId: 4,
+        typeId: 5,
         icon:'edit',
         name: '待评价',
         badge: 2
-      },
-      // {
-      //   typeId: 5,
-      //   icon: 'refund',
-      //   name: '退货/售后',
-      //   badge: 120,
-      // }
+      }
     ],
   },
   // tab切换的时候马上响应数据
@@ -249,6 +243,11 @@ Component({
         });
         break;
       case 4:
+        wx.navigateTo({
+          url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
+        });
+        break;
+      case 5:
         wx.navigateTo({
           url: '../sp_order_list/spOrderList?typeId=' + typeId//将要跳转id的值传参数过去
         });

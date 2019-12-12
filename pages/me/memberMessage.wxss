@@ -1,0 +1,4 @@
+.member{
+  border-top-left-radius: 70px;
+  border-bottom-left-radius:70px
+}

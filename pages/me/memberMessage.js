@@ -10,7 +10,7 @@ Page({
       {
         icon: 'medalfill',
         color: 'blue',
-        name: '身份铭牌'
+        name: '赠送积分'
       },
       {
         icon: 'medalfill',

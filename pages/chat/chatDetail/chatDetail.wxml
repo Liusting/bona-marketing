@@ -1,14 +1,14 @@
 <view class="cu-custom bg-blue" style="height:{{CustomBar}}px;border-bottom:1px solid #f1f1f1">
   <view class="align-center flex" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
 
-    <view class="content" style="margin-left:calc(750rpx - {{Custom.right}}px)">
+    <view class="content text-xl" style="margin-left:calc(750rpx - {{Custom.right}}px)">
       <text class="cuIcon-back" bindtap="BackPage"></text>
       <text class="margin-left-sm">[在线]小米旗舰店</text>
     </view>
   </view>
 </view>
 
-<scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{500}}px;'>
+<scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{scrollHeight}}px;'>
   <view class="cu-chat">
     <view wx:key wx:for='{{msgList}}' wx:for-index="index">
       <!-- 用户发出信息 -->
@@ -57,16 +57,16 @@
 <!-- <view style='width: 100%; height: 18vw;'></view>
 </scroll-view> -->
 
-<view class='cu-bar foot ' >
+<view class='logo_ground flex align-center' style='height:{{bottom}}px;border-top:1px solid gray;bottom:{{inputBottom}}'>
   <input bindconfirm='sendClick' adjust-position='{{false}}' value='{{inputVal}}' bindinput="bindKeyInput" confirm-type='send' bindfocus='focus' bindblur='blur'></input>
-  <button wx:if='{{if_send&&inputValue!=""}}' bindtap="submitTo" class="cu-btn bg-green">发送</button>
-  <view bindtap='add_icon_click' id='1' wx:if='{{add&&!if_send&&inputValue==""}}' class="action text-xxl">
+  <button wx:if='{{if_send&&inputValue!=""}}' bindtap="submitTo" class="margin-left-sm cu-btn bg-green">发送</button>
+  <view bindtap='add_icon_click'  wx:if='{{add&&!if_send&&inputValue==""}}' class="margin-left action" style="font-size:27px">
     <text class="cuIcon-roundadd"></text>
   </view>
 </view>
 
 
-<view class="grid col-4" hidden="{{flag}}" style='bottom: {{inputBottom}}'>
+<!-- <view class="grid col-4" hidden="{{flag}}" style='bottom: {{inputBottom}}'>
   <view wx:for="{{toolList}}" wx:key>
     <view>
       <view class="flex justify-center ">
@@ -79,4 +79,4 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->

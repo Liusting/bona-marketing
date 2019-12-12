@@ -8,9 +8,10 @@ Page({
     swipertab: [
       { name: '全部', index: 0}, 
       { name: '待付款', index: 1 },  
-      { name: '待发货', index: 2 },
-      { name: '待收货', index: 3 },
-      { name: '待评价', index: 4 },
+      { name: '待分享', index: 2 }, 
+      { name: '待发货', index: 3 },
+      { name: '待收货', index: 4 },
+      { name: '待评价', index: 5 },
       ],
     orderList: [],
     deviceW: '',//屏幕宽度

@@ -1,4 +1,3 @@
-// pages/contact/contact.js
 const app = getApp();
 var inputVal = '';
 var msgList = [];
@@ -44,7 +43,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollHeight: '100vh',
+    scrollHeight: '',
     inputBottom: 0,
     inputValue: '',
     if_send: false,
@@ -55,6 +54,7 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
+    bottom: 50,
     toolList: [{
         id: 1,
         name: '图片',
@@ -83,13 +83,14 @@ Page({
     this.setData({
       flag: !that.data.flag
     })
+    console.log(this.data.flag)
   },
   // 提交文字
   submitTo: function(e) {
     let that = this;
     if (that.data.inputValue == "") {
       return;
-    }else{
+    } else {
       msgList.push({
         speaker: 'customer',
         contentType: 'text',
@@ -117,7 +118,7 @@ Page({
       this.setData({
         if_send: true,
         inputValue: e.detail.value,
-        flag:true
+        flag: true
       })
     }
   },
@@ -125,11 +126,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    initData(this);
-    this.setData({
-      // cusHeadIcon: app.globalData.userInfo.avatarUrl,
-    });
     var that = this;
+    initData(this);
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
@@ -138,6 +136,11 @@ Page({
         })
       }
     });
+    // debugger;
+    let height = that.data.deviceH - that.data.CustomBar - that.data.bottom;
+    that.setData({
+      scrollHeight: height
+    })
   },
 
   /**
@@ -167,21 +170,21 @@ Page({
   focus: function(e) {
     keyHeight = e.detail.height;
     this.setData({
-      scrollHeight: (windowHeight - keyHeight) + 'px'
+      scrollHeight: (windowHeight - keyHeight)
     });
     this.setData({
       toView: 'msg-' + (msgList.length - 1),
       inputBottom: keyHeight + 'px'
     })
-    //计算msg高度
-    // calScrollHeight(this, keyHeight);
 
   },
 
   //失去聚焦(软键盘消失)
   blur: function(e) {
+    var that = this;
+    let height = that.data.deviceH - that.data.CustomBar - that.data.bottom;
     this.setData({
-      scrollHeight: '100vh',
+      scrollHeight: height,
       inputBottom: 0
     })
     this.setData({

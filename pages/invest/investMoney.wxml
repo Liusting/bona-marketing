@@ -16,18 +16,25 @@
   </view>
 </view>
 
-<view class="bg-white">
-  <view class="padding-sm">
-    <button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="1">20元</button>
-    <button style="background:{{backgoroundColor}};color:{{color}}" class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="2">50元</button>
-    <button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="3">100元</button>
-    <button class="margin-sm cu-btn round line-blue" bindtap="investmoney" data-id="4">200元</button>
-    <button class="margin-sm cu-btn round line-blue">自定义金额</button>
-    <view class="margin-sm cu-btn line-blue">
-      <input placeholder="自定义金额"></input>
+<view class="bg-white padding-sm">
+  <view class="text-black text-bold   margin-left">充值金额</view>
+  <view class="">
+    <view class="grid col-4 no-border">
+      <view wx:for='{{moneyList}}' wx:key>
+        <button class="margin-sm cu-btn radius bg-{{item.check?'blue':''}}" data-money="{{item.money}}" bindtap="investmoney" data-id="{{item.id}}">{{item.money}}元</button>
+      </view>
     </view>
   </view>
-  <view class="text-center ">
-    <button class="cu-btn bg-red round margin-tb-sm ">立即充值</button>
+  <view class="text-black text-bold  margin-left">其他充值金额</view>
+  <view class="margin-left">
+    <input bindfocus="Focus" value="{{moneyNumber}}" bindinput="moneyInput" type="number" placeholder="其他金额" maxlength="5"></input>
   </view>
+</view>
+
+<view class="text-center cu-bar foot bg-white">
+  <view class="margin-left">
+    <text>充值金额</text>
+    <text class="margin-left text-xl text-price text-red">{{investmoney}}</text>
+  </view>
+  <button bindtap="invest" class="margin-right cu-btn bg-blue round  ">立即充值</button>
 </view>

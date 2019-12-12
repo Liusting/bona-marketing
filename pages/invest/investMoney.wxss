@@ -16,3 +16,9 @@
   color: #ffffff;
   text-align: right;
 }
+input{
+  height: 6vh;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 35rpx;
+  width: 25vw
+}
