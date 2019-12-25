@@ -6,21 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    deviceW: '',//屏幕宽度
+    deviceW: '', //屏幕宽度
     deviceH: '', //屏幕高度
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     numList: [{
-      name: '用户申请'
+      name: '我的订单'
     }, {
-      name: '等待审核'
+      name: '生产日期'
     }, {
-      name: '审核中'
+      name: '物流'
     }, {
-      name: '完成'
-    },],
-    num:1,
+      name: '安装'
+    }, {
+      name: '验收'
+    }, {
+      name: '售后'
+    }],
+    num: 3,
   },
   numSteps() {
     this.setData({
@@ -30,13 +34,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
-          deviceW: res.windowWidth,//当前屏幕宽度
-          deviceH: res.windowHeight//当前屏幕高度
+          deviceW: res.windowWidth, //当前屏幕宽度
+          deviceH: res.windowHeight //当前屏幕高度
         })
       }
     });
@@ -46,49 +50,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

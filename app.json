@@ -7,8 +7,9 @@
     "pages/item_type/itemType",
     "pages/cart/cart",
     "pages/me/me",
-    "pages/me/steps",
-    "pages/me/refund",
+ 
+      "pages/me/steps",
+      "pages/me/refund",
     "pages/sp_item/spItem",
     "pages/order/order",
     "pages/sp_item_list/spItemList",
